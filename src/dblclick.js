@@ -23,7 +23,6 @@ function varDblclick(elem) {
             var val = prompt('Replace ' + elem.innerHTML + ' by:');
             if (val) {
                 var mi = jQuery(elem).parents('math').find('mi');
-                console.log(mi.length);
                 for (var i = 0; i < mi.length; i++) {
                     if (jQuery.trim(mi[i].innerHTML) == sym) {
                         replaceMiByMn(mi[i], val);
@@ -100,8 +99,10 @@ function setDblclick(elem) {
     switch (elem.localName) {
         case 'mi':
             elem.addEventListener('dblclick', miDblclick, false);
+            break;
         case 'mo':
             elem.addEventListener('dblclick', moDblclick, false);
+            break;
     }
 }
 

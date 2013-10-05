@@ -95,8 +95,7 @@ operators" are in the example below::
     <mi> m </mi>
     <mrow>
     <mn> 1 </mn>
-    <mo> &#x2063;<!--INVISIBLE
-    SEPARATOR--> </mo>
+    <mo> &#x2063;<!--INVISIBLE SEPARATOR--> </mo>
     <mn> 2 </mn>
     </mrow>
     </msub>
@@ -116,12 +115,10 @@ In the case of integrals the differential operator symbol, usually denoted by
     </mi>
     <mi> x </mi>
     </msup>
-    <mo> &#x2062;<!--INVISIBLE
-    TIMES--> </mo>
+    <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
     <mrow>
     <mo>
-    &#x2146;<!--DOUBLE-STRUCK
-    ITALIC SMALL D--> </mo>
+    &#x2146;<!--DOUBLE-STRUCK ITALIC SMALL D--> </mo>
     <mi> x </mi>
     </mrow>
     </mrow>

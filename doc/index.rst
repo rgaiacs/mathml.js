@@ -44,6 +44,7 @@ Developer's Contents:
    dev/mi.rst
    dev/mn.rst
    dev/mo.rst
+   dev/bugs.rst
    dev/todo.rst
    dev/faq.rst
    dev/code-style.rst
