@@ -1,3 +1,11 @@
 MathML.js
 
 This is a javascript library to manipulate MathML content.
+
+To build MathML.js ::
+
+    $ make build
+
+To build the documentation (it require Sphinx) ::
+
+    $ make doc
