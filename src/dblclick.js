@@ -83,7 +83,7 @@ function moDblclick(e) {
     var op = jQuery.trim(this.innerHTML);
     switch (op.charCodeAt(0)) {
         case 43:  // +
-            moUnsuport(this);
+            opPlus(this);
             break;
         case 8722:  // minus sign
         case 45:  // "-" for nooby
