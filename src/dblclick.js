@@ -73,17 +73,29 @@ function miDblclick(e) {
 
 // Handle for double click in unsupport mo element
 function moUnsuport(op) {
-    console.log('Operator ' + op.innerHTML + ' not support');
+    var innerHTML = jQuery.trim(op.innerHTML);
+    var charcode = innerHTML.charCodeAt(0);
+    console.log('Operator with charcode ' + charcode + ' not support');
 }
 
 // Handle for double click in mo element
 function moDblclick(e) {
-    var op = this.innerHTML;
-    switch (op) {
-        case '+':
+    var op = jQuery.trim(this.innerHTML);
+    switch (op.charCodeAt(0)) {
+        case 43:  // +
             moUnsuport(this);
             break;
-        case '-':
+        case 8722:  // minus sign
+        case 45:  // "-" for nooby
+            moUnsuport(this);
+            break;
+        case 215:  // multiplication sign
+        case 183:  // middle dot
+            moUnsuport(this);
+            break;
+        case 247:  // division sign
+        case 8725:  // division slash
+        case 47:  // "/" for nooby
             moUnsuport(this);
             break;
         default:

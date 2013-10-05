@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type='text/javascript' src="jquery-2.0.3.min.js"></script>
+<script type='text/javascript' src="mathml.js"></script>
+</head>
+<body>
+<h1>Demo for assumptions</h1>
+<p>MathML define three invisible operators:
+<ul>
+  <li><kbd>&amp;ApplyFunction;</kbd>,</li>
+  <li><kbd>&amp;InvisibleTimes;</kbd>,</li>
+  <li><kbd>&amp;InvisibleComma;</kbd>.</li>
+</ul>
+And MathML.js use it to make assumptions.</p>
+
+<h2>Functions</h2>
+<p>A function of <math><mi>x</mi></math> named <math><mi>f</mi></math>, i.e.
+<math>
+  <mrow>
+  <mi> f </mi> <mo> &#x2061; </mo> <mfenced> <mi> x </mi> </mfenced>
+  </mrow>
+</math>
+, MUST be write as<br>
+<code>
+  &lt;math&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt; f &lt;/mi&gt; &lt;mo&gt; &amp;#x2061; &lt;/mo&gt; &lt;mfenced&gt; &lt;mi&gt; x &lt;/mi&gt; &lt;/mfenced&gt;
+    &lt;/mrow&gt;
+  &lt;/math&gt;
+</code>
+</p>
+
+<p>And the sine function, i.e.
+<math>
+  <mrow>
+  <mi> sin </mi> <mo> &#x2061; </mo> <mfenced> <mi> x </mi> </mfenced>
+  </mrow>
+</math>
+, MUST be write as<br>
+<code>
+  &lt;math&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt; sin &lt;/mi&gt; &lt;mo&gt; &amp;#x2061; &lt;/mo&gt; &lt;mfenced&gt; &lt;mi&gt; x &lt;/mi&gt; &lt;/mfenced&gt;
+    &lt;/mrow&gt;
+  &lt;/math&gt;
+</code>
+</p>
+
+<h2>Product</h2>
+<p>The product of two variables, <math><mi>x</mi></math> and <math><mi>y</mi></math>, i.e.
+<math>
+  <mrow>
+  <mi> x </mi> <mo> &#x2062; </mo> <mi> y </mi>
+  </mrow>
+</math>
+, MUST be write as<br>
+<code>
+  &lt;math&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt; x &lt;/mi&gt; &lt;mo&gt; &amp;#x2062; &lt;/mo&gt; &lt;mi&gt; y &lt;/mi&gt;
+    &lt;/mrow&gt;
+  &lt;/math&gt;
+</code>
+</p>
+
+<h2>Dimensions</h2>
+<p>In the case of a variable that have at least two dimensions, i.e.
+<math>
+  <msub>
+    <mi> a </mi> <mrow> <mi> x </mi> <mo> &#x2063; </mo> <mi> y </mi> </mrow>
+  </msub>
+</math>
+, MUST be write as<br>
+<code>
+  &lt;math&gt;
+    &lt;msub&gt;
+      &lt;mi&gt; x &lt;/mi&gt; &lt;mrow&gt; &lt;mi&gt; x &lt;/mi&gt; &lt;mo&gt; &amp;#x2063; &lt;/mo&gt; &lt;mi&gt; y &lt;/mi&gt; &lt;/mrow&gt;
+    &lt;/msub&gt;
+  &lt;/math&gt;
+</code>
+</p>
+</body>
+</html>

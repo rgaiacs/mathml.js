@@ -7,15 +7,17 @@ function assum_mi(elem) {
         var r = null;  // Return value
         switch (n.localName) {
             case 'mo':
-                sn = jQuery.trim(n.innerHTML);
-                switch (sn.charCodeAt(0)) {
-                    case 2061:  // Function Aplication
+                var sn = jQuery.trim(n.innerHTML);
+                var charcode = sn.charCodeAt(0);
+                console.log('Operator with charcode ' + charcode + ' not support');
+                switch (charcode) {
+                    case 8289:  // Function Aplication
                         r = 1;
                         break;
-                    case 2062:  // Invisible times
+                    case 8290:  // Invisible times
                         r = 2;
                         break;
-                    case 2063:  // Invisible separator
+                    case 8291:  // Invisible separator
                         r = 3;
                         break;
                     default:
