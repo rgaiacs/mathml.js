@@ -1,5 +1,5 @@
 Coding Style
-------------
+============
 
 This is some information about the coding style used.
 

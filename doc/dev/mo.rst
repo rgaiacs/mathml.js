@@ -10,7 +10,7 @@ When the pointing device is moved onto an ``mo`` the element should change its
 color (default to blue).
 
 When the pointing device is moved away from an ``mo`` it should change its
-color back.
+color to back.
 
 This behavior can be achieve changing the color value attribute.
 

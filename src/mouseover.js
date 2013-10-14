@@ -1,6 +1,6 @@
 // mouseover
 function mathmlMouseover(e) {
-    this.setAttribute('mathcolor', 'blue');
+    this.setAttribute('mathcolor', MATHCOLOR);
     console.log('Change color of ' + this.innerHTML);
     e.stopPropagation();
     e.preventDefault()

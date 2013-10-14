@@ -14,17 +14,17 @@ http://www.w3.org/Math/)
 MathML.js is a Javascript library to enable GRAPHIC humam manipulation of MathML
 elements. This work is based on
 
-* `DragMath <http://www.dragmath.bham.ac.uk/index.html>`_,
 * `TouchOfMath <https://github.com/jlabarbera11/TouchOfMath>`_ and
 * `Equation Exercise Demo (proof of concept)
   <http://galvosukykla.lt/failai/coding/equation-exercise/proof-of-concept.html>`_.
 
 MathML.js ISN'T:
 
+* a equation editor (try `DragMath <http://www.dragmath.bham.ac.uk/index.html>`_),
 * a jquery-like Javascript library for MathML (try `jquery-mathml
   <https://github.com/sdiehl/jquery-mathml>`_);
 * a math Javascript library (try `Math.js <http://mathjs.org/>`_);
-* a Symbolic Math Javascript Library (try `Symbolic-Math-Library-for-Javascript
+* a symbolic math Javascript library (try `Symbolic-Math-Library-for-Javascript
   <https://github.com/jamesmclellan/Symbolic-Math-Library-for-Javascript>`_).
 
 User's Contents:
@@ -32,8 +32,10 @@ User's Contents:
 .. toctree::
    :maxdepth: 2
 
-   arithmetic-operations.rst
-   faq-user.rst
+   user/intro.rst
+   user/setup.rst
+   user/arithmetic-operations.rst
+   user/faq.rst
 
 Developer's Contents:
 
