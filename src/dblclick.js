@@ -1,3 +1,19 @@
+// MathML.js
+// Copyright (C) 2013  Raniere Silva
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 // Replace mi with mn
 function replaceMiByMn(mi, mn_val) {
     var new_elem = document.createElement('mn');
@@ -8,6 +24,7 @@ function replaceMiByMn(mi, mn_val) {
 
 // Handle "var" double click
 function varDblclick(elem) {
+    var r;
     var sym = jQuery.trim(elem.innerHTML);
     switch (jQuery.trim(sym.charCodeAt(0))) {
         case 2148:  // double-struck italic small i
@@ -15,9 +32,16 @@ function varDblclick(elem) {
             break;
         case 960:  // greek small letter pi
             var val = prompt('Replace ' + elem.innerHTML + ' by:', '3.14');
-            replaceMiByMn(elem, val);
+            if (val) {
+                replaceMiByMn(elem, val);
+            }
+            else {
+                console.log('Prompt have been cancel.');
+            }
+            r = true;
             break;
         case 2147:  // double-struck italic small e
+            console.log('The Euler constant.')
             break;
         default:
             var val = prompt('Replace ' + elem.innerHTML + ' by:');
@@ -28,12 +52,14 @@ function varDblclick(elem) {
                         replaceMiByMn(mi[i], val);
                     }
                 }
+                r = true;
             }
             else {
                 console.log('Prompt have been cancel.');
             }
             break;
     }
+    return r;
 }
 
 // Handle function double click
@@ -54,7 +80,7 @@ function invSepDblclick(elem) {
 // Handle for double click in mi element
 function miDblclick(e) {
     switch (assum_mi(this)) {
-        case 0:  // var
+        case 0:  // variable
             varDblclick(this);
             break;
         case 1:  // function
@@ -76,45 +102,39 @@ function moUnsuport(op) {
     var innerHTML = jQuery.trim(op.innerHTML);
     var charcode = innerHTML.charCodeAt(0);
     console.log('Operator with charcode ' + charcode + ' not support');
+    return 0;
 }
 
 // Handle for double click in mo element
 function moDblclick(e) {
-    var op = jQuery.trim(this.innerHTML);
+    var r;
+    var op = jQuery.trim(e.innerHTML);
     switch (op.charCodeAt(0)) {
         case 43:  // +
-            opPlus(this);
+            r = opPlus(e);
             break;
         case 8722:  // minus sign
         case 45:  // "-" for nooby
-            moUnsuport(this);
+            r = moUnsuport(e);
             break;
         case 215:  // multiplication sign
         case 183:  // middle dot
-            moUnsuport(this);
+            r = moUnsuport(e);
             break;
         case 247:  // division sign
         case 8725:  // division slash
         case 47:  // "/" for nooby
-            moUnsuport(this);
+            r = moUnsuport(e);
             break;
         default:
-            moUnsuport(this);
+            r = moUnsuport(e);
             break;
     }
-    e.stopPropagation();
-    e.preventDefault()
+    return r;
 }
 
 // Setup all mouseover
 function setDblclick(elem) {
-    switch (elem.localName) {
-        case 'mi':
-            elem.addEventListener('dblclick', miDblclick, false);
-            break;
-        case 'mo':
-            elem.addEventListener('dblclick', moDblclick, false);
-            break;
-    }
+    elem.addEventListener('dblclick', mathmlPreserve, false);
 }
 
