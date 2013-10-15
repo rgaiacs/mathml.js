@@ -13,3 +13,8 @@ When the pointing device is moved away from an ``mi`` it should change its
 color to back.
 
 This behavior can be achieve changing the color value attribute.
+
+Double left click
+-----------------
+
+The double left click will be bubbling.

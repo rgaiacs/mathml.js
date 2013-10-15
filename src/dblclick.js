@@ -14,87 +14,22 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+// Replace InvisibleTimes
+function replaceInvisibleTimes(mo) {
+    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mo');
+    new_elem.innerHTML = '\u00D7';
+    setMouseover(new_elem);
+    setDblclick(new_elem);
+    jQuery(mo).replaceWith(new_elem);
+}
+
 // Replace mi with mn
 function replaceMiByMn(mi, mn_val) {
     var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
     new_elem.innerHTML = mn_val;
     setMouseover(new_elem);
+    setDblclick(new_elem);
     jQuery(mi).replaceWith(new_elem);
-}
-
-// Handle "var" double click
-function varDblclick(elem) {
-    var r;
-    var sym = jQuery.trim(elem.innerHTML);
-    switch (jQuery.trim(sym.charCodeAt(0))) {
-        case 2148:  // double-struck italic small i
-            console.log('The imaginary constant.')
-            break;
-        case 960:  // greek small letter pi
-            var val = prompt('Replace ' + elem.innerHTML + ' by:', '3.14');
-            if (val) {
-                replaceMiByMn(elem, val);
-            }
-            else {
-                console.log('Prompt have been cancel.');
-            }
-            r = true;
-            break;
-        case 2147:  // double-struck italic small e
-            console.log('The Euler constant.')
-            break;
-        default:
-            var val = prompt('Replace ' + elem.innerHTML + ' by:');
-            if (val) {
-                var mi = jQuery(elem).parents('math').find('mi');
-                for (var i = 0; i < mi.length; i++) {
-                    if (jQuery.trim(mi[i].innerHTML) == sym) {
-                        replaceMiByMn(mi[i], val);
-                    }
-                }
-                r = true;
-            }
-            else {
-                console.log('Prompt have been cancel.');
-            }
-            break;
-    }
-    return r;
-}
-
-// Handle function double click
-function funDblclick(elem) {
-    // TODO
-}
-
-// Handle invisible times double click
-function invTimesDblclick(elem) {
-    // TODO
-}
-
-// Handle invisible separator double click
-function invSepDblclick(elem) {
-    // TODO
-}
-
-// Handle for double click in mi element
-function miDblclick(e) {
-    switch (assum_mi(this)) {
-        case 0:  // variable
-            varDblclick(this);
-            break;
-        case 1:  // function
-            funDblclick(this);
-            break;
-        case 2:  // invisible times
-            invTimesDblclick(this);
-            break;
-        case 3:  // invisible separator
-            invSepDblclick(this);
-            break;
-    }
-    e.stopPropagation();
-    e.preventDefault()
 }
 
 // Handle for double click in unsupport mo element
@@ -115,16 +50,16 @@ function moDblclick(e) {
             break;
         case 8722:  // minus sign
         case 45:  // "-" for nooby
-            r = moUnsuport(e);
+            r = opMinus(e);
             break;
         case 215:  // multiplication sign
         case 183:  // middle dot
-            r = moUnsuport(e);
+            r = opTimes(e);
             break;
         case 247:  // division sign
         case 8725:  // division slash
         case 47:  // "/" for nooby
-            r = moUnsuport(e);
+            r = opDiv(e);
             break;
         default:
             r = moUnsuport(e);
@@ -133,8 +68,25 @@ function moDblclick(e) {
     return r;
 }
 
+// Handle for double click in mfrac element
+function mfracDblclick(elem) {
+    return opFrac(elem);
+}
+
+// Handle for double click in mroot element
+function mrootDblclick(elem) {
+    return opRoot(elem);
+}
+//
+// Handle for double click in msqrt element
+function msqrtDblclick(elem) {
+    return opSqrt(elem);
+}
+
 // Setup all mouseover
 function setDblclick(elem) {
-    elem.addEventListener('dblclick', mathmlPreserve, false);
+    if (elem.localName != 'mi') {
+        elem.addEventListener('dblclick', mathmlPreserve, false);
+    }
 }
 

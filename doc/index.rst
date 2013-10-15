@@ -46,6 +46,8 @@ Developer's Contents:
    dev/mi.rst
    dev/mn.rst
    dev/mo.rst
+   dev/mrow.rst
+   dev/others-tokens.rst
    dev/bugs.rst
    dev/todo.rst
    dev/faq.rst

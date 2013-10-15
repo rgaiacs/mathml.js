@@ -14,12 +14,16 @@ color to back.
 
 This behavior can be achieve changing the color value attribute.
 
-Double clicked
---------------
+Double left click
+-----------------
 
-When double clicked then a prompt window will raise asking for the numerical
+The double left click will be bubbling.
+
+Right click
+-----------
+
+When right clicked a prompt window will raise asking for the numerical
 value to replace the symbolic name.
 
 After the user type the value, all ``mi`` with the symbolic name selected will
 be replaced.
-

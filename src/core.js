@@ -27,10 +27,19 @@ function mathmlPreserve(ev) {
     // Handle double click
     switch (this.localName) {
         case 'mi':
-            dbsuccess = miDblclick(this);
+            dbsuccess = miContextmenu(this);
             break;
         case 'mo':
             dbsuccess = moDblclick(this);
+            break;
+        case 'mfrac':
+            dbsuccess = mfracDblclick(this);
+            break;
+        case 'mroot':
+            dbsuccess = mrootDblclick(this);
+            break;
+        case 'msqrt':
+            dbsuccess = msqrtDblclick(this);
             break;
     }
 
@@ -38,15 +47,39 @@ function mathmlPreserve(ev) {
     if (!MATHOVERWRITE && dbsuccess) {
         pmath.parentNode.insertBefore(cmath, pmath);
     }
-    ev.stopPropagation();
-    ev.preventDefault()
+
+    if (this.localName != 'mn') {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+}
+
+// Return a hash based on the childrens of a element
+function opSiblingHash(elem) {
+    var f = elem.firstElementChild.localName;
+    var l = elem.lastElementChild.localName;
+    if (f === 'mi' && l === 'mi')
+        return 1;
+    else if (f == 'mn' && l === 'mn')
+        return 2;
+    else if (f == 'mrow' || l === 'mrow')
+        return 3;
+    else
+        return 0;
+}
+
+// Setup for each child from math element
+function mathmlSetupElement(elem) {
+    setMouseover(elem);
+    setDblclick(elem);
+    setContextMenu(elem);
 }
 
 // Setup for each child from math element
 function mathmlSetup() {
-    console.log('Processing element ' + this.localName + ' withs id is ' + this.id);
     setMouseover(this);
     setDblclick(this);
+    setContextMenu(this);
 }
 
 // Entry point.

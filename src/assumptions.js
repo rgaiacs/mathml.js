@@ -42,8 +42,7 @@ function assum_mi(elem) {
                 }
                 break;
             default:
-                console.log('Can make any assumption.');
-                r = -1;
+                r = 0;
                 break;
         }
         return r;

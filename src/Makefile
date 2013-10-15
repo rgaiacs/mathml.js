@@ -4,7 +4,13 @@ FILES = mouseover.js \
 	token.js \
 	assumptions.js \
 	op-plus.js \
+	op-minus.js \
+	op-times.js \
+	op-div.js \
+	op-frac.js \
+	op-root.js \
 	dblclick.js \
+	contextmenu.js \
 	core.js
 
 build: ${FILES}
