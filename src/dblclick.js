@@ -16,7 +16,7 @@
 
 // Replace mi with mn
 function replaceMiByMn(mi, mn_val) {
-    var new_elem = document.createElement('mn');
+    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
     new_elem.innerHTML = mn_val;
     setMouseover(new_elem);
     jQuery(mi).replaceWith(new_elem);

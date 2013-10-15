@@ -21,17 +21,17 @@ function opPlusMiMi(elem) {
 
     if (p.innerHTML === n.innerHTML) {
         // Create node to replace
-        var new_elem = document.createElement('mrow');
+        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
         setMouseover(new_elem);
-        var mn = document.createElement('mn');
+        var mn = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
         setMouseover(mn);
         mn.innerHTML = 2;
         new_elem.appendChild(mn);
-        var mo = document.createElement('mo');
+        var mo = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mo');
         setMouseover(mo);
         mo.innerHTML = '\u2062'
             new_elem.appendChild(mo);
-        var mi = document.createElement('mi');
+        var mi = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mi');
         setMouseover(mi);
         mi.innerHTML = p.innerHTML;
         new_elem.appendChild(mi);
@@ -52,7 +52,7 @@ function opPlusMnMn(elem) {
     var n = elem.nextElementSibling;
 
     // Create node to replace
-    var new_elem = document.createElement('mn');
+    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
     new_elem.innerHTML = Number(p.innerHTML) + Number(n.innerHTML);
 
     // Replace node and remove old ones
