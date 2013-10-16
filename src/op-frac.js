@@ -70,8 +70,8 @@ function opFracMrowMrow(elem) {
 
 // Return a hash based on the childrens of a frac element
 function opFracSiblingHash(elem) {
-    var f = elem.firstElementChild.localName;
-    var l = elem.lastElementChild.localName;
+    var f = elem.firstElementChild.nodeName;
+    var l = elem.lastElementChild.nodeName;
     if (f === 'mi' && l === 'mi')
         return 1;
     else if (f == 'mn' && l === 'mn')

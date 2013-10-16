@@ -18,7 +18,7 @@
 
 function setTokenType(elem) {
     var tl = null;  // Will store token level
-    switch (elem.localName) {
+    switch (elem.nodeName) {
         case 'mi':
             t = 0;
             break;

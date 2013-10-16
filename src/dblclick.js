@@ -85,7 +85,7 @@ function msqrtDblclick(elem) {
 
 // Setup all mouseover
 function setDblclick(elem) {
-    if (elem.localName != 'mi') {
+    if (elem.nodeName != 'mi') {
         elem.addEventListener('dblclick', mathmlPreserve, false);
     }
 }

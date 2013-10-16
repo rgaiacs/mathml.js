@@ -74,8 +74,8 @@ function opTimesMrowMrow(elem) {
 
 // Return a has based on the sibling of a plus sign
 function opTimesSiblingHash(elem) {
-    var p = elem.previousElementSibling.localName;
-    var n = elem.nextElementSibling.localName;
+    var p = elem.previousElementSibling.nodeName;
+    var n = elem.nextElementSibling.nodeName;
     if (p === 'mi' && n === 'mi')
         return 1;
     else if (p == 'mn' && n === 'mn')

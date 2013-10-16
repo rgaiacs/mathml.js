@@ -14,7 +14,34 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// Handle "var" double click
+// Replace mi element by mn
+function mi2mn(elem, number){
+    var sym = jQuery.trim(elem.innerHTML);
+    var mi = jQuery(elem).parents('math').find('mi');
+    for (var i = 0; i < mi.length; i++) {
+        if (jQuery.trim(mi[i].innerHTML) == sym) {
+            // Check if is the case of
+            // <mn>...</mn> <mo>&InvisibleTimes;</mo> <mi>...</mi>
+            // or
+            // <mi>...</mi> <mo>&InvisibleTimes;</mo> <mi>...</mi>
+            var p = mi[i].previousElementSibling;
+            // Avoid when p is null
+            if (p != null) {
+                var p2 = p.previousElementSibling;
+                if (p.nodeName === 'mo' &&
+                        p.innerHTML.trim().charCodeAt(0) === 8290 &&
+                        (p2.nodeName === 'mn' || p2.nodeName === 'mi')) {
+                    // Need to replace <mo>&InvisibleTimes;</mo>
+                    replaceInvisibleTimes(p);
+                }
+            }
+            replaceMiByMn(mi[i], number);
+        }
+    }
+    r = true;
+}
+
+// Handle "var" right click
 function varContextmenu(elem) {
     var r;
     var sym = jQuery.trim(elem.innerHTML);
@@ -38,26 +65,7 @@ function varContextmenu(elem) {
         default:
             var val = prompt('Replace ' + elem.innerHTML + ' by:');
             if (val) {
-                var mi = jQuery(elem).parents('math').find('mi');
-                for (var i = 0; i < mi.length; i++) {
-                    if (jQuery.trim(mi[i].innerHTML) == sym) {
-                        // Check if is the case of
-                        // <mn>...</mn> <mo>&InvisibleTimes;</mo> <mi>...</mi>
-                        var p = mi[i].previousElementSibling;
-                        // Avoid when p is null
-                        if (p != null) {
-                            var p2 = p.previousElementSibling;
-                            if (p.localName === 'mo' &&
-                                    p.innerHTML.trim().charCodeAt(0) === 8290 &&
-                                    p2.localName === 'mn') {
-                                // Need to replace <mo>&InvisibleTimes;</mo>
-                                replaceInvisibleTimes(p);
-                            }
-                        }
-                        replaceMiByMn(mi[i], val);
-                    }
-                }
-                r = true;
+                r =  mi2mn(elem, val);
             }
             else {
                 console.log('Prompt have been cancel.');
@@ -106,7 +114,7 @@ function miContextmenu(elem) {
 }
 // Setup all mouseover
 function setContextMenu(elem) {
-    if (elem.localName === 'mi') {
+    if (elem.nodeName === 'mi') {
         elem.addEventListener('contextmenu', mathmlPreserve, false);
     }
 }

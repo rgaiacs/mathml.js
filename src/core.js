@@ -25,7 +25,7 @@ function mathmlPreserve(ev) {
 
     var dbsuccess;
     // Handle double click
-    switch (this.localName) {
+    switch (this.nodeName) {
         case 'mi':
             dbsuccess = miContextmenu(this);
             break;
@@ -48,7 +48,7 @@ function mathmlPreserve(ev) {
         pmath.parentNode.insertBefore(cmath, pmath);
     }
 
-    if (this.localName != 'mn') {
+    if (this.nodeName != 'mn') {
         ev.stopPropagation();
         ev.preventDefault();
     }
@@ -56,8 +56,8 @@ function mathmlPreserve(ev) {
 
 // Return a hash based on the childrens of a element
 function opSiblingHash(elem) {
-    var f = elem.firstElementChild.localName;
-    var l = elem.lastElementChild.localName;
+    var f = elem.firstElementChild.nodeName;
+    var l = elem.lastElementChild.nodeName;
     if (f === 'mi' && l === 'mi')
         return 1;
     else if (f == 'mn' && l === 'mn')

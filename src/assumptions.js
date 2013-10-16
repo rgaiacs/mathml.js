@@ -21,11 +21,10 @@ function assum_mi(elem) {
     var n = elem.nextElementSibling;
     if (n) {
         var r = null;  // Return value
-        switch (n.localName) {
+        switch (n.nodeName) {
             case 'mo':
                 var sn = jQuery.trim(n.innerHTML);
                 var charcode = sn.charCodeAt(0);
-                console.log('Operator with charcode ' + charcode + ' not support');
                 switch (charcode) {
                     case 8289:  // Function Aplication
                         r = 1;
