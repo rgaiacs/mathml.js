@@ -44,7 +44,7 @@ function mathmlPreserve(ev) {
     }
 
     // Copy the math before if success
-    if (!MATHOVERWRITE && dbsuccess) {
+    if (!MATHMLJS.OVERWRITE && dbsuccess) {
         pmath.parentNode.insertBefore(cmath, pmath);
     }
 
@@ -84,7 +84,7 @@ function mathmlSetup() {
 
 // Entry point.
 function mathmlStart() {
-    if (ONLYDISPLAY) {
+    if (MATHMLJS.ONLYDISPLAY) {
         $("math[display='block']").find('*').each(mathmlSetup);
     }
     else {
@@ -96,7 +96,9 @@ function mathmlStart() {
 window.onload = mathmlStart;
 
 // Global variable
-MATHCOLOR = 'blue';  // The color of select element
-ONLYDISPLAY = true;  // Only interact with display
-MATHOVERWRITE = false;  // Not overwrite equations
+MATHMLJS = new Object();
+MATHMLJS.COLOR = 'blue';  // The color of select element
+MATHMLJS.ONLYDISPLAY = true;  // Only interact with display
+MATHMLJS.OVERWRITE = false;  // Not overwrite equations
+MATHMLJS.DECIMALS = 2;  // Number of decimals
 

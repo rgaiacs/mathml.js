@@ -2,16 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>Demo for right click DOM event in <kbd>mi</kbd> MathML element</title>
 <script type='text/javascript' src="jquery-2.0.3.min.js"></script>
 <script type='text/javascript' src="mathml.js"></script>
 <script>
-MATHOVERWRITE = true;
-ONLYDISPLAY = false;
+MATHMLJS.OVERWRITE = true;
+MATHMLJS.ONLYDISPLAY = false;
 </script>
 </head>
 <body>
-<h1>Demo for <kbd>dblclick</kbd> DOM event in <kbd>mi</kbd> MathML element</h1>
-<p>Double click in <math> <mi>x</mi> </math> or <math> <mi>y</mi> </math> to be prompt to a value to replace it:</p>
+<h1>Demo for right click DOM event in <kbd>mi</kbd> MathML element</h1>
+<p>Right click in <math> <mi>x</mi> </math> or <math> <mi>y</mi> </math> to be prompt to a value to replace it:</p>
 <math id='1' display='block'> <mi>x</mi> </math>
 <math id='2' display='block'> <mi>x</mi> <mo> + </mo> <mi>x</mi> </math>
 <math id='3' display='block'> <mi>x</mi> <mo> + </mo> <mi>y</mi> <mo> + </mo> <mi>x</mi> </math>

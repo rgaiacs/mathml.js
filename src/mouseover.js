@@ -16,7 +16,7 @@
 
 // mouseover
 function mathmlMouseover(e) {
-    this.setAttribute('mathcolor', MATHCOLOR);
+    this.setAttribute('mathcolor', MATHMLJS.COLOR);
     e.stopPropagation();
     e.preventDefault()
 }

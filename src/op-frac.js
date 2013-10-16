@@ -51,7 +51,7 @@ function opFracMnMn(elem) {
     else {
         // Create node to replace
         var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        new_elem.innerHTML = Number(f.innerHTML) / Number(l.innerHTML);
+        new_elem.innerHTML = (Number(f.innerHTML) / Number(l.innerHTML)).toFixed(MATHMLJS.DECIMALS);
 
         // Replace node and remove old ones
         setMouseover(new_elem);

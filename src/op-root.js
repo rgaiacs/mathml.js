@@ -31,7 +31,7 @@ function opRootMnMn(elem) {
 
     // Create node to replace
     var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-    new_elem.innerHTML = Math.pow(Number(f.innerHTML), Number(l.innerHTML));
+    new_elem.innerHTML = (Math.pow(Number(f.innerHTML), Number(l.innerHTML))).toFixed(MATHMLJS.DECIMALS);
     mathmlSetupElement(new_elem);
 
     // Replace node and remove old ones
@@ -46,7 +46,7 @@ function opSqrtMn(elem) {
 
     // Create node to replace
     var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-    new_elem.innerHTML = Math.sqrt(Number(f.innerHTML));
+    new_elem.innerHTML = Math.sqrt(Number(f.innerHTML)).toFixed(MATHMLJS.DECIMALS);
     mathmlSetupElement(new_elem);
 
     // Replace node and remove old ones
