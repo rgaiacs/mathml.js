@@ -14,22 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-function opRootMiMi(elem) {
-    console.log('Can\'t compute the root of two variables.');
+function opPowMiMi(elem) {
+    console.log('Can\'t compute the power of two variables.');
     return 0;
 }
 
-function opSqrtMi(elem) {
-    console.log('Can\'t compute the sqrt of variable.');
-    return 0;
-}
-
-function opRootMnMn(elem) {
+function opPowMnMn(elem) {
     var r;
     var f = elem.firstElementChild;
     var l = elem.lastElementChild;
 
-    var val = (Math.pow(Number(f.innerHTML), Number(l.innerHTML))).toFixed(MATHMLJS.DECIMALS);
+    // TODO Probably here there is a bug. We MUST check the values.
+    var val = (Math.pow(Number(f.innerHTML), Number(l.innerHTML)));
     if (val >= 0) {
         // Create node to replace
         var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
@@ -45,69 +41,25 @@ function opRootMnMn(elem) {
     return 1;
 }
 
-function opSqrtMn(elem) {
-    var r;
-    var f = elem.firstElementChild;
-
-    var val = Math.sqrt(Number(f.innerHTML)).toFixed(MATHMLJS.DECIMALS);
-    if (val >= 0) {
-        // Create node to replace
-        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        new_elem.innerHTML = val;
-        mathmlSetupElement(new_elem);
-    }
-    else
-        var new_elem = restoreNegativeMn(val);
-
-    // Replace node and remove old ones
-    jQuery(elem).replaceWith(new_elem);
-
-    return 1;
-}
-
-function opRootMrowMrow(elem) {
+function opPowMrowMrow(elem) {
     return 0;
-}
-
-function opSqrtMrow(elem) {
-    return 0;
-}
-
-// Handle the double click in a sqrt element
-function opSqrt(elem) {
-    var r;
-    var h = opChildHash(elem);
-    switch (h) {
-        case 0:
-            break;
-        case 1:
-            r = opSqrtMi(elem);
-            break;
-        case 2:
-            r = opSqrtMn(elem);
-            break;
-        case 3:
-            r = opSqrtMrow(elem);
-            break;
-    }
-    return r;
 }
 
 // Handle the double click in a root element
-function opRoot(elem) {
+function opPow(elem) {
     var r;
     var h = opChildHash(elem);
     switch (h) {
         case 0:
             break;
         case 1:
-            r = opRootMiMi(elem);
+            r = opPowMiMi(elem);
             break;
         case 2:
-            r = opRootMnMn(elem);
+            r = opPowMnMn(elem);
             break;
         case 3:
-            r = opRootMrowMrow(elem);
+            r = opPowMrowMrow(elem);
             break;
     }
     return r;

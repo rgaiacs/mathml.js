@@ -93,18 +93,16 @@ function invSepContextmenu(elem) {
     return 0;
 }
 
-// Handle for double click in mi element
+// Handle for right click in mi element
 function miContextmenu(elem) {
     var r;
     switch (assum_mi(elem)) {
         case 0:  // variable
+        case 2:  // invisible times
             r = varContextmenu(elem);
             break;
         case 1:  // function
             r = funContextmenu(elem);
-            break;
-        case 2:  // invisible times
-            r = invTimesContextmenu(elem);
             break;
         case 3:  // invisible separator
             r = invSepContextmenu(elem);

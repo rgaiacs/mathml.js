@@ -22,24 +22,20 @@ function opPlusMiMi(elem) {
     if (p.innerHTML.trim() === n.innerHTML.trim()) {
         // Create node to replace
         var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
-        setMouseover(new_elem);
-        setDblclick(new_elem);
+        mathmlSetupElement(new_elem);
 
         var mn = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        setMouseover(mn);
-        setDblclick(mn);
+        mathmlSetupElement(mn);
         mn.innerHTML = 2;
         new_elem.appendChild(mn);
 
         var mo = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mo');
-        setMouseover(mo);
-        setDblclick(mo);
+        mathmlSetupElement(mo);
         mo.innerHTML = '\u2062'
         new_elem.appendChild(mo);
 
         var mi = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mi');
-        setMouseover(mi);
-        setDblclick(mi);
+        mathmlSetupElement(mi);
         mi.innerHTML = p.innerHTML;
         new_elem.appendChild(mi);
 
@@ -61,13 +57,17 @@ function opPlusMnMn(elem) {
     var p = elem.previousElementSibling;
     var n = elem.nextElementSibling;
 
-    // Create node to replace
-    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-    new_elem.innerHTML = Number(p.innerHTML) + Number(n.innerHTML);
+    var val = Number(p.innerHTML) + Number(n.innerHTML);
+    if (val >= 0) {
+        // Create node to replace
+        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
+        new_elem.innerHTML = val;
+        mathmlSetupElement(new_elem);
+    }
+    else
+        var new_elem = restoreNegativeMn(val);
 
     // Replace node and remove old ones
-    setMouseover(new_elem);
-    setDblclick(new_elem);
     jQuery(p).replaceWith(new_elem);
     n.remove();
     elem.remove();
@@ -78,24 +78,10 @@ function opPlusMnMn(elem) {
 function opPlusMrowMrow(elem) {
 }
 
-// Return a has based on the sibling of a plus sign
-function opPlusSiblingHash(elem) {
-    var p = elem.previousElementSibling.nodeName;
-    var n = elem.nextElementSibling.nodeName;
-    if (p === 'mi' && n === 'mi')
-        return 1;
-    else if (p == 'mn' && n === 'mn')
-        return 2;
-    else if (p == 'mrow' || n === 'mrow')
-        return 3;
-    else
-        return 0;
-}
-
 // Handle the double click in a plus sign
 function opPlus(elem) {
     var r;
-    var h = opPlusSiblingHash(elem);
+    var h = opSiblingHash(elem);
     switch (h) {
         case 0:
             break;

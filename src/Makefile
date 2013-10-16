@@ -9,6 +9,7 @@ FILES = mouseover.js \
 	op-div.js \
 	op-frac.js \
 	op-root.js \
+	op-pow.js \
 	dblclick.js \
 	contextmenu.js \
 	core.js

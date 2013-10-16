@@ -22,8 +22,7 @@ function opFracMiMi(elem) {
     if (f.innerHTML.trim() === l.innerHTML.trim()) {
         // Create node to replace
         var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        setMouseover(new_elem);
-        setDblclick(new_elem);
+        mathmlSetupElement(elem);
         new_elem.innerHTML = 1;
 
         // Replace node and remove old ones
@@ -49,13 +48,17 @@ function opFracMnMn(elem) {
         r = 0;
     }
     else {
-        // Create node to replace
-        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        new_elem.innerHTML = (Number(f.innerHTML) / Number(l.innerHTML)).toFixed(MATHMLJS.DECIMALS);
+        var val = (Number(f.innerHTML) / Number(l.innerHTML)).toFixed(MATHMLJS.DECIMALS);
+        if (val >= 0) {
+            // Create node to replace
+            var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
+            new_elem.innerHTML = val;
+            mathmlSetupElement(elem);
+        }
+        else
+            var new_elem = restoreNegativeMn(val);
 
         // Replace node and remove old ones
-        setMouseover(new_elem);
-        setDblclick(new_elem);
         jQuery(elem).replaceWith(new_elem);
 
         r = 1;
@@ -68,24 +71,10 @@ function opFracMrowMrow(elem) {
     return 0;
 }
 
-// Return a hash based on the childrens of a frac element
-function opFracSiblingHash(elem) {
-    var f = elem.firstElementChild.nodeName;
-    var l = elem.lastElementChild.nodeName;
-    if (f === 'mi' && l === 'mi')
-        return 1;
-    else if (f == 'mn' && l === 'mn')
-        return 2;
-    else if (f == 'mrow' || l === 'mrow')
-        return 3;
-    else
-        return 0;
-}
-
 // Handle the double click in a frac element
 function opFrac(elem) {
     var r;
-    var h = opFracSiblingHash(elem);
+    var h = opChildHash(elem);
     switch (h) {
         case 0:
             break;

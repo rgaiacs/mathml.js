@@ -18,8 +18,7 @@
 function replaceInvisibleTimes(mo) {
     var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mo');
     new_elem.innerHTML = '\u00D7';
-    setMouseover(new_elem);
-    setDblclick(new_elem);
+    mathmlSetupElement(new_elem);
     jQuery(mo).replaceWith(new_elem);
 }
 
@@ -27,8 +26,7 @@ function replaceInvisibleTimes(mo) {
 function replaceMiByMn(mi, mn_val) {
     var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
     new_elem.innerHTML = mn_val;
-    setMouseover(new_elem);
-    setDblclick(new_elem);
+    mathmlSetupElement(new_elem);
     jQuery(mi).replaceWith(new_elem);
 }
 
@@ -77,10 +75,15 @@ function mfracDblclick(elem) {
 function mrootDblclick(elem) {
     return opRoot(elem);
 }
-//
+
 // Handle for double click in msqrt element
 function msqrtDblclick(elem) {
     return opSqrt(elem);
+}
+
+// Handle for double click in msup element
+function msupDblclick(elem) {
+    return opPow(elem);
 }
 
 // Setup all mouseover

@@ -22,8 +22,7 @@ function opDivMiMi(elem) {
     if (p.innerHTML.trim() === n.innerHTML.trim()) {
         // Create node to replace
         var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        setMouseover(new_elem);
-        setDblclick(new_elem);
+        mathmlSetupElement(new_elem);
         new_elem.innerHTML = 1;
 
         // Replace node and remove old ones
@@ -51,13 +50,17 @@ function opDivMnMn(elem) {
         r = 0;
     }
     else {
-        // Create node to replace
-        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        new_elem.innerHTML = (Number(p.innerHTML) / Number(n.innerHTML)).toFixed(MATHMLJS.DECIMALS);
+        var val = (Number(p.innerHTML) / Number(n.innerHTML)).toFixed(MATHMLJS.DECIMALS);
+        if (val >= 0) {
+            // Create node to replace
+            var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
+            new_elem.innerHTML = val;
+            mathmlSetupElement(new_elem);
+        }
+        else
+            var new_elem = restoreNegativeMn(val);
 
         // Replace node and remove old ones
-        setMouseover(new_elem);
-        setDblclick(new_elem);
         jQuery(p).replaceWith(new_elem);
         n.remove();
         elem.remove();
@@ -71,24 +74,10 @@ function opDivMnMn(elem) {
 function opDivMrowMrow(elem) {
 }
 
-// Return a has based on the sibling of a plus sign
-function opDivSiblingHash(elem) {
-    var p = elem.previousElementSibling.nodeName;
-    var n = elem.nextElementSibling.nodeName;
-    if (p === 'mi' && n === 'mi')
-        return 1;
-    else if (p == 'mn' && n === 'mn')
-        return 2;
-    else if (p == 'mrow' || n === 'mrow')
-        return 3;
-    else
-        return 0;
-}
-
 // Handle the double click in a plus sign
 function opDiv(elem) {
     var r;
-    var h = opDivSiblingHash(elem);
+    var h = opSiblingHash(elem);
     switch (h) {
         case 0:
             break;

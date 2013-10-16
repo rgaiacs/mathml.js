@@ -41,6 +41,9 @@ function mathmlPreserve(ev) {
         case 'msqrt':
             dbsuccess = msqrtDblclick(this);
             break;
+        case 'msup':
+            dbsuccess = msupDblclick(this);
+            break;
     }
 
     // Copy the math before if success
@@ -54,9 +57,75 @@ function mathmlPreserve(ev) {
     }
 }
 
+// Check if a mrow element have only one element and in that case replace
+// the mrow by it children.
+function removeMrow(elem) {
+    if (elem.nodeName === 'mrow' && elem.childElementCount === 1) {
+        jQuery(elem).replaceWith(elem.firstElementChild);
+    }
+    // This is a hack since negative numbers MUST be represent as
+    // <mrow> <mo>-</mo> <mn>...</mn> </mrow>
+    else {
+        // Check if it can be a negative number
+        if (elem.nodeName === 'mrow' && elem.childElementCount === 2) {
+            f = elem.firstElementChild;
+            l = elem.lastElementChild;
+            // Check if the first element is a minus sign and the last element
+            // is a number.
+            if (f.nodeName === 'mo' &&
+                (f.innerHTML.trim().charCodeAt(0) === 8722 ||
+                 f.innerHTML.trim().charCodeAt(0) === 45) &&
+                l.nodeName === 'mn') {
+                var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
+                mathmlSetupElement(elem);
+                new_elem.innerHTML = -Number(l.innerHTML);
+                jQuery(elem).replaceWith(new_elem);
+            }
+        }
+    }
+}
+
+// Since negative numbers MUST be represent as
+// <mrow> <mo>-</mo> <mn>...</mn> </mrow>
+// we will go to restore than.
+function restoreNegativeMn(number) {
+    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
+    mathmlSetupElement(new_elem);
+
+    var mo = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mo');
+    mo.innerHTML = '-';
+    mathmlSetupElement(mo);
+    new_elem.appendChild(mo);
+
+    var mn = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
+    mn.innerHTML = Math.abs(Number(number));
+    mathmlSetupElement(mn);
+    new_elem.appendChild(mn);
+
+    return new_elem;
+}
+
 // Return a hash based on the childrens of a element
 function opSiblingHash(elem) {
+    removeMrow(elem.previousElementSibling);
+    var f = elem.previousElementSibling.nodeName;
+    removeMrow(elem.nextElementSibling);
+    var l = elem.nextElementSibling.nodeName;
+    if (f === 'mi' && l === 'mi')
+        return 1;
+    else if (f == 'mn' && l === 'mn')
+        return 2;
+    else if (f == 'mrow' || l === 'mrow')
+        return 3;
+    else
+        return 0;
+}
+
+// Return a hash based on the childrens of a element
+function opChildHash(elem) {
+    removeMrow(elem.firstElementChild);
     var f = elem.firstElementChild.nodeName;
+    removeMrow(elem.lastElementChild);
     var l = elem.lastElementChild.nodeName;
     if (f === 'mi' && l === 'mi')
         return 1;

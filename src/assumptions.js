@@ -19,8 +19,8 @@
 // mi element
 function assum_mi(elem) {
     var n = elem.nextElementSibling;
+    var r;
     if (n) {
-        var r = null;  // Return value
         switch (n.nodeName) {
             case 'mo':
                 var sn = jQuery.trim(n.innerHTML);
@@ -44,10 +44,10 @@ function assum_mi(elem) {
                 r = 0;
                 break;
         }
-        return r;
     }
     else {
         // No next sibling
-        return 0;
+        r = 0;
     }
+    return r;
 }
