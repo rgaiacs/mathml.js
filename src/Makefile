@@ -12,6 +12,7 @@ FILES = mouseover.js \
 	op-pow.js \
 	dblclick.js \
 	contextmenu.js \
+	delete.js \
 	core.js
 
 build: ${FILES}

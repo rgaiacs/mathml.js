@@ -88,7 +88,7 @@ function msupDblclick(elem) {
 
 // Setup all mouseover
 function setDblclick(elem) {
-    if (elem.nodeName != 'mi') {
+    if (elem.nodeName.toLowerCase() != 'mi') {
         elem.addEventListener('dblclick', mathmlPreserve, false);
     }
 }

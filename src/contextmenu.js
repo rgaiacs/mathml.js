@@ -28,9 +28,9 @@ function mi2mn(elem, number){
             // Avoid when p is null
             if (p != null) {
                 var p2 = p.previousElementSibling;
-                if (p.nodeName === 'mo' &&
+                if (p.nodeName.toLowerCase() === 'mo' &&
                         p.innerHTML.trim().charCodeAt(0) === 8290 &&
-                        (p2.nodeName === 'mn' || p2.nodeName === 'mi')) {
+                        (p2.nodeName.toLowerCase() === 'mn' || p2.nodeName.toLowerCase() === 'mi')) {
                     // Need to replace <mo>&InvisibleTimes;</mo>
                     replaceInvisibleTimes(p);
                 }
@@ -113,7 +113,7 @@ function miContextmenu(elem) {
 
 // Setup all right click
 function setContextMenu(elem) {
-    if (elem.nodeName === 'mi') {
+    if (elem.nodeName.toLowerCase() === 'mi') {
         elem.addEventListener('contextmenu', mathmlPreserve, false);
     }
 }

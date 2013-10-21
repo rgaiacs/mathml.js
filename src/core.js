@@ -22,9 +22,10 @@ function mathmlPreserve(ev) {
 
     // This is a hack to avoid insert operation in the wrong location.
     //
-    // Check if the nextElementSibling is a math element what indicate
-    // that some step have been done previously.
-    if (pmath.nextSibling.nodeName == 'math') {
+    // Check if the nextElementSibling is a math element or a button what
+    // indicate that some step have been done previously.
+    if (pmath.nextSibling.nodeName.toLowerCase() === 'math' ||
+            pmath.nextSibling.nodeName.toLowerCase() === 'button') {
         console.log('The next sibling is \'math\'. Not performing operation.');
         return null;
     }
@@ -36,7 +37,7 @@ function mathmlPreserve(ev) {
 
     var dbsuccess;
     // Handle double click
-    switch (this.nodeName) {
+    switch (this.nodeName.toLowerCase()) {
         case 'mi':
             dbsuccess = miContextmenu(this);
             break;
@@ -60,9 +61,16 @@ function mathmlPreserve(ev) {
     // Copy the math before if success
     if (!MATHMLJS.OVERWRITE && dbsuccess) {
         pmath.parentNode.insertBefore(cmath, pmath);
+
+        // Create delete buttom
+        var bdel = document.createElement('button');
+        bdel.innerHTML = 'Delete from this line';
+        bdel.setAttribute('style', 'float:right;');
+        bdel.addEventListener('click', mathmlDelete, false);
+        pmath.parentNode.insertBefore(bdel, pmath);
     }
 
-    if (this.nodeName != 'mn') {
+    if (this.nodeName.toLowerCase() != 'mn') {
         ev.stopPropagation();
         ev.preventDefault();
     }
@@ -71,22 +79,22 @@ function mathmlPreserve(ev) {
 // Check if a mrow element have only one element and in that case replace
 // the mrow by it children.
 function removeMrow(elem) {
-    if (elem.nodeName === 'mrow' && elem.childElementCount === 1) {
+    if (elem.nodeName.toLowerCase() === 'mrow' && elem.childElementCount === 1) {
         jQuery(elem).replaceWith(elem.firstElementChild);
     }
     // This is a hack since negative numbers MUST be represent as
     // <mrow> <mo>-</mo> <mn>...</mn> </mrow>
     else {
         // Check if it can be a negative number
-        if (elem.nodeName === 'mrow' && elem.childElementCount === 2) {
+        if (elem.nodeName.toLowerCase() === 'mrow' && elem.childElementCount === 2) {
             f = elem.firstElementChild;
             l = elem.lastElementChild;
             // Check if the first element is a minus sign and the last element
             // is a number.
-            if (f.nodeName === 'mo' &&
+            if (f.nodeName.toLowerCase() === 'mo' &&
                 (f.innerHTML.trim().charCodeAt(0) === 8722 ||
                  f.innerHTML.trim().charCodeAt(0) === 45) &&
-                l.nodeName === 'mn') {
+                l.nodeName.toLowerCase() === 'mn') {
                 var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
                 mathmlSetupElement(elem);
                 new_elem.innerHTML = -Number(l.innerHTML);
@@ -119,9 +127,9 @@ function restoreNegativeMn(number) {
 // Return a hash based on the childrens of a element
 function opSiblingHash(elem) {
     removeMrow(elem.previousElementSibling);
-    var f = elem.previousElementSibling.nodeName;
+    var f = elem.previousElementSibling.nodeName.toLowerCase();
     removeMrow(elem.nextElementSibling);
-    var l = elem.nextElementSibling.nodeName;
+    var l = elem.nextElementSibling.nodeName.toLowerCase();
     if (f === 'mi' && l === 'mi')
         return 1;
     else if (f == 'mn' && l === 'mn')
@@ -135,9 +143,9 @@ function opSiblingHash(elem) {
 // Return a hash based on the childrens of a element
 function opChildHash(elem) {
     removeMrow(elem.firstElementChild);
-    var f = elem.firstElementChild.nodeName;
+    var f = elem.firstElementChild.nodeName.toLowerCase();
     removeMrow(elem.lastElementChild);
-    var l = elem.lastElementChild.nodeName;
+    var l = elem.lastElementChild.nodeName.toLowerCase();
     if (f === 'mi' && l === 'mi')
         return 1;
     else if (f == 'mn' && l === 'mn')

@@ -21,7 +21,7 @@ function assum_mi(elem) {
     var n = elem.nextElementSibling;
     var r;
     if (n) {
-        switch (n.nodeName) {
+        switch (n.nodeName.toLowerCase()) {
             case 'mo':
                 var sn = jQuery.trim(n.innerHTML);
                 var charcode = sn.charCodeAt(0);

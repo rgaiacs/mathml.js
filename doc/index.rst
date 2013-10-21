@@ -11,8 +11,10 @@ machine to machine communication which provides a much needed foundation for the
 inclusion of mathematical expressions in Web pages." (From
 http://www.w3.org/Math/)
 
-MathML.js is a Javascript library to enable GRAPHIC humam manipulation of MathML
-elements. This work is based on
+MathML.js is a Open Source (GLPv3) Javascript library to enable GRAPHIC humam
+manipulation of MathML elements (`see the proof of concept
+<_static/index.html>`_ and `download it from here <_static/mathml.js>`_). This
+work is based on
 
 * `TouchOfMath <https://github.com/jlabarbera11/TouchOfMath>`_ and
 * `Equation Exercise Demo (proof of concept)
@@ -20,7 +22,9 @@ elements. This work is based on
 
 MathML.js ISN'T:
 
-* a equation editor (try `DragMath <http://www.dragmath.bham.ac.uk/index.html>`_),
+* a plataform for display of mathematics in all browsers (try `MathJax
+  <http://www.mathjax.org/>`_),
+* a equation editor (try `Mathway <https://www.mathway.com/>`_),
 * a jquery-like Javascript library for MathML (try `jquery-mathml
   <https://github.com/sdiehl/jquery-mathml>`_);
 * a math Javascript library (try `Math.js <http://mathjs.org/>`_);
@@ -48,6 +52,7 @@ Developer's Contents:
    dev/mo.rst
    dev/mrow.rst
    dev/others-tokens.rst
+   dev/undo.rst
    dev/bugs.rst
    dev/todo.rst
    dev/faq.rst

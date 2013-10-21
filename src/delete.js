@@ -14,22 +14,26 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// Parse element and set informations
+// Delete all the steps bellow.
+function mathmlDelete(ev) {
+    // Get the next sibling
+    var nextS = this.nextSibling;
+    var tmp;
 
-function setTokenType(elem) {
-    var tl = null;  // Will store token level
-    switch (elem.nodeName.toLowerCase()) {
-        case 'mi':
-            t = 0;
-            break;
-        case 'mn':
-            t = 0;
-            break;
-        case 'mrwo':
-            t = 1;
-            break;
-        case 'mfenced':
-            t = 1;
-            break;
+    while (nextS && nextS.nodeName.toLowerCase() === 'math') {
+        tmp = nextS.nextSibling;
+        nextS.remove();  // it only remove the element from the DOM tree
+        if (tmp && tmp.nodeName.toLowerCase() === 'button') {
+            nextS = tmp.nextSibling;
+            tmp.remove();  // it only remove the element from the DOM tree
+            tmp = null;
+        }
+        else {
+            nextS = null;
+        }
     }
+
+    // Remove the button.
+    this.remove();
 }
+

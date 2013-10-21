@@ -1,7 +1,7 @@
 Introduction
 ============
 
-MathML.js needs:
+MathML.js needs
 
 * `Lexical analysis <http://en.wikipedia.org/wiki/Lexical_analysis>`_ and
 * `Syntax analysis <http://en.wikipedia.org/wiki/Syntax_analysis>`_

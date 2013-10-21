@@ -9,6 +9,11 @@ Here is a list of that we hope that MathML.js do one day.
    implement the full specifications. For more information see [1]_.
 
 
+Drag and drop
+-------------
+
+Be capable to drag and drop part of equations to a new position.
+
 Multiple indentation levels equations
 -------------------------------------
 
