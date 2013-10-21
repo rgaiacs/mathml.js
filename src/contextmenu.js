@@ -38,7 +38,7 @@ function mi2mn(elem, number){
             replaceMiByMn(mi[i], number);
         }
     }
-    r = true;
+    return true;
 }
 
 // Handle "var" right click
@@ -110,7 +110,8 @@ function miContextmenu(elem) {
     }
     return r;
 }
-// Setup all mouseover
+
+// Setup all right click
 function setContextMenu(elem) {
     if (elem.nodeName === 'mi') {
         elem.addEventListener('contextmenu', mathmlPreserve, false);

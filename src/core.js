@@ -20,8 +20,19 @@ function mathmlPreserve(ev) {
     var jelem = $(this);
     var pmath = jelem.parents('math')[0];
 
+    // This is a hack to avoid insert operation in the wrong location.
+    //
+    // Check if the nextElementSibling is a math element what indicate
+    // that some step have been done previously.
+    if (pmath.nextSibling.nodeName == 'math') {
+        console.log('The next sibling is \'math\'. Not performing operation.');
+        return null;
+    }
+
     // Clone the element
     var cmath = pmath.cloneNode(true);
+    // The cloneNode method won't clone the event handles
+    $(cmath).find('*').each(mathmlSetup);
 
     var dbsuccess;
     // Handle double click
