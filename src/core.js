@@ -14,6 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+// Detects support for MathML.
+//
+// Based on work by Davide (@dpvc) and David (@davidcarlisle)
+// in https://github.com/mathjax/MathJax/issues/182 and
+// the Modernizr mathml feature detect.
+function check_mathml_support() {
+    var body = document.getElementsByTagName('body')[0];
+    var test = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'math');
+    var mfrac = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mfrac');
+    var m1 = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mi');
+    m1.innerHTML = 'xx';
+    var m2 = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mi');
+    m2.innerHTML = 'yy';
+    mfrac.appendChild(m1);
+    mfrac.appendChild(m2);
+    test.appendChild(mfrac);
+    body.insertBefore(test, body.firstElementChild);
+    console.log('test.offsetHeight = ' + test.offsetHeight);
+    console.log('test.offsetWidth = ' + test.offsetWidth);
+    return (test.offsetHeight > test.offsetWidth);
+}
+
 // Copy the equation and add it before if the operation success
 function mathmlPreserve(ev) {
     // Get the math parent
@@ -172,11 +194,18 @@ function mathmlSetup() {
 
 // Entry point.
 function mathmlStart() {
-    if (MATHMLJS.ONLYDISPLAY) {
-        $("math[display='block']").find('*').each(mathmlSetup);
+    // Check browser
+    if (check_mathml_support()) {
+        console.log('Browser support MathML.');
+        if (MATHMLJS.ONLYDISPLAY) {
+            $("math[display='block']").find('*').each(mathmlSetup);
+        }
+        else {
+            $("math").find('*').each(mathmlSetup);
+        }
     }
     else {
-        $("math").find('*').each(mathmlSetup);
+        console.log('Browser don\'t support MathML.');
     }
 }
 
