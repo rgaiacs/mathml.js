@@ -185,6 +185,7 @@ function mathmlSetup() {
     setMouseover(this);
     setDblclick(this);
     setContextMenu(this);
+    setDND(this);
 }
 
 // Entry point.

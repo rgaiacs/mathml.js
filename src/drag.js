@@ -15,49 +15,53 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 function handleDragStart(e) {
-    console.log('Drag iniciado.');
-
     dragData = this;
 
-    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.effectAllowed = 'copy';
     e.dataTransfer.setData('text/html', this.innerHTML);
 }
 
 function handleDragOver(e) {
     if (e.preventDefault) {
-        console.log('handleDragOver go to preventDefault.');
         e.preventDefault();
     }
 
-    console.log('handleDragOver change dropEffect.');
-    e.dataTransfer.dropEffect = 'move';
+    e.dataTransfer.dropEffect = 'copy';
 
     return false;
 }
 
 function handleDrop(e) {
     if (e.stopPropagation) {
-        console.log('handleDrop go to stopPropagation.');
         e.stopPropagation();
     }
 
     if (dragData != this) {
-        dragData.innerHTML = this.innerHTML;
-        this.innerHTML = e.dataTransfer.getData('text/html');
+        var pthis = jQuery(this).parents('math');
+        var pdrag = jQuery(dragData).parents('math');
+        if (pthis[0].id == pdrag[0].id) {
+            console.log('Drag and drop inside equation not implemented.')
+        }
+        else {
+            if ((this.nodeName.toLowerCase() == 'mi' || this.nodeName.toLowerCase() == 'mn') &&
+                (dragData.nodeName.toLowerCase() == 'mi' || dragData.nodeName.toLowerCase() == 'mn')) {
+                var cdrag = dragData.cloneNode(true);
+                jQuery(this).replaceWith(cdrag);
+            }
+            else {
+                console.log('Drag and drop not implemented.')
+            }
+        }
     }
 
-    console.log('handleDrop return false.');
+    e.preventDefault();
     return false;
 }
 
-function dnd_tag(tag) {
-    var elem = document.getElementsByTagName(tag);
-    for(var i = 0; i < elem.length; i++) {
-        elem[i].setAttribute("draggable", "true");
-        elem[i].addEventListener('dragstart', handleDragStart, false);
-        elem[i].addEventListener('dragover', handleDragOver, false);
-        elem[i].addEventListener('drop', handleDrop, false);
-        console.log('Added events.');
-    }
+function setDND(elem) {
+    elem.setAttribute("draggable", "true");
+    elem.addEventListener('dragstart', handleDragStart, false);
+    elem.addEventListener('dragover', handleDragOver, false);
+    elem.addEventListener('drop', handleDrop, false);
 }
 

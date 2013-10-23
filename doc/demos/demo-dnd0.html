@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>1st Demo for drag and drop MathML element</title>
+<script type='text/javascript' src="jquery-2.0.3.min.js"></script>
+<script type='text/javascript' src="mathml.js"></script>
+<script>
+MATHMLJS.OVERWRITE = true;
+MATHMLJS.ONLYDISPLAY = false;
+</script>
+<style>
+td {
+  width:2em;
+}
+</style>
+</head>
+<body>
+<h1>1st Demo for drag and drop MathML element</h1>
+<p>The numbers below are MathML elements.</p>
+<table>
+  <tr>
+    <td><math><mn>0</mn></math></td>
+    <td><math><mn>1</mn></math></td>
+    <td><math><mn>2</mn></math></td>
+    <td><math><mn>3</mn></math></td>
+    <td><math><mn>4</mn></math></td>
+    <td><math><mn>5</mn></math></td>
+    <td><math><mn>6</mn></math></td>
+    <td><math><mn>7</mn></math></td>
+    <td><math><mn>8</mn></math></td>
+    <td><math><mn>9</mn></math></td>
+  </tr>
+</table>
+<p>Try to drag and drop any of the numbers above to <math><mi>x</mi></math> or
+<math><mi>y</mi></math> of the equation below.</p>
+<math display='block'>
+<mrow>
+ <mi>x</mi>
+ <mo>+</mo>
+ <mi>y</mi>
+</mrow>
+</math>
+<p><strong>Note:</strong> The drag step can be hard. Will be a little easy if
+select the number first.</p>
+<footer>
+  <address>This document was write by <a
+      href='mailto:ra092767@ime.unicamp.br'>Raniere Silva</a>.<br>
+    <a href='http://www.github.com/r-gaia-cs/mathml.js'>MathML.js</a> is
+    developed and maintainer by <a
+      href='mailto:ra092767@ime.unicamp.br'>Raniere Silva</a>.
+</footer>
+</body>
+</html>

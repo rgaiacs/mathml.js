@@ -14,6 +14,7 @@ FILES = mouseover.js \
 	dblclick.js \
 	contextmenu.js \
 	delete.js \
+	drag.js \
 	core.js
 
 build: ${FILES}
