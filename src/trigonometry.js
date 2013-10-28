@@ -99,7 +99,7 @@ function trigSin(elem) {
         case 3:
             switch (f.n2[1].innerHTML.trim().charCodeAt(0)) {
                 case 43:  // +
-                    // sin (x + y) = sin a cos b + cos a sin b
+                    // sin (x + y) = sin x cos y + cos x sin y
                     new_elem = mathmlCreateNode('mrow', '');
 
                     temp = trigCreate('sin', f.n2[0].innerHTML);
@@ -121,7 +121,7 @@ function trigSin(elem) {
                     break;
                 case 8722:  // minus sign
                 case 45:  // "-" for nooby
-                    // sin (x - y) = sin a cos b - cos a sin b
+                    // sin (x - y) = sin x cos y - cos x sin y
                     new_elem = mathmlCreateNode('mrow', '');
 
                     temp = trigCreate('sin', f.n2[0].innerHTML);
@@ -148,6 +148,116 @@ function trigSin(elem) {
                         f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
                         f.n2[0].nodeName === 'mn') {
                         new_elem = mathmlCreateNode('mn', Math.sin(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
+                        r = 1;
+                    }
+                    else {
+                        console.log('Unable to handle the parameter');
+                        r = 0;
+                    }
+                    break;
+                default:
+                    console.log('Not implement yet the operator \\u' + f.n2[1].innerHTML.trim().charCodeAt(0));
+                    r = 0;
+                    break;
+            }
+            break;
+        case -1:
+        default:
+            console.log('Unable to handle the parameter');
+            r = 0;
+            break;
+    }
+
+    if (r === 1) {
+        // Replace node and remove old ones
+        jQuery(elem).replaceWith(new_elem);
+        n.remove();
+        n2.remove();
+    }
+
+    return r;
+}
+
+// Compute the cos in radians.
+function trigCos(elem) {
+    var r;
+    var f = trigFilter(elem);
+    var n = elem.nextElementSibling;
+    var n2 = n.nextElementSibling;
+    var new_elem;
+    var temp;
+
+    switch (f.code) {
+        // cos 1
+        case 1:
+            new_elem = mathmlCreateNode('mn', Math.cos(Number(f.n2[0].innerHTML)).toFixed(MATHMLJS.DECIMALS));
+            r = 1;
+            break;
+        // cos \pi
+        case 2:
+            if (f.n2[0].innerHTML.trim().charCodeAt(0) === 960) {
+                new_elem = mathmlCreateNode('mn', Math.cos(Math.PI).toFixed(MATHMLJS.DECIMALS));
+                r = 1;
+            }
+            else {
+                console.log('Unable to handle the parameter');
+                r = 0;
+            }
+            break;
+        // cos (2 \pi)
+        // cos (x + y)
+        case 3:
+            switch (f.n2[1].innerHTML.trim().charCodeAt(0)) {
+                case 43:  // +
+                    // cos (x + y) = sin x cos y + cos x sin y
+                    new_elem = mathmlCreateNode('mrow', '');
+
+                    temp = trigCreate('cos', f.n2[0].innerHTML);
+                    new_elem.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2062');
+                    new_elem.appendChild(temp);
+                    temp = trigCreate('cos', f.n2[2].innerHTML);
+                    new_elem.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2212');
+                    new_elem.appendChild(temp);
+                    temp = trigCreate('sin', f.n2[0].innerHTML);
+                    new_elem.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2062');
+                    new_elem.appendChild(temp);
+                    temp = trigCreate('sin', f.n2[2].innerHTML);
+                    new_elem.appendChild(temp);
+
+                    r = 1;
+                    break;
+                case 8722:  // minus sign
+                case 45:  // "-" for nooby
+                    // sin (x - y) = cos x cos y + sin x sin y
+                    new_elem = mathmlCreateNode('mrow', '');
+
+                    temp = trigCreate('cos', f.n2[0].innerHTML);
+                    new_elem.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2062');
+                    new_elem.appendChild(temp);
+                    temp = trigCreate('cos', f.n2[2].innerHTML);
+                    new_elem.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u002B');
+                    new_elem.appendChild(temp);
+                    temp = trigCreate('sin', f.n2[0].innerHTML);
+                    new_elem.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2062');
+                    new_elem.appendChild(temp);
+                    temp = trigCreate('sin', f.n2[2].innerHTML);
+                    new_elem.appendChild(temp);
+
+                    r = 1;
+                    break;
+                case 215:  // multiplication sign
+                case 183:  // middle dot
+                case 8290:  // invisible times
+                    if (f.n2[2].nodeName === 'mi' &&
+                        f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
+                        f.n2[0].nodeName === 'mn') {
+                        new_elem = mathmlCreateNode('mn', Math.cos(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
                         r = 1;
                     }
                     else {

@@ -102,6 +102,9 @@ function miDblclick(elem) {
             case 'sin':
                 trigSin(elem);
                 break;
+            case 'cos':
+                trigCos(elem);
+                break;
             default:
                 r = miUnsuport(elem);
                 break;
