@@ -10,6 +10,7 @@ FILES = mouseover.js \
 	op-frac.js \
 	op-root.js \
 	op-pow.js \
+	trigonometry.js \
 	dblclick.js \
 	contextmenu.js \
 	delete.js \

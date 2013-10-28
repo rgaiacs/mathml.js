@@ -14,6 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+// Create basic node
+function mathmlCreateNode(name, inner) {
+    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', name);
+    new_elem.innerHTML = inner;
+    mathmlSetupElement(new_elem);
+
+    return new_elem;
+}
+
 // Copy the equation and add it before if the operation success
 function mathmlPreserve(ev) {
     // Get the math parent
@@ -39,7 +48,10 @@ function mathmlPreserve(ev) {
     // Handle double click
     switch (this.nodeName.toLowerCase()) {
         case 'mi':
-            dbsuccess = miContextmenu(this);
+            if (ev.type == 'dblclick')
+                dbsuccess = miDblclick(this);
+            else if (ev.type == 'contextmenu')
+                dbsuccess = miContextmenu(this);
             break;
         case 'mo':
             dbsuccess = moDblclick(this);

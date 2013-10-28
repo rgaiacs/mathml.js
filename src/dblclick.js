@@ -86,10 +86,35 @@ function msupDblclick(elem) {
     return opPow(elem);
 }
 
+// Handle for double click in unsupport mi element
+function miUnsuport(elem) {
+    console.log('Function ' + elem.innerHTML.trim() + ' not support');
+    return 0;
+}
+
+// Handle for double click in mi element
+function miDblclick(elem) {
+    var r;
+    // Check if the mi element are a function.
+    if (assum_mi(elem) === 1) {
+        var fun = elem.innerHTML.trim();
+        switch (fun) {
+            case 'sin':
+                trigSin(elem);
+                break;
+            default:
+                r = miUnsuport(elem);
+                break;
+        }
+    }
+    else {
+        r = 0;
+    }
+    return r;
+}
+
 // Setup all mouseover
 function setDblclick(elem) {
-    if (elem.nodeName.toLowerCase() != 'mi') {
-        elem.addEventListener('dblclick', mathmlPreserve, false);
-    }
+    elem.addEventListener('dblclick', mathmlPreserve, false);
 }
 
