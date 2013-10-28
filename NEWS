@@ -1,0 +1,13 @@
+MathML.js 0.1.0 (release date: 2013-10-28)
+------------------------------------------
+
+This is the first release.
+
+Raniere Silva:
+      Add eventListener
+      Add basic interaction
+      Write documentation
+      Add limit for decimals
+      Add power and root operations
+      Add proof of concept example
+      Add "undo" feature
