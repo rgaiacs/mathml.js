@@ -184,6 +184,13 @@ function mathmlSetup() {
 
 // Entry point.
 function mathmlStart() {
+    var math;
+    math = document.getElementsByTagName('math');
+    for (var i = 0; i < math.length; i++) {
+        math[i].setAttribute('id', MATHMLJS.IDCOUNTER);
+        MATHMLJS.IDCOUNTER += 1;
+    }
+
     if (MATHMLJS.ONLYDISPLAY) {
         $("math[display='block']").find('*').each(mathmlSetup);
     }
@@ -197,6 +204,7 @@ window.onload = mathmlStart;
 
 // Global variable
 MATHMLJS = new Object();
+MATHMLJS.IDCOUNTER = 0;
 MATHMLJS.COLOR = 'blue';  // The color of select element
 MATHMLJS.ONLYDISPLAY = true;  // Only interact with display
 MATHMLJS.OVERWRITE = false;  // Not overwrite equations
