@@ -288,3 +288,132 @@ function trigCos(elem) {
     return r;
 }
 
+// Compute the tan in radians.
+function trigTan(elem) {
+    var r;
+    var f = trigFilter(elem);
+    var n = elem.nextElementSibling;
+    var n2 = n.nextElementSibling;
+    var new_elem;
+    var temp;
+    var frac;
+    var frac_temp;
+
+    switch (f.code) {
+        // tan 1
+        case 1:
+            new_elem = mathmlCreateNode('mn', Math.tan(Number(f.n2[0].innerHTML)).toFixed(MATHMLJS.DECIMALS));
+            r = 1;
+            break;
+        // tan \pi
+        case 2:
+            if (f.n2[0].innerHTML.trim().charCodeAt(0) === 960) {
+                new_elem = mathmlCreateNode('mn', Math.tan(Math.PI).toFixed(MATHMLJS.DECIMALS));
+                r = 1;
+            }
+            else {
+                console.log('Unable to handle the parameter');
+                r = 0;
+            }
+            break;
+        // tan (2 \pi)
+        // tan (x + y)
+        case 3:
+            switch (f.n2[1].innerHTML.trim().charCodeAt(0)) {
+                case 43:  // +
+                    // tan (x + y) = (tan x + tan y) / (1 - tan x tan y)
+                    new_elem = mathmlCreateNode('mrow', '');
+
+                    frac = mathmlCreateNode('mfrac', '');
+                    frac_temp = mathmlCreateNode('mrow', '');
+                    temp = trigCreate('tan', f.n2[0].innerHTML);
+                    frac_temp.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u002B');
+                    frac_temp.appendChild(temp);
+                    temp = trigCreate('tan', f.n2[2].innerHTML);
+                    frac_temp.appendChild(temp);
+                    frac.appendChild(frac_temp);
+                    frac_temp = mathmlCreateNode('mrow', '');
+                    temp = mathmlCreateNode('mn', 1);
+                    frac_temp.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2212');
+                    frac_temp.appendChild(temp);
+                    temp = trigCreate('tan', f.n2[0].innerHTML);
+                    frac_temp.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2062');
+                    frac_temp.appendChild(temp);
+                    temp = trigCreate('tan', f.n2[2].innerHTML);
+                    frac_temp.appendChild(temp);
+                    frac.appendChild(frac_temp);
+                    new_elem.appendChild(frac);
+
+                    r = 1;
+                    break;
+                case 8722:  // minus sign
+                case 45:  // "-" for nooby
+                    // tan (x - y) = (tan x - tan y) / (1 + tan x tan y)
+                    // sin (x - y) = cos x cos y + sin x sin y
+                    new_elem = mathmlCreateNode('mrow', '');
+
+                    frac = mathmlCreateNode('mfrac', '');
+                    frac_temp = mathmlCreateNode('mrow', '');
+                    temp = trigCreate('tan', f.n2[0].innerHTML);
+                    frac_temp.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2212');
+                    frac_temp.appendChild(temp);
+                    temp = trigCreate('tan', f.n2[2].innerHTML);
+                    frac_temp.appendChild(temp);
+                    frac.appendChild(frac_temp);
+                    frac_temp = mathmlCreateNode('mrow', '');
+                    temp = mathmlCreateNode('mn', 1);
+                    frac_temp.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u002B');
+                    frac_temp.appendChild(temp);
+                    temp = trigCreate('tan', f.n2[0].innerHTML);
+                    frac_temp.appendChild(temp);
+                    temp = mathmlCreateNode('mo', '\u2062');
+                    frac_temp.appendChild(temp);
+                    temp = trigCreate('tan', f.n2[2].innerHTML);
+                    frac_temp.appendChild(temp);
+                    frac.appendChild(frac_temp);
+                    new_elem.appendChild(frac);
+
+                    r = 1;
+                    break;
+                case 215:  // multiplication sign
+                case 183:  // middle dot
+                case 8290:  // invisible times
+                    if (f.n2[2].nodeName === 'mi' &&
+                        f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
+                        f.n2[0].nodeName === 'mn') {
+                        new_elem = mathmlCreateNode('mn', Math.tan(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
+                        r = 1;
+                    }
+                    else {
+                        console.log('Unable to handle the parameter');
+                        r = 0;
+                    }
+                    break;
+                default:
+                    console.log('Not implement yet the operator \\u' + f.n2[1].innerHTML.trim().charCodeAt(0));
+                    r = 0;
+                    break;
+            }
+            break;
+        case -1:
+        default:
+            console.log('Unable to handle the parameter');
+            r = 0;
+            break;
+    }
+
+    if (r === 1) {
+        // Replace node and remove old ones
+        jQuery(elem).replaceWith(new_elem);
+        n.remove();
+        n2.remove();
+    }
+
+    return r;
+}
+

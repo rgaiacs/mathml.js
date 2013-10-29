@@ -105,6 +105,9 @@ function miDblclick(elem) {
             case 'cos':
                 trigCos(elem);
                 break;
+            case 'tan':
+                trigTan(elem);
+                break;
             default:
                 r = miUnsuport(elem);
                 break;
