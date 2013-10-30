@@ -200,6 +200,10 @@ section[role="region"] > header:first-child .icon.icon-back {
   background-image: url(headers/images/icons/back.png);
 }
 
+section[role="region"] > header:first-child .icon.icon-next {
+  background-image: url(headers/images/icons/back-rtl.png);
+}
+
 section[role="region"] > header:first-child .icon.icon-menu {
   background-image: url(headers/images/icons/menu.png);
 }

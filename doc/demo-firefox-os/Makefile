@@ -9,13 +9,13 @@ FILES = demo.html \
 
 .PHONY: icon archive clean-icon clean clean-all
 
-icon: img/icon.svg
-	convert $< -resize 16 img/icon-16.png
-	convert $< -resize 48 img/icon-48.png
-	convert $< -resize 128 img/icon-128.png
-
 archive: ${FILES}
 	zip -r -0 mathmljs.zip $^
+
+icon: img/icon.svg
+	convert -background none $< -resize 16 img/icon-16.png
+	convert -background none $< -resize 48 img/icon-48.png
+	convert -background none $< -resize 128 img/icon-128.png
 
 clean-icon:
 	${RM} img/*.png

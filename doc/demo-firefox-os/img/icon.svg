@@ -14,7 +14,7 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="mathmljs.svg">
+   sodipodi:docname="icon.svg">
   <defs
      id="defs2987">
     <clipPath
@@ -41,9 +41,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="11"
-     inkscape:cx="29.655701"
-     inkscape:cy="31.84511"
+     inkscape:zoom="7.7781746"
+     inkscape:cx="41.798333"
+     inkscape:cy="31.517362"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
@@ -61,7 +61,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
         <dc:contributor>
           <cc:Agent>
             <dc:title>ruthirsty (http://openclipart.org/detail/174531/smiling-turtle-by-ruthirsty-174531)</dc:title>
@@ -89,8 +89,19 @@
      id="layer1"
      inkscape:label="Layer 1"
      inkscape:groupmode="layer">
+    <path
+       sodipodi:type="arc"
+       style="fill:#04b578;fill-opacity:1;stroke:none"
+       id="path3194"
+       sodipodi:cx="16.070608"
+       sodipodi:cy="18.359472"
+       sodipodi:rx="10.670884"
+       sodipodi:ry="10.28519"
+       d="m 26.741492,18.359472 a 10.670884,10.28519 0 1 1 -21.341768,0 10.670884,10.28519 0 1 1 21.341768,0 z"
+       transform="matrix(2.9988143,0,0,3.1112698,-16.192769,-25.121273)" />
     <g
-       id="g4388">
+       id="g4388"
+       transform="matrix(1.3333333,0,0,1.3333333,-10.666666,-10.666666)">
       <g
          transform="matrix(0.12561941,0,0,0.12561941,1.9999996,17.435258)"
          id="g3152">
