@@ -76,7 +76,7 @@ function mathmlPreserve(ev) {
 
         // Create delete buttom
         var bdel = document.createElement('button');
-        bdel.innerHTML = 'Delete from this line';
+        bdel.innerHTML = 'X';
         bdel.setAttribute('style', 'float:right;');
         bdel.addEventListener('click', mathmlDelete, false);
         pmath.parentNode.insertBefore(bdel, pmath);

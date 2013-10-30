@@ -4,7 +4,8 @@ FILES = demo.html \
 	manifest.webapp mathml.js \
 	img/icon-16.png \
 	img/icon-48.png \
-	img/icon-128.png
+	img/icon-128.png \
+	style
 
 .PHONY: icon archive clean-icon clean clean-all
 
@@ -14,7 +15,7 @@ icon: img/icon.svg
 	convert $< -resize 128 img/icon-128.png
 
 archive: ${FILES}
-	zip -0 mathmljs.zip $^
+	zip -r -0 mathmljs.zip $^
 
 clean-icon:
 	${RM} img/*.png
