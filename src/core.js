@@ -23,6 +23,21 @@ function mathmlCreateNode(name, inner) {
     return new_elem;
 }
 
+// Create a undo "button"
+function mathmlCreateDelete(visible) {
+    var bdel = document.createElement('button');
+    bdel.innerHTML = 'X';
+    if (visible === false) {
+        bdel.setAttribute('style', 'float:right;visibility:hidden;');
+    }
+    else {
+        bdel.setAttribute('style', 'float:right;');
+    }
+    bdel.addEventListener('click', mathmlDelete, false);
+
+    return bdel;
+}
+
 // Copy the equation and add it before if the operation success
 function mathmlPreserve(ev) {
     // Get the math parent
@@ -75,10 +90,7 @@ function mathmlPreserve(ev) {
         pmath.parentNode.insertBefore(cmath, pmath);
 
         // Create delete buttom
-        var bdel = document.createElement('button');
-        bdel.innerHTML = 'X';
-        bdel.setAttribute('style', 'float:right;');
-        bdel.addEventListener('click', mathmlDelete, false);
+        var bdel = mathmlCreateDelete(true);
         pmath.parentNode.insertBefore(bdel, pmath);
     }
 
@@ -189,6 +201,11 @@ function mathmlStart() {
     for (var i = 0; i < math.length; i++) {
         math[i].setAttribute('id', MATHMLJS.IDCOUNTER);
         MATHMLJS.IDCOUNTER += 1;
+
+        if (math[i].getAttribute('display') === 'block') {
+            var bdel = mathmlCreateDelete(false);
+            math[i].parentNode.insertBefore(bdel, math[i]);
+        }
     }
 
     if (MATHMLJS.ONLYDISPLAY) {
