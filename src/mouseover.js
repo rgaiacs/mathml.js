@@ -16,14 +16,14 @@
 
 // mouseover
 function mathmlMouseover(e) {
-    this.setAttribute('mathcolor', MATHMLJS.COLOR);
+    this.setAttribute('style', 'background-color:' + MATHMLJS.COLOR + ';');
     e.stopPropagation();
     e.preventDefault()
 }
 
 // mouseout
 function mathmlMouseout(e) {
-    this.removeAttribute('mathcolor');
+    this.removeAttribute('style');
 }
 
 // Setup all mouseover

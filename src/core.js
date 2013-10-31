@@ -215,7 +215,7 @@ window.onload = mathmlStart;
 // Global variable
 MATHMLJS = new Object();
 MATHMLJS.IDCOUNTER = 0;
-MATHMLJS.COLOR = 'blue';  // The color of select element
+MATHMLJS.COLOR = 'orange';  // The color of select element
 MATHMLJS.ONLYDISPLAY = true;  // Only interact with display
 MATHMLJS.OVERWRITE = false;  // Not overwrite equations
 MATHMLJS.DECIMALS = 2;  // Number of decimals
