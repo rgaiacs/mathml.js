@@ -13,7 +13,9 @@ http://www.w3.org/Math/)
 
 MathML.js is a Open Source (GLPv3) Javascript library to enable GRAPHIC humam
 manipulation of MathML elements (`see the proof of concept
-<_static/index.html>`_ and `download it from here <_static/mathml.js>`_). This
+<_static/index.html>`_ or `it version for Firefox OS
+<_static/demo-firefox-os/index.html>`_
+and `download it from here <_static/mathml.js>`_). This
 work is based on
 
 * `TouchOfMath <https://github.com/jlabarbera11/TouchOfMath>`_ and

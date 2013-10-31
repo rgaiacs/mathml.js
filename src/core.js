@@ -28,10 +28,10 @@ function mathmlCreateDelete(visible) {
     var bdel = document.createElement('button');
     bdel.innerHTML = 'X';
     if (visible === false) {
-        bdel.setAttribute('style', 'float:right;visibility:hidden;');
+        bdel.setAttribute('style', 'float:right;visibility:hidden;width:auto;');
     }
     else {
-        bdel.setAttribute('style', 'float:right;');
+        bdel.setAttribute('style', 'float:right;width:auto;');
     }
     bdel.addEventListener('click', mathmlDelete, false);
 
