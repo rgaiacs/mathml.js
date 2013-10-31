@@ -23,7 +23,7 @@ function assum_mi(elem) {
     if (n) {
         switch (n.nodeName.toLowerCase()) {
             case 'mo':
-                var sn = jQuery.trim(n.innerHTML);
+                var sn = n.innerHTML.trim();
                 var charcode = sn.charCodeAt(0);
                 switch (charcode) {
                     case 8289:  // Function Aplication

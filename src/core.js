@@ -59,34 +59,30 @@ function mathmlPreserve(ev) {
     // The cloneNode method won't clone the event handles
     $(cmath).find('*').each(mathmlSetup);
 
-    var dbsuccess;
-    // Handle double click
+    var success;
     switch (this.nodeName.toLowerCase()) {
         case 'mi':
-            if (ev.type == 'dblclick')
-                dbsuccess = miDblclick(this);
-            else if (ev.type == 'contextmenu')
-                dbsuccess = miContextmenu(this);
+            success = miClick(this);
             break;
         case 'mo':
-            dbsuccess = moDblclick(this);
+            success = moClick(this);
             break;
         case 'mfrac':
-            dbsuccess = mfracDblclick(this);
+            success = mfracClick(this);
             break;
         case 'mroot':
-            dbsuccess = mrootDblclick(this);
+            success = mrootClick(this);
             break;
         case 'msqrt':
-            dbsuccess = msqrtDblclick(this);
+            success = msqrtClick(this);
             break;
         case 'msup':
-            dbsuccess = msupDblclick(this);
+            success = msupClick(this);
             break;
     }
 
     // Copy the math before if success
-    if (!MATHMLJS.OVERWRITE && dbsuccess) {
+    if (!MATHMLJS.OVERWRITE && success) {
         pmath.parentNode.insertBefore(cmath, pmath);
 
         // Create delete buttom
@@ -176,15 +172,14 @@ function opChildHash(elem) {
 // Setup for each child from math element
 function mathmlSetupElement(elem) {
     setMouseover(elem);
-    setDblclick(elem);
-    setContextMenu(elem);
+    setClick(elem);
+    setDND(elem);
 }
 
 // Setup for each child from math element
 function mathmlSetup() {
     setMouseover(this);
-    setDblclick(this);
-    setContextMenu(this);
+    setClick(this);
     setDND(this);
 }
 

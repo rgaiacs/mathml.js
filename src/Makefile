@@ -11,8 +11,7 @@ FILES = mouseover.js \
 	op-root.js \
 	op-pow.js \
 	trigonometry.js \
-	dblclick.js \
-	contextmenu.js \
+	click.js \
 	delete.js \
 	drag.js \
 	core.js
