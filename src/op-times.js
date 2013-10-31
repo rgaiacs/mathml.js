@@ -21,17 +21,12 @@ function opTimesMiMi(elem) {
 
     if (p.innerHTML.trim() === n.innerHTML.trim()) {
         // Create node to replace
-        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'msup');
-        mathmlSetupElement(new_elem);
+        var new_elem = mathmlCreateNode('msup', '');
 
-        var mi = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mi');
-        mathmlSetupElement(mi);
-        mi.innerHTML = p.innerHTML;
+        var mi = mathmlCreateNode('mi', p.innerHTML);
         new_elem.appendChild(mi);
 
-        var mn = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        mathmlSetupElement(mn);
-        mn.innerHTML = 2;
+        var mn = mathmlCreateNode('mn', 2);
         new_elem.appendChild(mn);
 
         // Replace node and remove old ones
@@ -55,9 +50,7 @@ function opTimesMnMn(elem) {
     var val = Number(p.innerHTML) * Number(n.innerHTML);
     if (val >= 0) {
         // Create node to replace
-        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        new_elem.innerHTML = val;
-        mathmlSetupElement(new_elem);
+        var new_elem = mathmlCreateNode('mn', val);
     }
     else
         var new_elem = restoreNegativeMn(val);

@@ -119,9 +119,7 @@ function removeMrow(elem) {
                 (f.innerHTML.trim().charCodeAt(0) === 8722 ||
                  f.innerHTML.trim().charCodeAt(0) === 45) &&
                 l.nodeName.toLowerCase() === 'mn') {
-                var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-                mathmlSetupElement(elem);
-                new_elem.innerHTML = -Number(l.innerHTML);
+                var new_elem = mathmlCreateNode('mn', -Number(l.innerHTML));
                 jQuery(elem).replaceWith(new_elem);
             }
         }
@@ -132,17 +130,12 @@ function removeMrow(elem) {
 // <mrow> <mo>-</mo> <mn>...</mn> </mrow>
 // we will go to restore than.
 function restoreNegativeMn(number) {
-    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
-    mathmlSetupElement(new_elem);
+    var new_elem = mathmlCreateNode('mrow', '');
 
-    var mo = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mo');
-    mo.innerHTML = '-';
-    mathmlSetupElement(mo);
+    var mo = mathmlCreateNode('mo', '-');
     new_elem.appendChild(mo);
 
-    var mn = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-    mn.innerHTML = Math.abs(Number(number));
-    mathmlSetupElement(mn);
+    var mn = mathmlCreateNode('mn', Math.abs(Number(number)));
     new_elem.appendChild(mn);
 
     return new_elem;

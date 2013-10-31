@@ -32,9 +32,7 @@ function opRootMnMn(elem) {
     var val = (Math.pow(Number(f.innerHTML), Number(l.innerHTML))).toFixed(MATHMLJS.DECIMALS);
     if (val >= 0) {
         // Create node to replace
-        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        new_elem.innerHTML = val;
-        mathmlSetupElement(new_elem);
+        var new_elem = mathmlCreateNode('mn', val);
     }
     else
         var new_elem = restoreNegativeMn(val);
@@ -52,9 +50,7 @@ function opSqrtMn(elem) {
     var val = Math.sqrt(Number(f.innerHTML)).toFixed(MATHMLJS.DECIMALS);
     if (val >= 0) {
         // Create node to replace
-        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        new_elem.innerHTML = val;
-        mathmlSetupElement(new_elem);
+        var new_elem = mathmlCreateNode('mn', val);
     }
     else
         var new_elem = restoreNegativeMn(val);

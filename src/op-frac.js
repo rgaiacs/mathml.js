@@ -21,9 +21,7 @@ function opFracMiMi(elem) {
 
     if (f.innerHTML.trim() === l.innerHTML.trim()) {
         // Create node to replace
-        var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-        mathmlSetupElement(elem);
-        new_elem.innerHTML = 1;
+        var new_elem = mathmlCreateNode('mn', 1);
 
         // Replace node and remove old ones
         jQuery(elem).replaceWith(new_elem);
@@ -51,9 +49,7 @@ function opFracMnMn(elem) {
         var val = (Number(f.innerHTML) / Number(l.innerHTML)).toFixed(MATHMLJS.DECIMALS);
         if (val >= 0) {
             // Create node to replace
-            var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-            new_elem.innerHTML = val;
-            mathmlSetupElement(elem);
+            var new_elem = mathmlCreateNode('mn', val);
         }
         else
             var new_elem = restoreNegativeMn(val);

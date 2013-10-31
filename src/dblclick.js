@@ -16,17 +16,13 @@
 
 // Replace InvisibleTimes
 function replaceInvisibleTimes(mo) {
-    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mo');
-    new_elem.innerHTML = '\u00D7';
-    mathmlSetupElement(new_elem);
+    var new_elem = mathmlCreateNode('mo', '\u00D7');
     jQuery(mo).replaceWith(new_elem);
 }
 
 // Replace mi with mn
 function replaceMiByMn(mi, mn_val) {
-    var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mn');
-    new_elem.innerHTML = mn_val;
-    mathmlSetupElement(new_elem);
+    var new_elem = mathmlCreateNode('mn', mn_val);
     jQuery(mi).replaceWith(new_elem);
 }
 
