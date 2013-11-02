@@ -17,25 +17,18 @@ body {
   overflow: hidden;
 }
 
-.hidden {
-  visibility: hidden;
-}
-
 section[role="region"] {
   height: 100%;
 }
 
-section[role="region"] > header.fixed:first-child {
-  position: absolute;
-  width: 100%;
+section[role="region"] > header {
+  position: fixed;
+  z-index: 2;
 }
 
-.scrollable {
-  overflow: scroll;
-  /* TODO The height must back to 100% as soon as the content
-   * are show completely.
-  height: 100%; */
-  height: 90%;
+section[role="region"] > div {
+  overflow-y: scroll;
+  height: calc(100% - 5rem);
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
