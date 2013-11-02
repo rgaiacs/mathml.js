@@ -6,18 +6,30 @@
 <link rel="stylesheet" type="text/css" href="style/util.css"/>
 <link rel="stylesheet" type="text/css" href="style/headers.css"/>
 <link rel="stylesheet" type="text/css" href="style/buttons.css"/>
+<script type='text/javascript' src="jquery-2.0.3.min.js"></script>
+<script type='text/javascript' src="mathml.js"></script>
+<script>
+function next_view(id) {
+  var sections = document.getElementsByTagName('section');
+  for (var i = 0; i < sections.length; i++)
+    sections[i].setAttribute('style', 'display:none;');
+
+  var nsection = document.getElementById(id);
+  nsection.removeAttribute('style');
+}
+</script>
 </head>
 <body role="application" id="list-view">
-<section role="region" id="root">
+<section role="region" id="welcome">
 <header>
-<h1 style='float:left;'>Home</h1>
-<menu type="toolbar"><button onclick='window.location.href = "concept1.html";'>done</button></menu>
+<h1 style='float:left;'>Welcome</h1>
+<menu type="toolbar"><button onclick='next_view("concept1");'>done</button></menu>
 </header>
 <div>
 <p>MathML.js is a Open Source (GLPv3) Javascript library (<a
   href='http://www.github.com/r-gaia-cs/mathml.js'>see the source code here</a>
 and <a href='http://r-gaia-cs.github.io/mathml.js/doc.html'>the documentation
-here</a>)to enable GRAPHIC humam manipulation of MathML elements. This work is
+here</a>) to enable GRAPHIC humam manipulation of MathML elements. This work is
 based on
 <ul>
   <li><a href='https://github.com/jlabarbera11/TouchOfMath'>TouchOfMath</a> and</li>
@@ -37,6 +49,121 @@ based on
   <li>a symbolic math Javascript library (try <a
     href="https://github.com/jamesmclellan/Symbolic-Math-Library-for-Javascript">Symbolic-Math-Library-for-Javascript</a>).</li>
 </ul>
+</p>
+</div>
+</section>
+<section role="region" id="concept1" style="display:none;">
+<header>
+<a onclick='next_view("welcome"); return false;';><span class="icon icon-back">back</span></a>
+<h1 style='float:left;'>Concept #1</h1>
+<menu type="toolbar"><button onclick='next_view("concept2");'>done</button></menu>
+</header>
+<div>
+<p>Click in the <math><mo>+</mo></math> below:
+<math display='block'>
+  <mn>1</mn> <mo>+</mo> <mn>1</mn>
+</math>
+</p>
+</section>
+<section role="region" id="concept2" style="display:none;">
+<header>
+<a onclick='next_view("concept1"); return false';><span class="icon icon-back">back</span></a>
+<h1 style='float:left;'>Concept #2</h1>
+<menu type="toolbar"><button onclick='next_view("demo");'>done</button></menu>
+</header>
+<div>
+<p>Click in the <math><mi>x</mi></math> below:
+<math display='block'>
+  <mi>x</mi> <mo>+</mo> <mn>1</mn>
+</math>
+</p>
+</section>
+<section role="region" id="demo" style="display:none;">
+<header>
+<a onclick='next_view("concept2"); return false;'><span class="icon icon-back">back</span></a>
+<h1>Example</h1>
+</header>
+<div>
+<p>Given the equation
+<math display='block'>
+  <msup> <mi>x</mi> <mn>2</mn> </msup> <mo>+</mo> <mrow> <mn>3</mn>
+  <mo>&InvisibleTimes;</mo> <mi>x</mi> </mrow> <mo>+</mo> <mn>2</mn> <mo>=</mo>
+  <mn>0</mo>
+</math>
+find one of the solutions that are given by
+<math display='block'>
+ <mrow>
+  <mi>x</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mrow>
+        <mo>-</mo>
+        <mi>b</mi>
+      </mrow>
+      <mo>+</mo>
+      <msqrt>
+        <mrow>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>-</mo>
+          <mrow>
+            <mn>4</mn>
+            <mo>&InvisibleTimes;</mo>
+            <mi>a</mi>
+            <mo>&InvisibleTimes;</mo>
+            <mi>c</mi>
+          </mrow>
+        </mrow>
+      </msqrt>
+    </mrow>
+    <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>a</mi>
+    </mrow>
+  </mfrac>
+ </mrow>
+</math>
+and now the other
+<math display='block'>
+ <mrow>
+  <mi>x</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mrow>
+        <mo>-</mo>
+        <mi>b</mi>
+      </mrow>
+      <mo>-</mo>
+      <msqrt>
+        <mrow>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>-</mo>
+          <mrow>
+            <mn>4</mn>
+            <mo>&InvisibleTimes;</mo>
+            <mi>a</mi>
+            <mo>&InvisibleTimes;</mo>
+            <mi>c</mi>
+          </mrow>
+        </mrow>
+      </msqrt>
+    </mrow>
+    <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>a</mi>
+    </mrow>
+  </mfrac>
+ </mrow>
+</math>
 </p>
 </div>
 </section>
