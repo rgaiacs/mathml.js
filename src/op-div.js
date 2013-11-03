@@ -70,7 +70,7 @@ function opDivMnMn(elem) {
 function opDivMrowMrow(elem) {
 }
 
-// Handle the double click in a plus sign
+// Handle the click in a plus sign
 function opDiv(elem) {
     var r;
     var h = opSiblingHash(elem);

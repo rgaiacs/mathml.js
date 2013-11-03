@@ -81,7 +81,7 @@ function varClick(elem) {
     return r;
 }
 
-// Handle for double click in unsupport mi element
+// Handle for click in unsupport mi element
 function miUnsuport(elem) {
     console.log('Function ' + elem.innerHTML.trim() + ' not support');
     return 0;
@@ -124,13 +124,13 @@ function miClick(elem) {
     return r;
 }
 
-// Handle for double click in unsupport mo element
+// Handle for click in unsupport mo element
 function moUnsuport(elem) {
     console.log('Operator with charcode ' + elem.innerHTML.trim().charCodeAt(0) + ' not support');
     return 0;
 }
 
-// Handle for double click in mo element
+// Handle for click in mo element
 function moClick(e) {
     var r;
     var op = e.innerHTML.trim();
@@ -158,22 +158,22 @@ function moClick(e) {
     return r;
 }
 
-// Handle for double click in mfrac element
+// Handle for click in mfrac element
 function mfracClick(elem) {
     return opFrac(elem);
 }
 
-// Handle for double click in mroot element
+// Handle for click in mroot element
 function mrootClick(elem) {
     return opRoot(elem);
 }
 
-// Handle for double click in msqrt element
+// Handle for click in msqrt element
 function msqrtClick(elem) {
     return opSqrt(elem);
 }
 
-// Handle for double click in msup element
+// Handle for click in msup element
 function msupClick(elem) {
     return opPow(elem);
 }

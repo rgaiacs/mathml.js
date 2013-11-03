@@ -67,7 +67,7 @@ function opFracMrowMrow(elem) {
     return 0;
 }
 
-// Handle the double click in a frac element
+// Handle the click in a frac element
 function opFrac(elem) {
     var r;
     var h = opChildHash(elem);

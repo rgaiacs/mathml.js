@@ -69,7 +69,7 @@ function opPlusMnMn(elem) {
 function opPlusMrowMrow(elem) {
 }
 
-// Handle the double click in a plus sign
+// Handle the click in a plus sign
 function opPlus(elem) {
     var r;
     var h = opSiblingHash(elem);

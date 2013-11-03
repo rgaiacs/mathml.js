@@ -1,7 +1,7 @@
 Arithmetic Operations
 =====================
 
-This section cover the four basic arithmetic operations. When you double click
+This section cover the four basic arithmetic operations. When you click
 on it the operation will be done if possible.
 
 .. admonition:: Demo

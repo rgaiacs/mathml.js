@@ -7,22 +7,17 @@ Mouse over and out
 ------------------
 
 When the pointing device is moved onto an ``mi`` the element should change its
-color (default to blue).
+background color (default to orange).
 
 When the pointing device is moved away from an ``mi`` it should change its
-color to back.
+background color to original value.
 
 This behavior can be achieve changing the color value attribute.
 
-Double left click
------------------
+Click
+-----
 
-The double left click will be bubbling.
-
-Right click
------------
-
-When right clicked a prompt window will raise asking for the numerical
+A prompt window will raise asking for the numerical
 value to replace the symbolic name.
 
 After the user type the value, all ``mi`` with the symbolic name selected will

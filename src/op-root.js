@@ -69,7 +69,7 @@ function opSqrtMrow(elem) {
     return 0;
 }
 
-// Handle the double click in a sqrt element
+// Handle the click in a sqrt element
 function opSqrt(elem) {
     var r;
     var h = opChildHash(elem);
@@ -89,7 +89,7 @@ function opSqrt(elem) {
     return r;
 }
 
-// Handle the double click in a root element
+// Handle the click in a root element
 function opRoot(elem) {
     var r;
     var h = opChildHash(elem);

@@ -7,9 +7,9 @@ Mouse over and out
 ------------------
 
 When the pointing device is moved onto an ``mo`` the element should change its
-color (default to blue).
+background color (default to orange).
 
 When the pointing device is moved away from an ``mo`` it should change its
-color to back.
+background color to original value.
 
 This behavior can be achieve changing the color value attribute.

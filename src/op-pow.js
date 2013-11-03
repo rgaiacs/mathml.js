@@ -43,7 +43,7 @@ function opPowMrowMrow(elem) {
     return 0;
 }
 
-// Handle the double click in a root element
+// Handle the click in a root element
 function opPow(elem) {
     var r;
     var h = opChildHash(elem);

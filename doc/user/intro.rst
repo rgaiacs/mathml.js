@@ -22,4 +22,4 @@ Use
 ---
 
 For interact with the equations just use the pointing device to select one
-element to interact and double click or right click it.
+element to interact and click it.

@@ -60,7 +60,7 @@ function opMinusMnMn(elem) {
 function opMinusMrowMrow(elem) {
 }
 
-// Handle the double click in a plus sign
+// Handle the click in a plus sign
 function opMinus(elem) {
     var r;
     var h = opSiblingHash(elem);
