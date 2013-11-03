@@ -26,12 +26,13 @@ function mathmlCreateNode(name, inner) {
 // Create a undo "button"
 function mathmlCreateDelete(visible) {
     var bdel = document.createElement('button');
+    var style = 'float:right;width:auto;position:absolute;right:100px;';
     bdel.innerHTML = 'X';
     if (visible === false) {
-        bdel.setAttribute('style', 'float:right;visibility:hidden;width:auto;');
+        bdel.setAttribute('style', 'visibility:hidden;' + style);
     }
     else {
-        bdel.setAttribute('style', 'float:right;width:auto;');
+        bdel.setAttribute('style', style);
     }
     bdel.addEventListener('click', mathmlDelete, false);
 
