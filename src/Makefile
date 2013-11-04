@@ -13,7 +13,7 @@ FILES = mouseover.js \
 	trigonometry.js \
 	click.js \
 	delete.js \
-	drag.js \
+	dnd.js \
 	core.js
 
 build: ${FILES}

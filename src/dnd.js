@@ -46,6 +46,7 @@ function handleDrop(e) {
             if ((this.nodeName.toLowerCase() == 'mi' || this.nodeName.toLowerCase() == 'mn') &&
                 (dragData.nodeName.toLowerCase() == 'mi' || dragData.nodeName.toLowerCase() == 'mn')) {
                 var cdrag = dragData.cloneNode(true);
+                mathmlSetupElement(cdrag);
                 jQuery(this).replaceWith(cdrag);
             }
             else {
