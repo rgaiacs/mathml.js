@@ -18,9 +18,12 @@ manipulation of MathML elements (`see the proof of concept
 and `download it from here <_static/mathml.js>`_). This
 work is based on
 
-* `TouchOfMath <https://github.com/jlabarbera11/TouchOfMath>`_ and
+* `TouchOfMath <https://github.com/jlabarbera11/TouchOfMath>`_,
 * `Equation Exercise Demo (proof of concept)
-  <http://galvosukykla.lt/failai/coding/equation-exercise/proof-of-concept.html>`_.
+  <http://galvosukykla.lt/failai/coding/equation-exercise/proof-of-concept.html>`_ and
+* `Implementation of Dynamic Algebra in Epsilonwriter
+  <http://cermat.org/events/MathUI/13/proceedings/DynamicAlgebra-Implementation-MathUI2013.pdf>`_
+  from Jean-François Nicaud and Christophe Viudez.
 
 MathML.js ISN'T:
 
@@ -41,6 +44,7 @@ User's Contents:
    user/intro.rst
    user/setup.rst
    user/arithmetic-operations.rst
+   user/derivatives.rst
    user/faq.rst
 
 Developer's Contents:

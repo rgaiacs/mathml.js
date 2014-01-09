@@ -1,4 +1,4 @@
-.PHONY: build demo doc jquery
+.PHONY: build demo doc test jquery
 
 build:
 	make -C src build
@@ -12,6 +12,9 @@ demo: build jquery-2.0.3.min.js
 
 doc: build demo
 	make -C doc html
+
+test: build jquery-2.0.3.min.js
+	make -C test
 
 jquery-2.0.3.min.js:
 	wget http://code.jquery.com/jquery-2.0.3.min.js

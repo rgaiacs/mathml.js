@@ -15,6 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 function handleDragStart(e) {
+    console.log('Start Drag');
     dragData = this;
 
     e.dataTransfer.effectAllowed = 'copy';

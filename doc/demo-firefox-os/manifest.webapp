@@ -1,21 +1,21 @@
 {
-    "version": "0.1",
-    "name": "MathML.js demo",
-    "description": "Manipulate math equations",
-    "launch_path": "/index.html",
-    "icons": {
-        "16": "/img/icon-16.png",
-        "48": "/img/icon-48.png",
-        "128": "/img/icon-128.png"
-    },
-    "developer": {
-        "name": "Raniere Gaia Costa da Silva",
-        "url": "file:///home/raniere/src/mathml.js"
-    },
-    "installs_allowed_from": ["*"],
-    "locales": {
-    },
-    "default_locale": "en",
-    "permissions": {
-    }
+  "version": "0.1",
+  "name": "MathML.js demo",
+  "description": "Manipulate math equations",
+  "launch_path": "/index.html",
+  "icons": {
+    "16": "/img/icon-16.png",
+    "48": "/img/icon-48.png",
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Raniere Gaia Costa da Silva",
+    "url": "file:///home/raniere/src/mathml.js"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "locales": {},
+  "default_locale": "en",
+  "permissions": {}
 }
