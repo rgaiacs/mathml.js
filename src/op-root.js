@@ -29,7 +29,7 @@ function opRootMnMn(elem) {
     var f = elem.firstElementChild;
     var l = elem.lastElementChild;
 
-    var val = (Math.pow(Number(f.innerHTML), Number(l.innerHTML))).toFixed(MATHMLJS.DECIMALS);
+    var val = (Math.pow(Number(f.innerHTML), 1 / Number(l.innerHTML))).toFixed(MATHMLJS.DECIMALS);
     if (val >= 0) {
         // Create node to replace
         var new_elem = mathmlCreateNode('mn', val);

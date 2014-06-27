@@ -13,8 +13,8 @@ demo: build jquery-2.0.3.min.js
 doc: build demo
 	make -C doc html
 
-test: build jquery-2.0.3.min.js
-	make -C test
+tests: build jquery-2.0.3.min.js
+	make -B -C tests
 
 jquery-2.0.3.min.js:
 	wget http://code.jquery.com/jquery-2.0.3.min.js
