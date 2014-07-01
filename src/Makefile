@@ -17,4 +17,4 @@ FILES = mouseover.js \
 	core.js
 
 build: ${FILES}
-	cat ${FILES} > ${OUT}
+	cat ${FILES} > ${BUILDDIR}/${OUT}
