@@ -23,7 +23,7 @@ phantom.injectJs("../mathml.js");
 function run_test(function2test, input, expect) {
     math = document.createElement('math');
     math.innerHTML = input;
-    function2test(math.getElementsByClassName('clickHere')[0]);
+    mathmlHandleClick(math.getElementsByClassName('clickHere')[0]);
     if (math.innerHTML.replace(/( draggable="true"| class="clickHere")/g, '') != expect) {
         console.log("FAIL: " + function2test.name + " at " + input);
         console.log("  Expect: " + expect);

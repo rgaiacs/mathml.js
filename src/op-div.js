@@ -21,39 +21,33 @@
 /* global restoreNegativeMn */
 
 function opDivMiMi(elem) {
-    var r;
+    var new_elem;
     var p = elem.previousElementSibling;
     var n = elem.nextElementSibling;
 
     if (p.innerHTML.trim() === n.innerHTML.trim()) {
         // Create node to replace
-        var new_elem = mathmlCreateNode('mn', 1);
+        new_elem = mathmlCreateNode('mn', 1);
 
         // Replace node and remove old ones
         jQuery(p).replaceWith(new_elem);
         n.remove();
         elem.remove();
-
-        r = 1;
-    } else {
-        r = 0;
     }
 
-    return r;
+    return new_elem;
 }
 
 function opDivMnMn(elem) {
-    var r;
+    var new_elem;
     var p = elem.previousElementSibling;
     var n = elem.nextElementSibling;
 
     // We can't divide by 0
     if (Number(n.innerHTML) === 0) {
         console.log('Can\'t divide by zero.');
-        r = 0;
     } else {
         var val = (Number(p.innerHTML) / Number(n.innerHTML)).toFixed(MATHMLJS.DECIMALS);
-        var new_elem;
         if (val >= 0) {
             // Create node to replace
             new_elem = mathmlCreateNode('mn', val);
@@ -65,31 +59,29 @@ function opDivMnMn(elem) {
         jQuery(p).replaceWith(new_elem);
         n.remove();
         elem.remove();
-
-        r = 1;
     }
 
-    return r;
+    return new_elem;
 }
 
 function opDivMrowMrow(elem) {}
 
 // Handle the click in a plus sign
 function opDiv(elem) {
-    var r;
+    var new_elem;
     var h = opSiblingHash(elem);
     switch (h) {
         case 0:
             break;
         case 1:
-            r = opDivMiMi(elem);
+            new_elem = opDivMiMi(elem);
             break;
         case 2:
-            r = opDivMnMn(elem);
+            new_elem = opDivMnMn(elem);
             break;
         case 3:
-            r = opDivMrowMrow(elem);
+            new_elem = opDivMrowMrow(elem);
             break;
     }
-    return r;
+    return new_elem;
 }

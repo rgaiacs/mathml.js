@@ -20,25 +20,21 @@
 /* global restoreNegativeMn */
 
 function opMinusMiMi(elem) {
-    var r;
+    var new_elem;
     var p = elem.previousElementSibling;
     var n = elem.nextElementSibling;
 
     if (p.innerHTML.trim() === n.innerHTML.trim()) {
         // Create node to replace
-        var new_elem = mathmlCreateNode('mn', 0);
+        new_elem = mathmlCreateNode('mn', 0);
 
         // Replace node and remove old ones
         jQuery(p).replaceWith(new_elem);
         n.remove();
         elem.remove();
-
-        r = 1;
-    } else {
-        r = 0;
     }
 
-    return r;
+    return new_elem;
 }
 
 function opMinusMnMn(elem) {
@@ -59,27 +55,27 @@ function opMinusMnMn(elem) {
     n.remove();
     elem.remove();
 
-    return 1;
+    return new_elem;
 }
 
 function opMinusMrowMrow(elem) {}
 
 // Handle the click in a plus sign
 function opMinus(elem) {
-    var r;
+    var new_elem;
     var h = opSiblingHash(elem);
     switch (h) {
         case 0:
             break;
         case 1:
-            r = opMinusMiMi(elem);
+            new_elem = opMinusMiMi(elem);
             break;
         case 2:
-            r = opMinusMnMn(elem);
+            new_elem = opMinusMnMn(elem);
             break;
         case 3:
-            r = opMinusMrowMrow(elem);
+            new_elem = opMinusMrowMrow(elem);
             break;
     }
-    return r;
+    return new_elem;
 }

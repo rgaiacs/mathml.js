@@ -23,17 +23,15 @@
 
 function opPowMiMi(elem) {
     console.log('Can\'t compute the power of two variables.');
-    return 0;
 }
 
 function opPowMnMn(elem) {
-    var r;
+    var new_elem;
     var f = elem.firstElementChild;
     var l = elem.lastElementChild;
 
     // TODO Probably here there is a bug. We MUST check the values.
     var val = (Math.pow(Number(f.innerHTML), Number(l.innerHTML))).toFixed(MATHMLJS.DECIMALS);
-    var new_elem;
     if (val >= 0) {
         // Create node to replace
         new_elem = mathmlCreateNode('mn', val);
@@ -44,29 +42,27 @@ function opPowMnMn(elem) {
     // Replace node and remove old ones
     jQuery(elem).replaceWith(new_elem);
 
-    return 1;
+    return new_elem;
 }
 
-function opPowMrowMrow(elem) {
-    return 0;
-}
+function opPowMrowMrow(elem) {}
 
 // Handle the click in a root element
 function opPow(elem) {
-    var r;
+    var new_elem;
     var h = opChildHash(elem);
     switch (h) {
         case 0:
             break;
         case 1:
-            r = opPowMiMi(elem);
+            new_elem = opPowMiMi(elem);
             break;
         case 2:
-            r = opPowMnMn(elem);
+            new_elem = opPowMnMn(elem);
             break;
         case 3:
-            r = opPowMrowMrow(elem);
+            new_elem = opPowMrowMrow(elem);
             break;
     }
-    return r;
+    return new_elem;
 }

@@ -23,21 +23,18 @@
 
 function opRootMiMi(elem) {
     console.log('Can\'t compute the root of two variables.');
-    return 0;
 }
 
 function opSqrtMi(elem) {
     console.log('Can\'t compute the sqrt of variable.');
-    return 0;
 }
 
 function opRootMnMn(elem) {
-    var r;
+    var new_elem;
     var f = elem.firstElementChild;
     var l = elem.lastElementChild;
 
     var val = (Math.pow(Number(f.innerHTML), 1 / Number(l.innerHTML))).toFixed(MATHMLJS.DECIMALS);
-    var new_elem;
     if (val >= 0) {
         // Create node to replace
         new_elem = mathmlCreateNode('mn', val);
@@ -48,15 +45,14 @@ function opRootMnMn(elem) {
     // Replace node and remove old ones
     jQuery(elem).replaceWith(new_elem);
 
-    return 1;
+    return new_elem;
 }
 
 function opSqrtMn(elem) {
-    var r;
+    var new_elem;
     var f = elem.firstElementChild;
 
     var val = Math.sqrt(Number(f.innerHTML)).toFixed(MATHMLJS.DECIMALS);
-    var new_elem;
     if (val >= 0) {
         // Create node to replace
         new_elem = mathmlCreateNode('mn', val);
@@ -67,35 +63,31 @@ function opSqrtMn(elem) {
     // Replace node and remove old ones
     jQuery(elem).replaceWith(new_elem);
 
-    return 1;
+    return new_elem;
 }
 
-function opRootMrowMrow(elem) {
-    return 0;
-}
+function opRootMrowMrow(elem) {}
 
-function opSqrtMrow(elem) {
-    return 0;
-}
+function opSqrtMrow(elem) {}
 
 // Handle the click in a sqrt element
 function opSqrt(elem) {
-    var r;
+    var new_elem;
     var h = opChildHash(elem);
     switch (h) {
         case 0:
             break;
         case 1:
-            r = opSqrtMi(elem);
+            new_elem = opSqrtMi(elem);
             break;
         case 2:
-            r = opSqrtMn(elem);
+            new_elem = opSqrtMn(elem);
             break;
         case 3:
-            r = opSqrtMrow(elem);
+            new_elem = opSqrtMrow(elem);
             break;
     }
-    return r;
+    return new_elem;
 }
 
 // Handle the click in a root element

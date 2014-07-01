@@ -29,6 +29,7 @@
 /* global trigCos */
 /* global trigSin */
 /* global trigTan */
+/* global removeGroup */
 
 // Replace InvisibleTimes
 function replaceInvisibleTimes(mo) {
@@ -169,6 +170,9 @@ function moClick(e) {
             r = moUnsuport(e);
             break;
     }
+
+    removeGroup(r);
+
     return r;
 }
 

@@ -22,37 +22,31 @@
 /* global restoreNegativeMn */
 
 function opFracMiMi(elem) {
-    var r;
+    var new_elem;
     var f = elem.firstElementChild;
     var l = elem.lastElementChild;
 
     if (f.innerHTML.trim() === l.innerHTML.trim()) {
         // Create node to replace
-        var new_elem = mathmlCreateNode('mn', 1);
+        new_elem = mathmlCreateNode('mn', 1);
 
         // Replace node and remove old ones
         jQuery(elem).replaceWith(new_elem);
-
-        r = 1;
-    } else {
-        r = 0;
     }
 
-    return r;
+    return new_elem;
 }
 
 function opFracMnMn(elem) {
-    var r;
+    var new_elem;
     var f = elem.firstElementChild;
     var l = elem.lastElementChild;
 
     // We can't divide by 0
     if (Number(l.innerHTML) === 0) {
         console.log('Can\'t divide by zero.');
-        r = 0;
     } else {
         var val = (Number(f.innerHTML) / Number(l.innerHTML)).toFixed(MATHMLJS.DECIMALS);
-        var new_elem;
         if (val >= 0) {
             // Create node to replace
             new_elem = mathmlCreateNode('mn', val);
@@ -62,11 +56,9 @@ function opFracMnMn(elem) {
 
         // Replace node and remove old ones
         jQuery(elem).replaceWith(new_elem);
-
-        r = 1;
     }
 
-    return r;
+    return new_elem;
 }
 
 function opFracMrowMrow(elem) {
@@ -75,20 +67,20 @@ function opFracMrowMrow(elem) {
 
 // Handle the click in a frac element
 function opFrac(elem) {
-    var r;
+    var new_elem;
     var h = opChildHash(elem);
     switch (h) {
         case 0:
             break;
         case 1:
-            r = opFracMiMi(elem);
+            new_elem = opFracMiMi(elem);
             break;
         case 2:
-            r = opFracMnMn(elem);
+            new_elem = opFracMnMn(elem);
             break;
         case 3:
-            r = opFracMrowMrow(elem);
+            new_elem = opFracMrowMrow(elem);
             break;
     }
-    return r;
+    return new_elem;
 }

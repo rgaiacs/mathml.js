@@ -20,13 +20,13 @@
 /* global restoreNegativeMn */
 
 function opTimesMiMi(elem) {
-    var r;
+    var new_elem;
     var p = elem.previousElementSibling;
     var n = elem.nextElementSibling;
 
     if (p.innerHTML.trim() === n.innerHTML.trim()) {
         // Create node to replace
-        var new_elem = mathmlCreateNode('msup', '');
+        new_elem = mathmlCreateNode('msup', '');
 
         var mi = mathmlCreateNode('mi', p.innerHTML);
         new_elem.appendChild(mi);
@@ -38,13 +38,9 @@ function opTimesMiMi(elem) {
         jQuery(p).replaceWith(new_elem);
         n.remove();
         elem.remove();
-
-        r = 1;
-    } else {
-        r = 0;
     }
 
-    return r;
+    return new_elem;
 }
 
 function opTimesMnMn(elem) {
@@ -65,27 +61,27 @@ function opTimesMnMn(elem) {
     n.remove();
     elem.remove();
 
-    return 1;
+    return new_elem;
 }
 
 function opTimesMrowMrow(elem) {}
 
 // Handle the click in a plus sign
 function opTimes(elem) {
-    var r;
+    var new_elem;
     var h = opSiblingHash(elem);
     switch (h) {
         case 0:
             break;
         case 1:
-            r = opTimesMiMi(elem);
+            new_elem = opTimesMiMi(elem);
             break;
         case 2:
-            r = opTimesMnMn(elem);
+            new_elem = opTimesMnMn(elem);
             break;
         case 3:
-            r = opTimesMrowMrow(elem);
+            new_elem = opTimesMrowMrow(elem);
             break;
     }
-    return r;
+    return new_elem;
 }

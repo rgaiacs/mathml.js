@@ -52,6 +52,34 @@ function mathmlCreateDelete(visible) {
     return bdel;
 }
 
+// Handle click
+function mathmlHandleClick(elem) {
+    var r;
+
+    switch (elem.nodeName.toLowerCase()) {
+        case 'mi':
+            r = miClick(elem);
+            break;
+        case 'mo':
+            r = moClick(elem);
+            break;
+        case 'mfrac':
+            r = mfracClick(elem);
+            break;
+        case 'mroot':
+            r = mrootClick(elem);
+            break;
+        case 'msqrt':
+            r = msqrtClick(elem);
+            break;
+        case 'msup':
+            r = msupClick(elem);
+            break;
+    }
+
+    return r;
+}
+
 // Copy the equation and add it before if the operation success
 function mathmlPreserve(ev) {
     // Get the math parent
@@ -73,27 +101,7 @@ function mathmlPreserve(ev) {
     // The cloneNode method won't clone the event handles
     $(cmath).find('*').each(mathmlSetup);
 
-    var success;
-    switch (this.nodeName.toLowerCase()) {
-        case 'mi':
-            success = miClick(this);
-            break;
-        case 'mo':
-            success = moClick(this);
-            break;
-        case 'mfrac':
-            success = mfracClick(this);
-            break;
-        case 'mroot':
-            success = mrootClick(this);
-            break;
-        case 'msqrt':
-            success = msqrtClick(this);
-            break;
-        case 'msup':
-            success = msupClick(this);
-            break;
-    }
+    var success = mathmlHandleClick(this);
 
     // Copy the math before if success
     if (!MATHMLJS.OVERWRITE && success) {
@@ -136,10 +144,17 @@ function removeMrow(elem) {
     }
 }
 
+function removeGroup(elem) {
+    removeMfenced(elem);
+    removeDelimiters(elem);
+}
+
 // Check if a mfenced element has only one element and in that case replace the
 // mfenced by it children.
 function removeMfenced(elem) {
-    if (elem.nodeName.toLowerCase() === 'mfenced' &&
+    if (elem &&
+        elem.nodeName &&
+        elem.nodeName.toLowerCase() === 'mfenced' &&
         elem.childElementCount === 1 &&
         elem.firstChild.nodeName.toLowerCase() !== 'mtable') {
         jQuery(elem).replaceWith(elem.firstElementChild);
@@ -148,12 +163,13 @@ function removeMfenced(elem) {
 
 // Check if siblings are delimiters and remove it
 function removeDelimiters(elem) {
-    if (elem.previousSibling &&
+    if (elem &&
+        elem.previousSibling &&
         elem.previousSibling.nodeName.toLowerCase() === 'mo' &&
-        elem.previousSibling.innerHTML.match('/([{/') &&
+        elem.previousSibling.innerHTML === '(' &&
         elem.nextSibling &&
         elem.nextSibling.nodeName.toLowerCase() === 'mo' &&
-        elem.nextSibling.innerHTML.match('/([{/')) {
+        elem.nextSibling.innerHTML === ')') {
         elem.parentNode.removeChild(elem.previousSibling);
         elem.parentNode.removeChild(elem.nextSibling);
     }

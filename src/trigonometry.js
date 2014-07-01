@@ -75,7 +75,6 @@ function trigFilter(elem) {
 
 // Compute the sin in radians.
 function trigSin(elem) {
-    var r;
     var f = trigFilter(elem);
     var n = elem.nextElementSibling;
     var n2 = n.nextElementSibling;
@@ -86,16 +85,13 @@ function trigSin(elem) {
         // sin 1
         case 1:
             new_elem = mathmlCreateNode('mn', Math.sin(Number(f.n2[0].innerHTML)).toFixed(MATHMLJS.DECIMALS));
-            r = 1;
             break;
             // sin \pi
         case 2:
             if (f.n2[0].innerHTML.trim().charCodeAt(0) === 960) {
                 new_elem = mathmlCreateNode('mn', Math.sin(Math.PI).toFixed(MATHMLJS.DECIMALS));
-                r = 1;
             } else {
                 console.log('Unable to handle the parameter');
-                r = 0;
             }
             break;
             // sin (2 \pi)
@@ -121,7 +117,6 @@ function trigSin(elem) {
                     temp = trigCreate('sin', f.n2[2].innerHTML);
                     new_elem.appendChild(temp);
 
-                    r = 1;
                     break;
                 case 8722: // minus sign
                 case 45: // "-" for nooby
@@ -143,7 +138,6 @@ function trigSin(elem) {
                     temp = trigCreate('sin', f.n2[2].innerHTML);
                     new_elem.appendChild(temp);
 
-                    r = 1;
                     break;
                 case 215: // multiplication sign
                 case 183: // middle dot
@@ -152,37 +146,32 @@ function trigSin(elem) {
                         f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
                         f.n2[0].nodeName === 'mn') {
                         new_elem = mathmlCreateNode('mn', Math.sin(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
-                        r = 1;
                     } else {
                         console.log('Unable to handle the parameter');
-                        r = 0;
                     }
                     break;
                 default:
                     console.log('Not implement yet the operator \\u' + f.n2[1].innerHTML.trim().charCodeAt(0));
-                    r = 0;
                     break;
             }
             break;
         default:
             console.log('Unable to handle the parameter');
-            r = 0;
             break;
     }
 
-    if (r === 1) {
+    if (new_elem) {
         // Replace node and remove old ones
         jQuery(elem).replaceWith(new_elem);
         n.remove();
         n2.remove();
     }
 
-    return r;
+    return new_elem;
 }
 
 // Compute the cos in radians.
 function trigCos(elem) {
-    var r;
     var f = trigFilter(elem);
     var n = elem.nextElementSibling;
     var n2 = n.nextElementSibling;
@@ -193,16 +182,13 @@ function trigCos(elem) {
         // cos 1
         case 1:
             new_elem = mathmlCreateNode('mn', Math.cos(Number(f.n2[0].innerHTML)).toFixed(MATHMLJS.DECIMALS));
-            r = 1;
             break;
             // cos \pi
         case 2:
             if (f.n2[0].innerHTML.trim().charCodeAt(0) === 960) {
                 new_elem = mathmlCreateNode('mn', Math.cos(Math.PI).toFixed(MATHMLJS.DECIMALS));
-                r = 1;
             } else {
                 console.log('Unable to handle the parameter');
-                r = 0;
             }
             break;
             // cos (2 \pi)
@@ -227,8 +213,6 @@ function trigCos(elem) {
                     new_elem.appendChild(temp);
                     temp = trigCreate('sin', f.n2[2].innerHTML);
                     new_elem.appendChild(temp);
-
-                    r = 1;
                     break;
                 case 8722: // minus sign
                 case 45: // "-" for nooby
@@ -249,8 +233,6 @@ function trigCos(elem) {
                     new_elem.appendChild(temp);
                     temp = trigCreate('sin', f.n2[2].innerHTML);
                     new_elem.appendChild(temp);
-
-                    r = 1;
                     break;
                 case 215: // multiplication sign
                 case 183: // middle dot
@@ -259,37 +241,32 @@ function trigCos(elem) {
                         f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
                         f.n2[0].nodeName === 'mn') {
                         new_elem = mathmlCreateNode('mn', Math.cos(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
-                        r = 1;
                     } else {
                         console.log('Unable to handle the parameter');
-                        r = 0;
                     }
                     break;
                 default:
                     console.log('Not implement yet the operator \\u' + f.n2[1].innerHTML.trim().charCodeAt(0));
-                    r = 0;
                     break;
             }
             break;
         default:
             console.log('Unable to handle the parameter');
-            r = 0;
             break;
     }
 
-    if (r === 1) {
+    if (new_elem === 1) {
         // Replace node and remove old ones
         jQuery(elem).replaceWith(new_elem);
         n.remove();
         n2.remove();
     }
 
-    return r;
+    return new_elem;
 }
 
 // Compute the tan in radians.
 function trigTan(elem) {
-    var r;
     var f = trigFilter(elem);
     var n = elem.nextElementSibling;
     var n2 = n.nextElementSibling;
@@ -302,16 +279,13 @@ function trigTan(elem) {
         // tan 1
         case 1:
             new_elem = mathmlCreateNode('mn', Math.tan(Number(f.n2[0].innerHTML)).toFixed(MATHMLJS.DECIMALS));
-            r = 1;
             break;
             // tan \pi
         case 2:
             if (f.n2[0].innerHTML.trim().charCodeAt(0) === 960) {
                 new_elem = mathmlCreateNode('mn', Math.tan(Math.PI).toFixed(MATHMLJS.DECIMALS));
-                r = 1;
             } else {
                 console.log('Unable to handle the parameter');
-                r = 0;
             }
             break;
             // tan (2 \pi)
@@ -344,8 +318,6 @@ function trigTan(elem) {
                     frac_temp.appendChild(temp);
                     frac.appendChild(frac_temp);
                     new_elem.appendChild(frac);
-
-                    r = 1;
                     break;
                 case 8722: // minus sign
                 case 45: // "-" for nooby
@@ -375,8 +347,6 @@ function trigTan(elem) {
                     frac_temp.appendChild(temp);
                     frac.appendChild(frac_temp);
                     new_elem.appendChild(frac);
-
-                    r = 1;
                     break;
                 case 215: // multiplication sign
                 case 183: // middle dot
@@ -385,30 +355,26 @@ function trigTan(elem) {
                         f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
                         f.n2[0].nodeName === 'mn') {
                         new_elem = mathmlCreateNode('mn', Math.tan(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
-                        r = 1;
                     } else {
                         console.log('Unable to handle the parameter');
-                        r = 0;
                     }
                     break;
                 default:
                     console.log('Not implement yet the operator \\u' + f.n2[1].innerHTML.trim().charCodeAt(0));
-                    r = 0;
                     break;
             }
             break;
         default:
             console.log('Unable to handle the parameter');
-            r = 0;
             break;
     }
 
-    if (r === 1) {
+    if (new_elem === 1) {
         // Replace node and remove old ones
         jQuery(elem).replaceWith(new_elem);
         n.remove();
         n2.remove();
     }
 
-    return r;
+    return new_elem;
 }
