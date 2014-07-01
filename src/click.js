@@ -14,6 +14,22 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global assum_mi */
+/* global jQuery */
+/* global mathmlCreateNode */
+/* global mathmlPreserve */
+/* global opDiv */
+/* global opFrac */
+/* global opMinus */
+/* global opPlus */
+/* global opPow */
+/* global opRoot */
+/* global opSqrt */
+/* global opTimes */
+/* global trigCos */
+/* global trigSin */
+/* global trigTan */
+
 // Replace InvisibleTimes
 function replaceInvisibleTimes(mo) {
     var new_elem = mathmlCreateNode('mo', '\u00D7');
@@ -32,13 +48,13 @@ function replaceMiByMn(elem, number) {
             // <mi>...</mi> <mo>&InvisibleTimes;</mo> <mi>...</mi>
             var p = mi[i].previousElementSibling;
             // Avoid when p is null
-            if (p != null) {
+            if (p !== null) {
                 var p2 = p.previousElementSibling;
                 if (p.nodeName.toLowerCase() === 'mo' &&
-                        p.innerHTML.trim().charCodeAt(0) === 8290 &&
-                        (p2.nodeName.toLowerCase() === 'mn' || p2.nodeName.toLowerCase() === 'mi')) {
-                            // Need to replace <mo>&InvisibleTimes;</mo>
-                            replaceInvisibleTimes(p);
+                    p.innerHTML.trim().charCodeAt(0) === 8290 &&
+                    (p2.nodeName.toLowerCase() === 'mn' || p2.nodeName.toLowerCase() === 'mi')) {
+                    // Need to replace <mo>&InvisibleTimes;</mo>
+                    replaceInvisibleTimes(p);
                 }
             }
             jQuery(mi[i]).replaceWith(mathmlCreateNode('mn', number));
@@ -49,31 +65,29 @@ function replaceMiByMn(elem, number) {
 
 // Handle click for variables
 function varClick(elem) {
-    var r;
+    var r, val;
     var sym = elem.innerHTML.trim();
     switch (sym.charCodeAt(0)) {
-        case 8520:  // double-struck italic small i
-            console.log('The imaginary constant.')
+        case 8520: // double-struck italic small i
+            console.log('The imaginary constant.');
             break;
-        case 960:  // greek small letter pi
-            var val = prompt('Replace ' + elem.innerHTML + ' by:', '3.14');
+        case 960: // greek small letter pi
+            val = prompt('Replace ' + elem.innerHTML + ' by:', '3.14');
             if (val) {
                 replaceMiByMn(elem, val);
-            }
-            else {
+            } else {
                 console.log('Prompt have been cancel.');
             }
             r = true;
             break;
-        case 8519:  // double-struck italic small e
-            console.log('The Euler constant.')
+        case 8519: // double-struck italic small e
+            console.log('The Euler constant.');
             break;
         default:
-            var val = prompt('Replace ' + elem.innerHTML + ' by:');
+            val = prompt('Replace ' + elem.innerHTML + ' by:');
             if (val) {
-                r =  replaceMiByMn(elem, val);
-            }
-            else {
+                r = replaceMiByMn(elem, val);
+            } else {
                 console.log('Prompt have been cancel.');
             }
             break;
@@ -97,11 +111,11 @@ function invSepClick(elem) {
 function miClick(elem) {
     var r;
     switch (assum_mi(elem)) {
-        case 0:  // variable
-        case 2:  // invisible times
+        case 0: // variable
+        case 2: // invisible times
             r = varClick(elem);
             break;
-        case 1:  // function
+        case 1: // function
             switch (elem.innerHTML.trim()) {
                 case 'sin':
                     r = trigSin(elem);
@@ -117,7 +131,7 @@ function miClick(elem) {
                     break;
             }
             break;
-        case 3:  // invisible separator
+        case 3: // invisible separator
             r = invSepClick(elem);
             break;
     }
@@ -135,20 +149,20 @@ function moClick(e) {
     var r;
     var op = e.innerHTML.trim();
     switch (op.charCodeAt(0)) {
-        case 43:  // +
+        case 43: // +
             r = opPlus(e);
             break;
-        case 8722:  // minus sign
-        case 45:  // "-" for nooby
+        case 8722: // minus sign
+        case 45: // "-" for nooby
             r = opMinus(e);
             break;
-        case 215:  // multiplication sign
-        case 183:  // middle dot
+        case 215: // multiplication sign
+        case 183: // middle dot
             r = opTimes(e);
             break;
-        case 247:  // division sign
-        case 8725:  // division slash
-        case 47:  // "/" for nooby
+        case 247: // division sign
+        case 8725: // division slash
+        case 47: // "/" for nooby
             r = opDiv(e);
             break;
         default:
@@ -182,4 +196,3 @@ function msupClick(elem) {
 function setClick(elem) {
     elem.addEventListener('click', mathmlPreserve, false);
 }
-

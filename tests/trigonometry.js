@@ -16,23 +16,16 @@
 
 phantom.injectJs("driver.js");
 
-var suite = [
-    {
-        name: trigSin,
-        tests: [
-                 ]
-    },
-    {
-        name: trigCos,
-        tests: [
-                 ]
-    },
-    {
-        name: trigTan,
-        tests: [
-                 ]
-    }
-];
+var suite = [{
+    name: trigSin,
+    tests: []
+}, {
+    name: trigCos,
+    tests: []
+}, {
+    name: trigTan,
+    tests: []
+}];
 
 run_suite(suite);
 slimer.exit();

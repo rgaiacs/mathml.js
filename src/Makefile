@@ -16,5 +16,15 @@ FILES = mouseover.js \
 	dnd.js \
 	core.js
 
-build: ${FILES}
+build: lint ${FILES}
 	cat ${FILES} > ${BUILDDIR}/${OUT}
+
+lint: ${FILES}
+	for i in $^; \
+	    do jshint $${i}; \
+	done
+
+beautify: ${FILES}
+	for i in $^; \
+	    do js-beautify -r $${i}; \
+	done

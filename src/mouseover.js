@@ -14,11 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global MATHMLJS */
+
 // mouseover
 function mathmlMouseover(e) {
     this.setAttribute('style', 'background-color:' + MATHMLJS.COLOR + ';');
     e.stopPropagation();
-    e.preventDefault()
+    e.preventDefault();
 }
 
 // mouseout
@@ -31,4 +33,3 @@ function setMouseover(elem) {
     elem.addEventListener('mouseover', mathmlMouseover, false);
     elem.addEventListener('mouseout', mathmlMouseout, false);
 }
-

@@ -22,13 +22,12 @@ function mathmlDelete(ev) {
 
     while (nextS && nextS.nodeName.toLowerCase() === 'math') {
         tmp = nextS.nextSibling;
-        nextS.remove();  // it only remove the element from the DOM tree
+        nextS.remove(); // it only remove the element from the DOM tree
         if (tmp && tmp.nodeName.toLowerCase() === 'button') {
             nextS = tmp.nextSibling;
-            tmp.remove();  // it only remove the element from the DOM tree
+            tmp.remove(); // it only remove the element from the DOM tree
             tmp = null;
-        }
-        else {
+        } else {
             nextS = null;
         }
     }
@@ -36,4 +35,3 @@ function mathmlDelete(ev) {
     // Remove the button.
     this.remove();
 }
-

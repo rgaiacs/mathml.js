@@ -14,6 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global MATHMLJS */
+/* global jQuery */
+/* global mathmlCreateNode */
+/* global opSiblingHash */
+/* global restoreNegativeMn */
+
 function opDivMiMi(elem) {
     var r;
     var p = elem.previousElementSibling;
@@ -29,8 +35,7 @@ function opDivMiMi(elem) {
         elem.remove();
 
         r = 1;
-    }
-    else {
+    } else {
         r = 0;
     }
 
@@ -46,15 +51,15 @@ function opDivMnMn(elem) {
     if (Number(n.innerHTML) === 0) {
         console.log('Can\'t divide by zero.');
         r = 0;
-    }
-    else {
+    } else {
         var val = (Number(p.innerHTML) / Number(n.innerHTML)).toFixed(MATHMLJS.DECIMALS);
+        var new_elem;
         if (val >= 0) {
             // Create node to replace
-            var new_elem = mathmlCreateNode('mn', val);
+            new_elem = mathmlCreateNode('mn', val);
+        } else {
+            new_elem = restoreNegativeMn(val);
         }
-        else
-            var new_elem = restoreNegativeMn(val);
 
         // Replace node and remove old ones
         jQuery(p).replaceWith(new_elem);
@@ -67,8 +72,7 @@ function opDivMnMn(elem) {
     return r;
 }
 
-function opDivMrowMrow(elem) {
-}
+function opDivMrowMrow(elem) {}
 
 // Handle the click in a plus sign
 function opDiv(elem) {
@@ -89,4 +93,3 @@ function opDiv(elem) {
     }
     return r;
 }
-

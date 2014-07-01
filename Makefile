@@ -22,8 +22,13 @@ doc: build demo
 	make -C doc html
 
 ## tests : run tests
-tests: build jquery-2.0.3.min.js
-	make -B -C tests
+tests: mathml.js jquery-2.0.3.min.js
+	make -C tests
+
+## beautify : run beautifier
+beautify:
+	make -C src beautify
+	make -C tests beautify
 
 jquery-2.0.3.min.js:
 	wget http://code.jquery.com/jquery-2.0.3.min.js

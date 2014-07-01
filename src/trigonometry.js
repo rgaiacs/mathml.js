@@ -14,6 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global MATHMLJS */
+/* global jQuery */
+/* global mathmlCreateNode */
+/* global opSiblingHash */
+/* global restoreNegativeMn */
+
 // Function to create trigonometric node
 function trigCreate(fun, arg) {
     // Create node to replace
@@ -47,22 +53,21 @@ function trigFilter(elem) {
     else if (n2.nodeName.toLowerCase() === 'mi') {
         r.code = 2;
         r.n2 = [n2];
-    }
-    else {
-        if (n2.nodeName.toLowerCase() === 'mfenced')
+    } else {
+        if (n2.nodeName.toLowerCase() === 'mfenced') {
             row = n2.firstElementChild;
-        else
+        } else {
             row = n2;
+        }
 
-        row;
         // sin (2 \pi)
         // sin (x + y)
-        if (row.childElementCount === 3) {
+        if (row && row.childElementCount === 3) {
             r.code = 3;
             r.n2 = row.children;
-        }
-        else
+        } else {
             r.code = -1;
+        }
     }
 
     return r;
@@ -83,22 +88,21 @@ function trigSin(elem) {
             new_elem = mathmlCreateNode('mn', Math.sin(Number(f.n2[0].innerHTML)).toFixed(MATHMLJS.DECIMALS));
             r = 1;
             break;
-        // sin \pi
+            // sin \pi
         case 2:
             if (f.n2[0].innerHTML.trim().charCodeAt(0) === 960) {
                 new_elem = mathmlCreateNode('mn', Math.sin(Math.PI).toFixed(MATHMLJS.DECIMALS));
                 r = 1;
-            }
-            else {
+            } else {
                 console.log('Unable to handle the parameter');
                 r = 0;
             }
             break;
-        // sin (2 \pi)
-        // sin (x + y)
+            // sin (2 \pi)
+            // sin (x + y)
         case 3:
             switch (f.n2[1].innerHTML.trim().charCodeAt(0)) {
-                case 43:  // +
+                case 43: // +
                     // sin (x + y) = sin x cos y + cos x sin y
                     new_elem = mathmlCreateNode('mrow', '');
 
@@ -119,8 +123,8 @@ function trigSin(elem) {
 
                     r = 1;
                     break;
-                case 8722:  // minus sign
-                case 45:  // "-" for nooby
+                case 8722: // minus sign
+                case 45: // "-" for nooby
                     // sin (x - y) = sin x cos y - cos x sin y
                     new_elem = mathmlCreateNode('mrow', '');
 
@@ -141,16 +145,15 @@ function trigSin(elem) {
 
                     r = 1;
                     break;
-                case 215:  // multiplication sign
-                case 183:  // middle dot
-                case 8290:  // invisible times
+                case 215: // multiplication sign
+                case 183: // middle dot
+                case 8290: // invisible times
                     if (f.n2[2].nodeName === 'mi' &&
                         f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
                         f.n2[0].nodeName === 'mn') {
                         new_elem = mathmlCreateNode('mn', Math.sin(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
                         r = 1;
-                    }
-                    else {
+                    } else {
                         console.log('Unable to handle the parameter');
                         r = 0;
                     }
@@ -161,7 +164,6 @@ function trigSin(elem) {
                     break;
             }
             break;
-        case -1:
         default:
             console.log('Unable to handle the parameter');
             r = 0;
@@ -193,22 +195,21 @@ function trigCos(elem) {
             new_elem = mathmlCreateNode('mn', Math.cos(Number(f.n2[0].innerHTML)).toFixed(MATHMLJS.DECIMALS));
             r = 1;
             break;
-        // cos \pi
+            // cos \pi
         case 2:
             if (f.n2[0].innerHTML.trim().charCodeAt(0) === 960) {
                 new_elem = mathmlCreateNode('mn', Math.cos(Math.PI).toFixed(MATHMLJS.DECIMALS));
                 r = 1;
-            }
-            else {
+            } else {
                 console.log('Unable to handle the parameter');
                 r = 0;
             }
             break;
-        // cos (2 \pi)
-        // cos (x + y)
+            // cos (2 \pi)
+            // cos (x + y)
         case 3:
             switch (f.n2[1].innerHTML.trim().charCodeAt(0)) {
-                case 43:  // +
+                case 43: // +
                     // cos (x + y) = sin x cos y + cos x sin y
                     new_elem = mathmlCreateNode('mrow', '');
 
@@ -229,8 +230,8 @@ function trigCos(elem) {
 
                     r = 1;
                     break;
-                case 8722:  // minus sign
-                case 45:  // "-" for nooby
+                case 8722: // minus sign
+                case 45: // "-" for nooby
                     // sin (x - y) = cos x cos y + sin x sin y
                     new_elem = mathmlCreateNode('mrow', '');
 
@@ -251,16 +252,15 @@ function trigCos(elem) {
 
                     r = 1;
                     break;
-                case 215:  // multiplication sign
-                case 183:  // middle dot
-                case 8290:  // invisible times
+                case 215: // multiplication sign
+                case 183: // middle dot
+                case 8290: // invisible times
                     if (f.n2[2].nodeName === 'mi' &&
                         f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
                         f.n2[0].nodeName === 'mn') {
                         new_elem = mathmlCreateNode('mn', Math.cos(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
                         r = 1;
-                    }
-                    else {
+                    } else {
                         console.log('Unable to handle the parameter');
                         r = 0;
                     }
@@ -271,7 +271,6 @@ function trigCos(elem) {
                     break;
             }
             break;
-        case -1:
         default:
             console.log('Unable to handle the parameter');
             r = 0;
@@ -305,22 +304,21 @@ function trigTan(elem) {
             new_elem = mathmlCreateNode('mn', Math.tan(Number(f.n2[0].innerHTML)).toFixed(MATHMLJS.DECIMALS));
             r = 1;
             break;
-        // tan \pi
+            // tan \pi
         case 2:
             if (f.n2[0].innerHTML.trim().charCodeAt(0) === 960) {
                 new_elem = mathmlCreateNode('mn', Math.tan(Math.PI).toFixed(MATHMLJS.DECIMALS));
                 r = 1;
-            }
-            else {
+            } else {
                 console.log('Unable to handle the parameter');
                 r = 0;
             }
             break;
-        // tan (2 \pi)
-        // tan (x + y)
+            // tan (2 \pi)
+            // tan (x + y)
         case 3:
             switch (f.n2[1].innerHTML.trim().charCodeAt(0)) {
-                case 43:  // +
+                case 43: // +
                     // tan (x + y) = (tan x + tan y) / (1 - tan x tan y)
                     new_elem = mathmlCreateNode('mrow', '');
 
@@ -349,8 +347,8 @@ function trigTan(elem) {
 
                     r = 1;
                     break;
-                case 8722:  // minus sign
-                case 45:  // "-" for nooby
+                case 8722: // minus sign
+                case 45: // "-" for nooby
                     // tan (x - y) = (tan x - tan y) / (1 + tan x tan y)
                     // sin (x - y) = cos x cos y + sin x sin y
                     new_elem = mathmlCreateNode('mrow', '');
@@ -380,16 +378,15 @@ function trigTan(elem) {
 
                     r = 1;
                     break;
-                case 215:  // multiplication sign
-                case 183:  // middle dot
-                case 8290:  // invisible times
+                case 215: // multiplication sign
+                case 183: // middle dot
+                case 8290: // invisible times
                     if (f.n2[2].nodeName === 'mi' &&
                         f.n2[2].innerHTML.trim().charCodeAt(0) === 960 &&
                         f.n2[0].nodeName === 'mn') {
                         new_elem = mathmlCreateNode('mn', Math.tan(Number(f.n2[0].innerHTML) * Math.PI).toFixed(MATHMLJS.DECIMALS));
                         r = 1;
-                    }
-                    else {
+                    } else {
                         console.log('Unable to handle the parameter');
                         r = 0;
                     }
@@ -400,7 +397,6 @@ function trigTan(elem) {
                     break;
             }
             break;
-        case -1:
         default:
             console.log('Unable to handle the parameter');
             r = 0;
@@ -416,4 +412,3 @@ function trigTan(elem) {
 
     return r;
 }
-

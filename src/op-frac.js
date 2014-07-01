@@ -14,6 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global MATHMLJS */
+/* global jQuery */
+/* global mathmlCreateNode */
+/* global opChildHash */
+/* global opSiblingHash */
+/* global restoreNegativeMn */
+
 function opFracMiMi(elem) {
     var r;
     var f = elem.firstElementChild;
@@ -27,8 +34,7 @@ function opFracMiMi(elem) {
         jQuery(elem).replaceWith(new_elem);
 
         r = 1;
-    }
-    else {
+    } else {
         r = 0;
     }
 
@@ -44,15 +50,15 @@ function opFracMnMn(elem) {
     if (Number(l.innerHTML) === 0) {
         console.log('Can\'t divide by zero.');
         r = 0;
-    }
-    else {
+    } else {
         var val = (Number(f.innerHTML) / Number(l.innerHTML)).toFixed(MATHMLJS.DECIMALS);
+        var new_elem;
         if (val >= 0) {
             // Create node to replace
-            var new_elem = mathmlCreateNode('mn', val);
+            new_elem = mathmlCreateNode('mn', val);
+        } else {
+            new_elem = restoreNegativeMn(val);
         }
-        else
-            var new_elem = restoreNegativeMn(val);
 
         // Replace node and remove old ones
         jQuery(elem).replaceWith(new_elem);
@@ -86,4 +92,3 @@ function opFrac(elem) {
     }
     return r;
 }
-

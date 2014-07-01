@@ -17,19 +17,19 @@
 // Parse element and set informations
 
 function setTokenType(elem) {
-    var tl = null;  // Will store token level
+    var token = null; // Will store token level
     switch (elem.nodeName.toLowerCase()) {
         case 'mi':
-            t = 0;
+            token = 0;
             break;
         case 'mn':
-            t = 0;
+            token = 0;
             break;
         case 'mrwo':
-            t = 1;
+            token = 1;
             break;
         case 'mfenced':
-            t = 1;
+            token = 1;
             break;
     }
 }

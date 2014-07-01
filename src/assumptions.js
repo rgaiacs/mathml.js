@@ -26,13 +26,13 @@ function assum_mi(elem) {
                 var sn = n.innerHTML.trim();
                 var charcode = sn.charCodeAt(0);
                 switch (charcode) {
-                    case 8289:  // Function Aplication
+                    case 8289: // Function Aplication
                         r = 1;
                         break;
-                    case 8290:  // Invisible times
+                    case 8290: // Invisible times
                         r = 2;
                         break;
-                    case 8291:  // Invisible separator
+                    case 8291: // Invisible separator
                         r = 3;
                         break;
                     default:
@@ -44,11 +44,9 @@ function assum_mi(elem) {
                 r = 0;
                 break;
         }
-    }
-    else {
+    } else {
         // No next sibling
         r = 0;
     }
     return r;
 }
-

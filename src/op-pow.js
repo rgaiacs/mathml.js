@@ -14,6 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global MATHMLJS */
+/* global jQuery */
+/* global mathmlCreateNode */
+/* global opChildHash */
+/* global opSiblingHash */
+/* global restoreNegativeMn */
+
 function opPowMiMi(elem) {
     console.log('Can\'t compute the power of two variables.');
     return 0;
@@ -25,13 +32,14 @@ function opPowMnMn(elem) {
     var l = elem.lastElementChild;
 
     // TODO Probably here there is a bug. We MUST check the values.
-    var val = (Math.pow(Number(f.innerHTML), Number(l.innerHTML)));
+    var val = (Math.pow(Number(f.innerHTML), Number(l.innerHTML))).toFixed(MATHMLJS.DECIMALS);
+    var new_elem;
     if (val >= 0) {
         // Create node to replace
-        var new_elem = mathmlCreateNode('mn', val);
+        new_elem = mathmlCreateNode('mn', val);
+    } else {
+        new_elem = restoreNegativeMn(val);
     }
-    else
-        var new_elem = restoreNegativeMn(val);
 
     // Replace node and remove old ones
     jQuery(elem).replaceWith(new_elem);
@@ -62,4 +70,3 @@ function opPow(elem) {
     }
     return r;
 }
-

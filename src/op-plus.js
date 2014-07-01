@@ -14,6 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global jQuery */
+/* global mathmlCreateNode */
+/* global opSiblingHash */
+/* global restoreNegativeMn */
+
 function opPlusMiMi(elem) {
     var r;
     var p = elem.previousElementSibling;
@@ -23,7 +28,7 @@ function opPlusMiMi(elem) {
         // Create node to replace
         var new_elem = mathmlCreateNode('mrow', '');
 
-        var mn = mathmlCreateNode('mn', 2)
+        var mn = mathmlCreateNode('mn', 2);
         new_elem.appendChild(mn);
 
         var mo = mathmlCreateNode('mo', '\u2062');
@@ -38,8 +43,7 @@ function opPlusMiMi(elem) {
         elem.remove();
 
         r = 1;
-    }
-    else {
+    } else {
         r = 0;
     }
 
@@ -51,12 +55,13 @@ function opPlusMnMn(elem) {
     var n = elem.nextElementSibling;
 
     var val = Number(p.innerHTML) + Number(n.innerHTML);
+    var new_elem;
     if (val >= 0) {
         // Create node to replace
-        var new_elem = mathmlCreateNode('mn', val);
+        new_elem = mathmlCreateNode('mn', val);
+    } else {
+        new_elem = restoreNegativeMn(val);
     }
-    else
-        var new_elem = restoreNegativeMn(val);
 
     // Replace node and remove old ones
     jQuery(p).replaceWith(new_elem);
@@ -66,8 +71,7 @@ function opPlusMnMn(elem) {
     return 1;
 }
 
-function opPlusMrowMrow(elem) {
-}
+function opPlusMrowMrow(elem) {}
 
 // Handle the click in a plus sign
 function opPlus(elem) {
@@ -88,4 +92,3 @@ function opPlus(elem) {
     }
     return r;
 }
-

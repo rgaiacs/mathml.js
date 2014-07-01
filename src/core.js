@@ -14,6 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global $ */
+/* global MATHMLJS: true */
+/* global jQuery */
+/* global mathmlDelete */
+/* global mfracClick */
+/* global miClick */
+/* global moClick */
+/* global mrootClick */
+/* global msqrtClick */
+/* global msupClick */
+/* global setClick */
+/* global setDND */
+/* global setMouseover */
+
 // Create basic node
 function mathmlCreateNode(name, inner) {
     var new_elem = document.createElementNS('http://www.w3.org/1998/Math/MathML', name);
@@ -30,8 +44,7 @@ function mathmlCreateDelete(visible) {
     bdel.innerHTML = 'X';
     if (visible === false) {
         bdel.setAttribute('style', 'visibility:hidden;' + style);
-    }
-    else {
+    } else {
         bdel.setAttribute('style', style);
     }
     bdel.addEventListener('click', mathmlDelete, false);
@@ -50,7 +63,7 @@ function mathmlPreserve(ev) {
     // Check if the nextElementSibling is a math element or a button what
     // indicate that some step have been done previously.
     if (pmath.nextSibling.nodeName.toLowerCase() === 'math' ||
-            pmath.nextSibling.nodeName.toLowerCase() === 'button') {
+        pmath.nextSibling.nodeName.toLowerCase() === 'button') {
         console.log('The next sibling is \'math\'. Not performing operation.');
         return null;
     }
@@ -91,7 +104,7 @@ function mathmlPreserve(ev) {
         pmath.parentNode.insertBefore(bdel, pmath);
     }
 
-    if (this.nodeName.toLowerCase() != 'mn') {
+    if (this.nodeName.toLowerCase() !== 'mn') {
         ev.stopPropagation();
         ev.preventDefault();
     }
@@ -108,18 +121,41 @@ function removeMrow(elem) {
     else {
         // Check if it can be a negative number
         if (elem.nodeName.toLowerCase() === 'mrow' && elem.childElementCount === 2) {
-            f = elem.firstElementChild;
-            l = elem.lastElementChild;
+            var f = elem.firstElementChild;
+            var l = elem.lastElementChild;
             // Check if the first element is a minus sign and the last element
             // is a number.
             if (f.nodeName.toLowerCase() === 'mo' &&
                 (f.innerHTML.trim().charCodeAt(0) === 8722 ||
-                 f.innerHTML.trim().charCodeAt(0) === 45) &&
+                    f.innerHTML.trim().charCodeAt(0) === 45) &&
                 l.nodeName.toLowerCase() === 'mn') {
                 var new_elem = mathmlCreateNode('mn', -Number(l.innerHTML));
                 jQuery(elem).replaceWith(new_elem);
             }
         }
+    }
+}
+
+// Check if a mfenced element has only one element and in that case replace the
+// mfenced by it children.
+function removeMfenced(elem) {
+    if (elem.nodeName.toLowerCase() === 'mfenced' &&
+        elem.childElementCount === 1 &&
+        elem.firstChild.nodeName.toLowerCase() !== 'mtable') {
+        jQuery(elem).replaceWith(elem.firstElementChild);
+    }
+}
+
+// Check if siblings are delimiters and remove it
+function removeDelimiters(elem) {
+    if (elem.previousSibling &&
+        elem.previousSibling.nodeName.toLowerCase() === 'mo' &&
+        elem.previousSibling.innerHTML.match('/([{/') &&
+        elem.nextSibling &&
+        elem.nextSibling.nodeName.toLowerCase() === 'mo' &&
+        elem.nextSibling.innerHTML.match('/([{/')) {
+        elem.parentNode.removeChild(elem.previousSibling);
+        elem.parentNode.removeChild(elem.nextSibling);
     }
 }
 
@@ -138,20 +174,25 @@ function restoreNegativeMn(number) {
     return new_elem;
 }
 
-// Return a hash based on the childrens of a element
+// Return a hash based on the siblings of a element
 function opSiblingHash(elem) {
     removeMrow(elem.previousElementSibling);
     var f = elem.previousElementSibling.nodeName.toLowerCase();
     removeMrow(elem.nextElementSibling);
     var l = elem.nextElementSibling.nodeName.toLowerCase();
-    if (f === 'mi' && l === 'mi')
+    if (f === 'mi' && l === 'mi') {
         return 1;
-    else if (f == 'mn' && l === 'mn')
-        return 2;
-    else if (f == 'mrow' || l === 'mrow')
-        return 3;
-    else
-        return 0;
+    } else {
+        if (f === 'mn' && l === 'mn') {
+            return 2;
+        } else {
+            if (f === 'mrow' || l === 'mrow') {
+                return 3;
+            } else {
+                return 0;
+            }
+        }
+    }
 }
 
 // Return a hash based on the childrens of a element
@@ -160,14 +201,19 @@ function opChildHash(elem) {
     var f = elem.firstElementChild.nodeName.toLowerCase();
     removeMrow(elem.lastElementChild);
     var l = elem.lastElementChild.nodeName.toLowerCase();
-    if (f === 'mi' && l === 'mi')
+    if (f === 'mi' && l === 'mi') {
         return 1;
-    else if (f == 'mn' && l === 'mn')
-        return 2;
-    else if (f == 'mrow' || l === 'mrow')
-        return 3;
-    else
-        return 0;
+    } else {
+        if (f === 'mn' && l === 'mn') {
+            return 2;
+        } else {
+            if (f === 'mrow' || l === 'mrow') {
+                return 3;
+            } else {
+                return 0;
+            }
+        }
+    }
 }
 
 // Setup for each child from math element
@@ -199,10 +245,9 @@ function mathmlStart() {
     }
 
     if (MATHMLJS.ONLYDISPLAY) {
-        $("math[display='block']").find('*').each(mathmlSetup);
-    }
-    else {
-        $("math").find('*').each(mathmlSetup);
+        $('math[display=\'block\']').find('*').each(mathmlSetup);
+    } else {
+        $('math').find('*').each(mathmlSetup);
     }
 }
 
@@ -210,10 +255,9 @@ function mathmlStart() {
 window.onload = mathmlStart;
 
 // Global variable
-MATHMLJS = new Object();
+MATHMLJS = {};
 MATHMLJS.IDCOUNTER = 0;
-MATHMLJS.COLOR = 'orange';  // The color of select element
-MATHMLJS.ONLYDISPLAY = true;  // Only interact with display
-MATHMLJS.OVERWRITE = false;  // Not overwrite equations
-MATHMLJS.DECIMALS = 2;  // Number of decimals
-
+MATHMLJS.COLOR = 'orange'; // The color of select element
+MATHMLJS.ONLYDISPLAY = true; // Only interact with display
+MATHMLJS.OVERWRITE = false; // Not overwrite equations
+MATHMLJS.DECIMALS = 2; // Number of decimals

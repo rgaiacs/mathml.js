@@ -27,7 +27,7 @@ function run_test(function2test, input, expect) {
     if (math.innerHTML.replace(/( draggable="true"| class="clickHere")/g, '') != expect) {
         console.log("FAIL: " + function2test.name + " at " + input);
         console.log("  Expect: " + expect);
-        console.log("  Get:    " + math.innerHTML.replace(/ draggable="true"/g,''));
+        console.log("  Get:    " + math.innerHTML.replace(/ draggable="true"/g, ''));
     }
 }
 

@@ -14,6 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global jQuery */
+/* global mathmlCreateNode */
+/* global opSiblingHash */
+/* global restoreNegativeMn */
+
 function opTimesMiMi(elem) {
     var r;
     var p = elem.previousElementSibling;
@@ -35,8 +40,7 @@ function opTimesMiMi(elem) {
         elem.remove();
 
         r = 1;
-    }
-    else {
+    } else {
         r = 0;
     }
 
@@ -48,12 +52,13 @@ function opTimesMnMn(elem) {
     var n = elem.nextElementSibling;
 
     var val = Number(p.innerHTML) * Number(n.innerHTML);
+    var new_elem;
     if (val >= 0) {
         // Create node to replace
-        var new_elem = mathmlCreateNode('mn', val);
+        new_elem = mathmlCreateNode('mn', val);
+    } else {
+        new_elem = restoreNegativeMn(val);
     }
-    else
-        var new_elem = restoreNegativeMn(val);
 
     // Replace node and remove old ones
     jQuery(p).replaceWith(new_elem);
@@ -63,8 +68,7 @@ function opTimesMnMn(elem) {
     return 1;
 }
 
-function opTimesMrowMrow(elem) {
-}
+function opTimesMrowMrow(elem) {}
 
 // Handle the click in a plus sign
 function opTimes(elem) {
@@ -85,4 +89,3 @@ function opTimes(elem) {
     }
     return r;
 }
-

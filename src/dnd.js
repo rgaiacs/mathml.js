@@ -14,6 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+/* global dragData: true */
+/* global jQuery */
+/* global mathmlSetupElement */
+
 function handleDragStart(e) {
     console.log('Start Drag');
     dragData = this;
@@ -37,21 +41,19 @@ function handleDrop(e) {
         e.stopPropagation();
     }
 
-    if (dragData != this) {
+    if (dragData !== this) {
         var pthis = jQuery(this).parents('math');
         var pdrag = jQuery(dragData).parents('math');
-        if (pthis[0].id == pdrag[0].id) {
-            console.log('Drag and drop inside equation not implemented.')
-        }
-        else {
-            if ((this.nodeName.toLowerCase() == 'mi' || this.nodeName.toLowerCase() == 'mn') &&
-                (dragData.nodeName.toLowerCase() == 'mi' || dragData.nodeName.toLowerCase() == 'mn')) {
+        if (pthis[0].id === pdrag[0].id) {
+            console.log('Drag and drop inside equation not implemented.');
+        } else {
+            if ((this.nodeName.toLowerCase() === 'mi' || this.nodeName.toLowerCase() === 'mn') &&
+                (dragData.nodeName.toLowerCase() === 'mi' || dragData.nodeName.toLowerCase() === 'mn')) {
                 var cdrag = dragData.cloneNode(true);
                 mathmlSetupElement(cdrag);
                 jQuery(this).replaceWith(cdrag);
-            }
-            else {
-                console.log('Drag and drop not implemented.')
+            } else {
+                console.log('Drag and drop not implemented.');
             }
         }
     }
@@ -61,9 +63,8 @@ function handleDrop(e) {
 }
 
 function setDND(elem) {
-    elem.setAttribute("draggable", "true");
+    elem.setAttribute('draggable', 'true');
     elem.addEventListener('dragstart', handleDragStart, false);
     elem.addEventListener('dragover', handleDragOver, false);
     elem.addEventListener('drop', handleDrop, false);
 }
-
