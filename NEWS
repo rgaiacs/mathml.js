@@ -1,3 +1,12 @@
+MathML.js 0.2.0 (release date: 2014-07-01)
+------------------------------------------
+
+This is the second release.
+
+Raniere Silva:
+      Add remove of not need delimiters
+      Add fix to bad MathML
+
 MathML.js 0.1.0 (release date: 2013-10-28)
 ------------------------------------------
 
