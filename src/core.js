@@ -246,11 +246,43 @@ function mathmlSetup() {
     setDND(this);
 }
 
+// This fix some bad MathML that miss the multiplication symbol
+function mathmlFix(elem) {
+    switch (elem.nodeName) {
+        case 'mn':
+        case 'mi':
+            switch (elem.parentNode.nodeName) {
+                case 'math':
+                case 'mrow':
+                    if (elem.previousElementSibling && elem.previousElementSibling.nodeName !== 'mo') {
+                        elem.parentNode.insertBefore(mathmlCreateNode('mo', '×'), elem);
+                    }
+                    break;
+
+                default:
+                    return;
+            }
+            break;
+
+        default:
+            return;
+    }
+}
+
 // Entry point.
 function mathmlStart() {
-    var math;
+    var math, i;
+    math = document.getElementsByTagName('mn');
+    for (i = 0; i < math.length; i++) {
+        mathmlFix(math[i]);
+    }
+    math = document.getElementsByTagName('mi');
+    for (i = 0; i < math.length; i++) {
+        mathmlFix(math[i]);
+    }
+
     math = document.getElementsByTagName('math');
-    for (var i = 0; i < math.length; i++) {
+    for (i = 0; i < math.length; i++) {
         math[i].setAttribute('id', MATHMLJS.IDCOUNTER);
         MATHMLJS.IDCOUNTER += 1;
 
