@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>MathML Attributes &mdash; MathML.js alpha documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MathML.js alpha documentation" href="../index.html" />
+    <link rel="next" title="Top-Level Element" href="root.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="root.html" title="Top-Level Element"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mathml-attributes">
+<h1>MathML Attributes<a class="headerlink" href="#mathml-attributes" title="Permalink to this headline">¶</a></h1>
+<p>MathML elements take attributes with values that further specialize the meaning
+or effect of the element. Only part of the attributes are listed below, for a
+full list look at <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<p>For example we will use the following equation:</p>
+<math>
+  <msup>
+    <mfenced> <mbox> <mi>a</mi> <mo>+</mo> <mi>b</mi> </mbox> </mfenced> <mn>2</mn>
+  </msup>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math&gt;
+  &lt;msup&gt;
+    &lt;mfenced&gt; &lt;mbox&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;b&lt;/mi&gt; &lt;/mbox&gt; &lt;/mfenced&gt; &lt;mn&gt;2&lt;/mn&gt;
+  &lt;/msup&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+<div class="section" id="color">
+<h2>color<a class="headerlink" href="#color" title="Permalink to this headline">¶</a></h2>
+<p>The color, or background color, of presentation elements may be specified as a
+color using <tt class="docutils literal"><span class="pre">color=#RGB|#RRGGBB|html-color-name</span></tt>.</p>
+<math>
+  <msup>
+    <mfenced> <mbox> <mi color='red'>a</mi> <mo>+</mo> <mi>b</mi> </mbox> </mfenced> <mn>2</mn>
+  </msup>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math&gt;
+  &lt;msup&gt;
+    &lt;mfenced&gt; &lt;mbox&gt; &lt;mi color=&#39;red&#39;&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;b&lt;/mi&gt; &lt;/mbox&gt; &lt;/mfenced&gt; &lt;mn&gt;2&lt;/mn&gt;
+  &lt;/msup&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+<p>The same result can be achieved using the CSS.</p>
+<math>
+  <msup>
+    <mfenced> <mbox> <mi style='color:red;'>a</mi> <mo>+</mo> <mi>b</mi> </mbox> </mfenced> <mn>2</mn>
+  </msup>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math&gt;
+  &lt;msup&gt;
+    &lt;mfenced&gt; &lt;mbox&gt; &lt;mi style=&#39;color:red;&#39;&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;b&lt;/mi&gt; &lt;/mbox&gt; &lt;/mfenced&gt; &lt;mn&gt;2&lt;/mn&gt;
+  &lt;/msup&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id">
+<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
+<p>Establishes a unique identifier associated with the element to support linking,
+cross-references and parallel markup.</p>
+</div>
+<div class="section" id="xref">
+<h2>xref<a class="headerlink" href="#xref" title="Permalink to this headline">¶</a></h2>
+<p>References another element within the document.</p>
+</div>
+<div class="section" id="class">
+<h2>class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
+<p>Associates the element with a set of style classes for use with XSLT and CSS.</p>
+</div>
+<div class="section" id="style">
+<h2>style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h2>
+<p>Associates style information with the element for use with XSLT and CSS.</p>
+</div>
+<div class="section" id="href">
+<h2>href<a class="headerlink" href="#href" title="Permalink to this headline">¶</a></h2>
+<p>Can be used to establish the element as a hyperlink to the specfied URI.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.w3.org/TR/MathML3/chapter2.html">http://www.w3.org/TR/MathML3/chapter2.html</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">MathML Attributes</a><ul>
+<li><a class="reference internal" href="#color">color</a></li>
+<li><a class="reference internal" href="#id">id</a></li>
+<li><a class="reference internal" href="#xref">xref</a></li>
+<li><a class="reference internal" href="#class">class</a></li>
+<li><a class="reference internal" href="#style">style</a></li>
+<li><a class="reference internal" href="#href">href</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="root.html"
+                        title="next chapter">Top-Level Element</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/mathml/attributes.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="root.html" title="Top-Level Element"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Raniere Silva.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; MathML.js alpha documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MathML.js alpha documentation" href="../index.html" />
+    <link rel="next" title="Actions with mi" href="mi.html" />
+    <link rel="prev" title="FAQ" href="../user/faq.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mi.html" title="Actions with mi"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../user/faq.html" title="FAQ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>MathML.js needs</p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Lexical_analysis">Lexical analysis</a> and</li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Syntax_analysis">Syntax analysis</a></li>
+</ul>
+<p>of MathML to work properly. Below you will find some information of the choices
+that we made in this area for MathML.js.</p>
+<div class="section" id="primary-tokens">
+<h2>Primary Tokens<a class="headerlink" href="#primary-tokens" title="Permalink to this headline">¶</a></h2>
+<p>For primary tokens we will mean a MathML element that has a very basic meaning.</p>
+<div class="section" id="mi">
+<h3>mi<a class="headerlink" href="#mi" title="Permalink to this headline">¶</a></h3>
+<p>An <tt class="docutils literal"><span class="pre">mi</span></tt> element represents a symbolic name or arbitrary text that should be
+rendered as an identifier. Identifiers can include variables, function names,
+and symbolic constants.</p>
+</div>
+<div class="section" id="mn">
+<h3>mn<a class="headerlink" href="#mn" title="Permalink to this headline">¶</a></h3>
+<p>An <tt class="docutils literal"><span class="pre">mn</span></tt> element represents a &#8220;numeric literal&#8221; or other data that should be
+rendered as a numeric literal. Generally speaking, a numeric literal is a
+sequence of digits, perhaps including a decimal point, representing an unsigned
+integer or real number.</p>
+<p>Not all mathematical numbers should be represented using <tt class="docutils literal"><span class="pre">mn</span></tt>. Examples of
+mathematical numbers that should be represented differently include:</p>
+<ul>
+<li><p class="first">complex numbers,</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mrow&gt;
+&lt;mn&gt; 3 &lt;/mn&gt;
+&lt;mo&gt; &amp;#x2062;&lt;!--INVISIBLE TIMES--&gt; &lt;/mo&gt;
+&lt;mi&gt; &amp;#x2148;&lt;!--DOUBLE-STRUCK ITALIC SMALL I--&gt; &lt;/mi&gt;
+&lt;/mrow&gt;
+</pre></div>
+</div>
+</li>
+<li><p class="first">ratios of numbers shown as fractions,</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mfrac&gt; &lt;mn&gt; 1 &lt;/mn&gt; &lt;mn&gt; 2 &lt;/mn&gt; &lt;/mfrac&gt;
+</pre></div>
+</div>
+</li>
+<li><p class="first">names of numeric constants,</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mi&gt; &amp;#x3C0;&lt;!--GREEK SMALL LETTER PI--&gt; &lt;/mi&gt;
+&lt;mi&gt; &amp;#x2147;&lt;!--DOUBLE-STRUCK ITALIC SMALL E--&gt; &lt;/mi&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="mo">
+<h3>mo<a class="headerlink" href="#mo" title="Permalink to this headline">¶</a></h3>
+<p>An <tt class="docutils literal"><span class="pre">mo</span></tt> element represents an operator or anything that should be rendered as
+an operator. Most of the operator are a UNICODE char (a full list can be found
+in <a class="footnote-reference" href="#id3" id="id1">[2]</a>) but in some cases can be a expression.</p>
+<p>Some ordinary  operators</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mo&gt; + &lt;/mo&gt;
+&lt;mo&gt; &amp;lt; &lt;/mo&gt;
+&lt;mo&gt; &amp;#x2264;&lt;!--LESS-THAN OR EQUAL TO--&gt; &lt;/mo&gt;
+&lt;mo&gt; &amp;#x2062;&lt;!--INVISIBLE TIMES--&gt; &lt;/mo&gt;
+&lt;mo&gt; and&lt;!--EXPRESSION AS OPERATOR--&gt;  &lt;/mo&gt;
+</pre></div>
+</div>
+<p>Certain operators that are &#8220;invisible&#8221; in traditional mathematical notation
+MUST be represented using specific entity references within <tt class="docutils literal"><span class="pre">mo</span></tt> elements,
+rather than simply by nothing. The characters used for these &#8220;invisible
+operators&#8221; are in the example below:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mrow&gt;
+&lt;mi&gt; f &lt;/mi&gt;
+&lt;mo&gt; &amp;#x2061;&lt;!--FUNCTION APPLICATION--&gt; &lt;/mo&gt;
+&lt;mrow&gt;
+&lt;mo&gt; ( &lt;/mo&gt;
+&lt;mi&gt; x &lt;/mi&gt;
+&lt;mo&gt; ) &lt;/mo&gt;
+&lt;/mrow&gt;
+&lt;/mrow&gt;
+
+&lt;mrow&gt;
+&lt;mi&gt; sin &lt;/mi&gt;
+&lt;mo&gt; &amp;#x2061;&lt;!--FUNCTION APPLICATION--&gt; &lt;/mo&gt;
+&lt;mi&gt; x &lt;/mi&gt;
+&lt;/mrow&gt;
+
+&lt;mrow&gt;
+&lt;mi&gt; x &lt;/mi&gt;
+&lt;mo&gt; &amp;#x2062;&lt;!--INVISIBLE TIMES--&gt; &lt;/mo&gt;
+&lt;mi&gt; y &lt;/mi&gt;
+&lt;/mrow&gt;
+
+&lt;msub&gt;
+&lt;mi&gt; m &lt;/mi&gt;
+&lt;mrow&gt;
+&lt;mn&gt; 1 &lt;/mn&gt;
+&lt;mo&gt; &amp;#x2063;&lt;!--INVISIBLE SEPARATOR--&gt; &lt;/mo&gt;
+&lt;mn&gt; 2 &lt;/mn&gt;
+&lt;/mrow&gt;
+&lt;/msub&gt;
+</pre></div>
+</div>
+<p>In the case of integrals the differential operator symbol, usually denoted by
+&#8220;d&#8221;, MUST be used as <tt class="docutils literal"><span class="pre">&amp;DifferentialD;</span></tt> (<tt class="docutils literal"><span class="pre">U+2146</span></tt>) in an <tt class="docutils literal"><span class="pre">mo</span></tt> element.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mrow&gt;
+&lt;msubsup&gt;
+&lt;mo&gt; &amp;#x222B;&lt;!--INTEGRAL--&gt; &lt;/mo&gt;
+&lt;mn&gt; 0 &lt;/mn&gt;
+&lt;mn&gt; 1 &lt;/mn&gt;
+&lt;/msubsup&gt;
+&lt;mrow&gt;
+&lt;msup&gt;
+&lt;mi&gt; &amp;#x2147;&lt;!--DOUBLE-STRUCK ITALIC SMALL E--&gt;
+&lt;/mi&gt;
+&lt;mi&gt; x &lt;/mi&gt;
+&lt;/msup&gt;
+&lt;mo&gt; &amp;#x2062;&lt;!--INVISIBLE TIMES--&gt; &lt;/mo&gt;
+&lt;mrow&gt;
+&lt;mo&gt;
+&amp;#x2146;&lt;!--DOUBLE-STRUCK ITALIC SMALL D--&gt; &lt;/mo&gt;
+&lt;mi&gt; x &lt;/mi&gt;
+&lt;/mrow&gt;
+&lt;/mrow&gt;
+&lt;/mrow&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="secondary-tokens">
+<h2>Secondary Tokens<a class="headerlink" href="#secondary-tokens" title="Permalink to this headline">¶</a></h2>
+<p>For secondary tokens we will means a MathML element that enclose one or more
+elements that is significant as a group.</p>
+<div class="section" id="mrow">
+<h3>mrow<a class="headerlink" href="#mrow" title="Permalink to this headline">¶</a></h3>
+<p>An <tt class="docutils literal"><span class="pre">mrow</span></tt> element is used to group together any number of sub-expressions, usually
+consisting of one or more <tt class="docutils literal"><span class="pre">mo</span></tt> elements acting as &#8220;operators&#8221; on one or more other
+expressions that are their &#8220;operands&#8221;.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mrow&gt;
+&lt;mrow&gt;
+&lt;mn&gt; 2 &lt;/mn&gt;
+&lt;mo&gt; &amp;#x2062;&lt;!--INVISIBLE TIMES--&gt; &lt;/mo&gt;
+&lt;mi&gt; x &lt;/mi&gt;
+&lt;/mrow&gt;
+&lt;mo&gt; + &lt;/mo&gt;
+&lt;mi&gt; y &lt;/mi&gt;
+&lt;mo&gt; - &lt;/mo&gt;
+&lt;mi&gt; z &lt;/mi&gt;
+&lt;/mrow&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="mfrac">
+<h3>mfrac<a class="headerlink" href="#mfrac" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">mfrac</span></tt> element is used for fractions. It can also be used to mark up
+fraction-like objects such as binomial coefficients and Legendre symbols. The
+syntax for mfrac is</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mfrac&gt; numerator denominator &lt;/mfrac&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="msqrt">
+<h3>msqrt<a class="headerlink" href="#msqrt" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">msqrt</span></tt> element is used for square roots. The syntax for this element is</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;msqrt&gt; base &lt;/msqrt&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="mroot">
+<h3>mroot<a class="headerlink" href="#mroot" title="Permalink to this headline">¶</a></h3>
+<p>The mroot element is used to draw radicals with indices, e.g. a cube root.
+The syntax for this element is</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mroot&gt; base index &lt;/mroot&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="mfenced">
+<h3>mfenced<a class="headerlink" href="#mfenced" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">mfenced</span></tt> element provides a convenient form in which to express common
+constructs involving fences (i.e. braces, brackets, and parentheses).</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mfenced&gt;
+&lt;mrow&gt;
+&lt;mi&gt; a &lt;/mi&gt;
+&lt;mo&gt; + &lt;/mo&gt;
+&lt;mi&gt; b &lt;/mi&gt;
+&lt;/mrow&gt;
+&lt;/mfenced&gt;
+
+&lt;mrow&gt;
+&lt;mi&gt; f &lt;/mi&gt;
+&lt;mo&gt; &amp;#x2061;&lt;!--FUNCTION APPLICATION--&gt; &lt;/mo&gt;
+&lt;mfenced&gt;
+&lt;mi&gt; x &lt;/mi&gt;
+&lt;mi&gt; y &lt;/mi&gt;
+&lt;/mfenced&gt;
+&lt;/mrow&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="msub">
+<h3>msub<a class="headerlink" href="#msub" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">msub</span></tt> element attaches a subscript to a base using the syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;msub&gt; base subscript &lt;/msub&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="msup">
+<h3>msup<a class="headerlink" href="#msup" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">msup</span></tt> element attaches a superscript to a base using the syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;msup&gt; base superscript &lt;/msup&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="msubsup">
+<h3>msubsup<a class="headerlink" href="#msubsup" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">msubsup</span></tt> element is used to attach both a subscript and superscript to a
+base expression:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;msubsup&gt; base subscript superscript &lt;/msubsup&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="munder">
+<h3>munder<a class="headerlink" href="#munder" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">munder</span></tt> element attaches an accent or limit placed under a base using the
+syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;munder&gt; base underscript &lt;/munder&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="mover">
+<h3>mover<a class="headerlink" href="#mover" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">mover</span></tt> element attaches an accent or limit placed over a base using the
+syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;mover&gt; base overscript &lt;/mover&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="munderover">
+<h3>munderover<a class="headerlink" href="#munderover" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">munderover</span></tt> element attaches accents or limits placed both over and under
+a base using the syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;munderover&gt; base underscript overscript &lt;/munderover&gt;
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode">Mathematical operators and symbols in Unicode</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td><a class="reference external" href="http://www.unicode.org/charts/PDF/U2200.pdf">Mathematical Operators Range: 2200–22FF</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="http://www.daisy.org/z3986/structure/SG-DAISY3/part2-math.html">MathML in DAISY 3 Structure Guidelines</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[4]</td><td><a class="reference external" href="http://www.xmlmind.com/tutorials/MathML/">MathML Presentation Markup for the Impatient</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#primary-tokens">Primary Tokens</a><ul>
+<li><a class="reference internal" href="#mi">mi</a></li>
+<li><a class="reference internal" href="#mn">mn</a></li>
+<li><a class="reference internal" href="#mo">mo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#secondary-tokens">Secondary Tokens</a><ul>
+<li><a class="reference internal" href="#mrow">mrow</a></li>
+<li><a class="reference internal" href="#mfrac">mfrac</a></li>
+<li><a class="reference internal" href="#msqrt">msqrt</a></li>
+<li><a class="reference internal" href="#mroot">mroot</a></li>
+<li><a class="reference internal" href="#mfenced">mfenced</a></li>
+<li><a class="reference internal" href="#msub">msub</a></li>
+<li><a class="reference internal" href="#msup">msup</a></li>
+<li><a class="reference internal" href="#msubsup">msubsup</a></li>
+<li><a class="reference internal" href="#munder">munder</a></li>
+<li><a class="reference internal" href="#mover">mover</a></li>
+<li><a class="reference internal" href="#munderover">munderover</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../user/faq.html"
+                        title="previous chapter">FAQ</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mi.html"
+                        title="next chapter">Actions with mi</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/dev/intro.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="mi.html" title="Actions with mi"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../user/faq.html" title="FAQ"
+             >previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Raniere Silva.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; MathML.js alpha documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MathML.js alpha documentation" href="../index.html" />
+    <link rel="next" title="MathML Attributes" href="attributes.html" />
+    <link rel="prev" title="Coding Style" href="../dev/code-style.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="attributes.html" title="MathML Attributes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../dev/code-style.html" title="Coding Style"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>As say before, MathML is a specification for describing mathemathics. The
+equation below are write using MathML</p>
+<math>
+<mrow>
+ <mi>x</mi>
+ <mo>=</mo>
+ <mfrac>
+   <mrow>
+     <mrow>
+       <mo>-</mo>
+       <mi>b</mi>
+     </mrow>
+     <mo>&#xB1;<!--PLUS-MINUS SIGN--></mo>
+     <msqrt>
+       <mrow>
+         <msup>
+           <mi>b</mi>
+           <mn>2</mn>
+         </msup>
+         <mo>-</mo>
+         <mrow>
+           <mn>4</mn>
+           <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+           <mi>a</mi>
+           <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+           <mi>c</mi>
+         </mrow>
+       </mrow>
+     </msqrt>
+   </mrow>
+   <mrow>
+     <mn>2</mn>
+     <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+     <mi>a</mi>
+   </mrow>
+ </mfrac>
+</mrow>
+</math>
+<p>and produce by the following code:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;math&gt;
+&lt;mrow&gt;
+ &lt;mi&gt;x&lt;/mi&gt;
+ &lt;mo&gt;=&lt;/mo&gt;
+ &lt;mfrac&gt;
+   &lt;mrow&gt;
+     &lt;mrow&gt;
+       &lt;mo&gt;-&lt;/mo&gt;
+       &lt;mi&gt;b&lt;/mi&gt;
+     &lt;/mrow&gt;
+     &lt;mo&gt;&amp;#xB1;&lt;!--PLUS-MINUS SIGN--&gt;&lt;/mo&gt;
+     &lt;msqrt&gt;
+       &lt;mrow&gt;
+         &lt;msup&gt;
+           &lt;mi&gt;b&lt;/mi&gt;
+           &lt;mn&gt;2&lt;/mn&gt;
+         &lt;/msup&gt;
+         &lt;mo&gt;-&lt;/mo&gt;
+         &lt;mrow&gt;
+           &lt;mn&gt;4&lt;/mn&gt;
+           &lt;mo&gt;&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;&lt;/mo&gt;
+           &lt;mi&gt;a&lt;/mi&gt;
+           &lt;mo&gt;&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;&lt;/mo&gt;
+           &lt;mi&gt;c&lt;/mi&gt;
+         &lt;/mrow&gt;
+       &lt;/mrow&gt;
+     &lt;/msqrt&gt;
+   &lt;/mrow&gt;
+   &lt;mrow&gt;
+     &lt;mn&gt;2&lt;/mn&gt;
+     &lt;mo&gt;&amp;#x2062;&lt;!--INVISIBLE TIMES--&gt;&lt;/mo&gt;
+     &lt;mi&gt;a&lt;/mi&gt;
+   &lt;/mrow&gt;
+ &lt;/mfrac&gt;
+&lt;/mrow&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+<p>The last version is MathML 3.0 that was release as W3C Recommendation on 21
+October 2010.</p>
+<p>MathML is an application of XML, Extensible Markup Language, and as such it is
+governed by the rules of XML syntax. XML syntax is a notation for rooted
+labeled planar trees. Planarity means that the children of a node may be viewed
+as given a natural order and MathML depends on this order.</p>
+<p>MathML presentation elements only recommend (i.e., do not require) specific
+ways of rendering; this is in order to allow for medium-dependent rendering and
+for individual preferences of style.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://www.w3.org/TR/MathML3/chapter2.html">http://www.w3.org/TR/MathML3/chapter2.html</a></td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../dev/code-style.html"
+                        title="previous chapter">Coding Style</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="attributes.html"
+                        title="next chapter">MathML Attributes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/mathml/intro.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="attributes.html" title="MathML Attributes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../dev/code-style.html" title="Coding Style"
+             >previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Raniere Silva.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

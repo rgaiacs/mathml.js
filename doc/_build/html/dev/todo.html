@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>TODO &mdash; MathML.js alpha documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MathML.js alpha documentation" href="../index.html" />
+    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="prev" title="Know Bugs" href="bugs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="faq.html" title="FAQ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bugs.html" title="Know Bugs"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="todo">
+<h1>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h1>
+<p>Here is a list of that we hope that MathML.js do one day.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some items in this list can&#8217;t be done yet since Firefox MathML don&#8217;t
+implement the full specifications. For more information see <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+</div>
+<div class="section" id="drag-and-drop">
+<h2>Drag and drop<a class="headerlink" href="#drag-and-drop" title="Permalink to this headline">¶</a></h2>
+<p>Be capable to drag and drop part of equations to a new position.</p>
+</div>
+<div class="section" id="multiple-indentation-levels-equations">
+<h2>Multiple indentation levels equations<a class="headerlink" href="#multiple-indentation-levels-equations" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Some of MathML Token Elements attributes aren&#8217;t implemented in Firefox.</p>
+</div>
+<p>Work using multiple indentation levels.</p>
+<math>
+<mrow>
+  <mrow>
+    <mo>(</mo> <mi>x</mi> <mo>+</mo> <mi>y</mi> </mrow> <mo>)</mo>
+  </mrow>
+  <mo id='equals'>=</mo>
+  <mrow>
+    <mo>(</mo> <mi>x</mi> <mo>+</mo> <mi>y</mi> </mrow> <mo>)</mo>
+  </mrow>
+  <mo linebreak='newline' indentalign='id' indenttarget='equals'>=</mo>
+  <mrow>
+    <mo>(</mo> <mi>x</mi> <mo>+</mo> <mi>y</mi> </mrow> <mo>)</mo>
+  </mrow>
+</mrow>
+</math></div>
+<div class="section" id="linear-algebra">
+<h2>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Some of MathML Tabular Math aren&#8217;t implemented in Firefox.</p>
+</div>
+<p>Manipulate matrices will be nice.</p>
+</div>
+<div class="section" id="k-6-math">
+<h2>K-6 Math<a class="headerlink" href="#k-6-math" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">None of MathML Tabular Math aren&#8217;t implemented in Firefox.</p>
+</div>
+<p>Manipulate mathematics used in the lower grades such as two-dimensional addition,
+multiplication, and long division that tends to be tabular.</p>
+<p>For example, the sum of 424 and 33 look as:</p>
+<math>
+<mstack>
+<mn>424</mn>
+<msrow> <mo>+</mo> <mn>33</mn> </msrow>
+<msline/>
+</mstack>
+</math><p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Mozilla/MathML_Project/Status">Mozilla MathML Status</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">TODO</a><ul>
+<li><a class="reference internal" href="#drag-and-drop">Drag and drop</a></li>
+<li><a class="reference internal" href="#multiple-indentation-levels-equations">Multiple indentation levels equations</a></li>
+<li><a class="reference internal" href="#linear-algebra">Linear Algebra</a></li>
+<li><a class="reference internal" href="#k-6-math">K-6 Math</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bugs.html"
+                        title="previous chapter">Know Bugs</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="faq.html"
+                        title="next chapter">FAQ</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/dev/todo.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="faq.html" title="FAQ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bugs.html" title="Know Bugs"
+             >previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Raniere Silva.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

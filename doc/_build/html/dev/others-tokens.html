@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Actions with others tokens &mdash; MathML.js alpha documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MathML.js alpha documentation" href="../index.html" />
+    <link rel="next" title="Undo Actions" href="undo.html" />
+    <link rel="prev" title="Actions with mrow" href="mrow.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="undo.html" title="Undo Actions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mrow.html" title="Actions with mrow"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="actions-with-others-tokens">
+<h1>Actions with others tokens<a class="headerlink" href="#actions-with-others-tokens" title="Permalink to this headline">¶</a></h1>
+<p>In this section we will describe how others elements will handle DOM events.</p>
+<div class="section" id="mfrac">
+<h2>mfrac<a class="headerlink" href="#mfrac" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mouse-over-and-out">
+<h3>Mouse over and out<a class="headerlink" href="#mouse-over-and-out" title="Permalink to this headline">¶</a></h3>
+<p>When the pointing device is moved onto an <tt class="docutils literal"><span class="pre">mfrac</span></tt> the element should change its
+background color (default to orange).</p>
+<p>When the pointing device is moved away from an <tt class="docutils literal"><span class="pre">mfrac</span></tt> it should change its
+background color to original value.</p>
+<p>This behavior can be achieve changing the color value attribute.</p>
+</div>
+<div class="section" id="click">
+<h3>Click<a class="headerlink" href="#click" title="Permalink to this headline">¶</a></h3>
+<p>When clicked it will try to perform the division.</p>
+</div>
+</div>
+<div class="section" id="msqrt">
+<h2>msqrt<a class="headerlink" href="#msqrt" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Mouse over and out<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>When the pointing device is moved onto an <tt class="docutils literal"><span class="pre">msqrt</span></tt> the element should change its
+background color (default to orange).</p>
+<p>When the pointing device is moved away from an <tt class="docutils literal"><span class="pre">msqrt</span></tt> it should change its
+background color to original value.</p>
+<p>This behavior can be achieve changing the color value attribute.</p>
+</div>
+<div class="section" id="id2">
+<h3>Click<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>When clicked it will try to perform the square root operation.</p>
+</div>
+</div>
+<div class="section" id="mroot">
+<h2>mroot<a class="headerlink" href="#mroot" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Mouse over and out<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>When the pointing device is moved onto an <tt class="docutils literal"><span class="pre">mroot</span></tt> the element should change its
+background color (default to orange).</p>
+<p>When the pointing device is moved away from an <tt class="docutils literal"><span class="pre">mroot</span></tt> it should change its
+background color to original value.</p>
+<p>This behavior can be achieve changing the color value attribute.</p>
+</div>
+<div class="section" id="id4">
+<h3>Click<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>When clicked it will try to perform the root operation.</p>
+</div>
+</div>
+<div class="section" id="msup">
+<h2>msup<a class="headerlink" href="#msup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Mouse over and out<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>When the pointing device is moved onto an <tt class="docutils literal"><span class="pre">msup</span></tt> the element should change its
+background color (default to orange).</p>
+<p>When the pointing device is moved away from an <tt class="docutils literal"><span class="pre">msup</span></tt> it should change its
+background color to original value.</p>
+<p>This behavior can be achieve changing the color value attribute.</p>
+</div>
+<div class="section" id="id6">
+<h3>Click<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>When clicked it will try to perform the power operation.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Actions with others tokens</a><ul>
+<li><a class="reference internal" href="#mfrac">mfrac</a><ul>
+<li><a class="reference internal" href="#mouse-over-and-out">Mouse over and out</a></li>
+<li><a class="reference internal" href="#click">Click</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#msqrt">msqrt</a><ul>
+<li><a class="reference internal" href="#id1">Mouse over and out</a></li>
+<li><a class="reference internal" href="#id2">Click</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mroot">mroot</a><ul>
+<li><a class="reference internal" href="#id3">Mouse over and out</a></li>
+<li><a class="reference internal" href="#id4">Click</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#msup">msup</a><ul>
+<li><a class="reference internal" href="#id5">Mouse over and out</a></li>
+<li><a class="reference internal" href="#id6">Click</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mrow.html"
+                        title="previous chapter">Actions with mrow</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="undo.html"
+                        title="next chapter">Undo Actions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/dev/others-tokens.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="undo.html" title="Undo Actions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mrow.html" title="Actions with mrow"
+             >previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Raniere Silva.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

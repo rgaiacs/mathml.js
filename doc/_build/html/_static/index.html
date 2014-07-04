@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MathML.js</title>
+<script type='text/javascript' src="jquery-2.0.3.min.js"></script>
+<script type='text/javascript' src="mathml.js"></script>
+</head>
+<body>
+<div style='width:80%; background-color:orange; padding:.25em; margin-left:auto;
+  margin-right:auto;'>
+  <p>You need MathML support and Javascript enable in your device to see this
+  page.</p>
+  <p>Only Firefox and Safari (&gt;= 5.1) support MathML so you need one of them
+  for visualize this page. More information <a
+    href='http://caniuse.com/mathml'>here</a>.</p>
+</div>
+<h1>Welcome to MathML.js</h1>
+<p>MathML.js is a Open Source (GLPv3) Javascript library (<a
+  href='http://www.github.com/r-gaia-cs/mathml.js'>see the source code here</a>
+and <a href='http://r-gaia-cs.github.io/mathml.js/doc.html'>the documentation
+here</a>)to enable GRAPHIC humam manipulation of MathML elements. This work is
+based on
+<ul>
+  <li><a href='https://github.com/jlabarbera11/TouchOfMath'>TouchOfMath</a> and</li>
+  <li><a
+    href='http://galvosukykla.lt/failai/coding/equation-exercise/proof-of-concept.html'>Equation
+    Exercise Demo (proof of concept)</a>.</li>
+</ul></p>
+<p>MathML.js ISN'T:
+<ul>
+  <li>a plataform for display of mathematics in all browsers (try <a
+      href="http://www.mathjax.org/">MathJax</a>),</li>
+  <li>a equation editor (try <a href="https://www.mathway.com/">Mathway</a>),</li>
+  <li>a jquery-like Javascript library for MathML (try <a
+    href="https://github.com/sdiehl/jquery-mathml">jquery-mathml</a>);</li>
+  <li>a math Javascript library (try <a
+    href="http://mathjs.org/">Math.js</a>);</li>
+  <li>a symbolic math Javascript library (try <a
+    href="https://github.com/jamesmclellan/Symbolic-Math-Library-for-Javascript">Symbolic-Math-Library-for-Javascript</a>).</li>
+</ul>
+</p>
+<h2>Proof of concept example</h2>
+<p>Given the equation
+<math display='block'>
+  <msup> <mi>x</mi> <mn>2</mn> </msup> <mo>+</mo> <mrow> <mn>3</mn>
+  <mo>&InvisibleTimes;</mo> <mi>x</mi> </mrow> <mo>+</mo> <mn>2</mn> <mo>=</mo>
+  <mn>0</mo>
+</math>
+find one of the solutions (click in variables to replace it with a number
+and in math operator to compute it) that are given by
+<math display='block'>
+ <mrow>
+  <mi>x</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mrow>
+        <mo>-</mo>
+        <mi>b</mi>
+      </mrow>
+      <mo>+</mo>
+      <msqrt>
+        <mrow>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>-</mo>
+          <mrow>
+            <mn>4</mn>
+            <mo>&InvisibleTimes;</mo>
+            <mi>a</mi>
+            <mo>&InvisibleTimes;</mo>
+            <mi>c</mi>
+          </mrow>
+        </mrow>
+      </msqrt>
+    </mrow>
+    <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>a</mi>
+    </mrow>
+  </mfrac>
+ </mrow>
+</math>
+and now the other
+<math display='block'>
+ <mrow>
+  <mi>x</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mrow>
+        <mo>-</mo>
+        <mi>b</mi>
+      </mrow>
+      <mo>-</mo>
+      <msqrt>
+        <mrow>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>-</mo>
+          <mrow>
+            <mn>4</mn>
+            <mo>&InvisibleTimes;</mo>
+            <mi>a</mi>
+            <mo>&InvisibleTimes;</mo>
+            <mi>c</mi>
+          </mrow>
+        </mrow>
+      </msqrt>
+    </mrow>
+    <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>a</mi>
+    </mrow>
+  </mfrac>
+ </mrow>
+</math>
+</p>
+<footer>
+  <address>This document was write by <a
+      href='mailto:ra092767@ime.unicamp.br'>Raniere Silva</a>.<br>
+    <a href='http://www.github.com/r-gaia-cs/mathml.js'>MathML.js</a> is
+    developed and maintainer by <a
+      href='mailto:ra092767@ime.unicamp.br'>Raniere Silva</a>.
+</footer>
+</body>
+</html>

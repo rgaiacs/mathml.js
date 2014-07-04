@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Top-Level Element &mdash; MathML.js alpha documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MathML.js alpha documentation" href="../index.html" />
+    <link rel="next" title="Token Elements" href="token.html" />
+    <link rel="prev" title="MathML Attributes" href="attributes.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="token.html" title="Token Elements"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="attributes.html" title="MathML Attributes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="top-level-element">
+<h1>Top-Level Element<a class="headerlink" href="#top-level-element" title="Permalink to this headline">¶</a></h1>
+<p>MathML specifies a single top-level or root math element, which encapsulates
+each instance of MathML markup within a document. All other MathML content must
+be contained in a math element; in other words, every valid MathML expression
+is wrapped in outer &lt;math&gt; tags. The math element must always be the outermost
+element in a MathML expression; it is an error for one math element to contain
+another.</p>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the attributes listed <a class="reference internal" href="attributes.html"><em>previously</em></a>, the math
+element accepts the following attributes and for a full list look at <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<div class="section" id="display">
+<h3>display<a class="headerlink" href="#display" title="Permalink to this headline">¶</a></h3>
+<p>Specifies whether the enclosed MathML expression should be rendered as a
+separate vertical block (in display style) or inline, aligned with adjacent
+text.</p>
+<p>The possibles values are <tt class="docutils literal"><span class="pre">block</span></tt> and <tt class="docutils literal"><span class="pre">inline</span></tt> (default).</p>
+<math display='block'>
+  <msup>
+    <mfenced> <mbox> <mi>a</mi> <mo>+</mo> <mi>b</mi> </mbox> </mfenced> <mn>2</mn>
+  </msup>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math display=&#39;block&#39;&gt;
+  &lt;msup&gt;
+    &lt;mfenced&gt; &lt;mbox&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;b&lt;/mi&gt; &lt;/mbox&gt; &lt;/mfenced&gt; &lt;mn&gt;2&lt;/mn&gt;
+  &lt;/msup&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+<math display='inline'>
+  <msup>
+    <mfenced> <mbox> <mi>a</mi> <mo>+</mo> <mi>b</mi> </mbox> </mfenced> <mn>2</mn>
+  </msup>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math display=&#39;inline&#39;&gt;
+  &lt;msup&gt;
+    &lt;mfenced&gt; &lt;mbox&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;b&lt;/mi&gt; &lt;/mbox&gt; &lt;/mfenced&gt; &lt;mn&gt;2&lt;/mn&gt;
+  &lt;/msup&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="maxwidth">
+<h3>maxwidth<a class="headerlink" href="#maxwidth" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the maximum width to be used for linebreaking. The default is the
+maximum width available in the surrounding environment. If that value cannot be
+determined, the renderer should assume an infinite rendering width.</p>
+</div>
+<div class="section" id="overflow">
+<h3>overflow<a class="headerlink" href="#overflow" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the preferred handing in cases where an expression is too long to fit
+in the allowed width.</p>
+<p>The possibles valueas are <tt class="docutils literal"><span class="pre">linebreak</span></tt> (default), <tt class="docutils literal"><span class="pre">scroll</span></tt>, <tt class="docutils literal"><span class="pre">elide</span></tt>,
+<tt class="docutils literal"><span class="pre">truncate</span></tt> and <tt class="docutils literal"><span class="pre">scale</span></tt>.</p>
+<p>With <tt class="docutils literal"><span class="pre">linebreak</span></tt>, the expression will be broken across several lines.</p>
+<math overflow='linebreak'>
+  <mbox>
+    <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>=</mo> <mn>11</mn> <mi>a</mi>
+  </mbox>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math overflow=&#39;linebreak&#39;&gt;
+  &lt;mbox&gt;
+    &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;=&lt;/mo&gt; &lt;mn&gt;11&lt;/mn&gt; &lt;mi&gt;a&lt;/mi&gt;
+  &lt;/mbox&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+<p>With <tt class="docutils literal"><span class="pre">scroll</span></tt>, the window provides a viewport into the larger complete
+display of the mathematical expression. Horizontal or vertical scroll bars are
+added to the window as necessary to allow the viewport to be moved to a
+different position.</p>
+<math overflow='scroll'>
+  <mbox>
+    <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>=</mo> <mn>11</mn> <mi>a</mi>
+  </mbox>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math overflow=&#39;scroll&#39;&gt;
+  &lt;mbox&gt;
+    &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;=&lt;/mo&gt; &lt;mn&gt;11&lt;/mn&gt; &lt;mi&gt;a&lt;/mi&gt;
+  &lt;/mbox&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+<p>With <tt class="docutils literal"><span class="pre">elide</span></tt>, the display is abbreviated by removing enough of it so that the
+remainder fits into the window. For example, a large polynomial might have the
+first and last terms displayed with <tt class="docutils literal"><span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span></tt> between them. Advanced renderers
+may provide a facility to zoom in on elided areas.</p>
+<math overflow='elide'>
+  <mbox>
+    <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>=</mo> <mn>11</mn> <mi>a</mi>
+  </mbox>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math overflow=&#39;elide&#39;&gt;
+  &lt;mbox&gt;
+    &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;=&lt;/mo&gt; &lt;mn&gt;11&lt;/mn&gt; &lt;mi&gt;a&lt;/mi&gt;
+  &lt;/mbox&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+<p>With <tt class="docutils literal"><span class="pre">truncate</span></tt>, the display is abbreviated by simply truncating it at the
+right and bottom borders. It is recommended that some indication of truncation
+is made to the viewer.</p>
+<math overflow='truncate'>
+  <mbox>
+    <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>=</mo> <mn>11</mn> <mi>a</mi>
+  </mbox>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math overflow=&#39;truncate&#39;&gt;
+  &lt;mbox&gt;
+    &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;=&lt;/mo&gt; &lt;mn&gt;11&lt;/mn&gt; &lt;mi&gt;a&lt;/mi&gt;
+  &lt;/mbox&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+<p>With <tt class="docutils literal"><span class="pre">scale</span></tt>, the fonts used to display the mathematical expression are
+chosen so that the full expression fits in the window. Note that this only
+happens if the expression is too large. In the case of a window larger than
+necessary, the expression is shown at its normal size within the larger window.</p>
+<math overflow='scale'>
+  <mbox>
+    <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi> <mo>+</mo> <mi>a</mi>
+    <mo>=</mo> <mn>11</mn> <mi>a</mi>
+  </mbox>
+</math>
+
+<div class="highlight-python"><div class="highlight"><pre>&lt;math overflow=&#39;scale&#39;&gt;
+  &lt;mbox&gt;
+    &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt; &lt;mo&gt;+&lt;/mo&gt; &lt;mi&gt;a&lt;/mi&gt;
+    &lt;mo&gt;=&lt;/mo&gt; &lt;mn&gt;11&lt;/mn&gt; &lt;mi&gt;a&lt;/mi&gt;
+  &lt;/mbox&gt;
+&lt;/math&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="altimg">
+<h3>altimg<a class="headerlink" href="#altimg" title="Permalink to this headline">¶</a></h3>
+<p>Provides a URI referring to an image to display as a fall-back for user agents
+that do not support embedded MathML.</p>
+</div>
+<div class="section" id="alttext">
+<h3>alttext<a class="headerlink" href="#alttext" title="Permalink to this headline">¶</a></h3>
+<p>Provides a textual alternative as a fall-back for user agents that do not
+support embedded MathML or images.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.w3.org/TR/MathML3/chapter2.html">http://www.w3.org/TR/MathML3/chapter2.html</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Top-Level Element</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a><ul>
+<li><a class="reference internal" href="#display">display</a></li>
+<li><a class="reference internal" href="#maxwidth">maxwidth</a></li>
+<li><a class="reference internal" href="#overflow">overflow</a></li>
+<li><a class="reference internal" href="#altimg">altimg</a></li>
+<li><a class="reference internal" href="#alttext">alttext</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="attributes.html"
+                        title="previous chapter">MathML Attributes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="token.html"
+                        title="next chapter">Token Elements</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/mathml/root.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="token.html" title="Token Elements"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="attributes.html" title="MathML Attributes"
+             >previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Raniere Silva.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

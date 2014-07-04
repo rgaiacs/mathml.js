@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to MathML.js’s documentation! &mdash; MathML.js alpha documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="MathML.js alpha documentation" href="#" />
+    <link rel="next" title="Quick introduction" href="user/intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="user/intro.html" title="Quick introduction"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="welcome-to-mathml-js-s-documentation">
+<h1>Welcome to MathML.js&#8217;s documentation!<a class="headerlink" href="#welcome-to-mathml-js-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>&#8220;MathML is a low-level specification for describing mathematics as a basis for
+machine to machine communication which provides a much needed foundation for the
+inclusion of mathematical expressions in Web pages.&#8221; (From
+<a class="reference external" href="http://www.w3.org/Math/">http://www.w3.org/Math/</a>)</p>
+<p>MathML.js is a Open Source (GLPv3) Javascript library to enable GRAPHIC humam
+manipulation of MathML elements (<a class="reference external" href="_static/index.html">see the proof of concept</a> or <a class="reference external" href="_static/demo-firefox-os/index.html">it version for Firefox OS</a>
+and <a class="reference external" href="_static/mathml.js">download it from here</a>). This
+work is based on</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/jlabarbera11/TouchOfMath">TouchOfMath</a>,</li>
+<li><a class="reference external" href="http://galvosukykla.lt/failai/coding/equation-exercise/proof-of-concept.html">Equation Exercise Demo (proof of concept)</a> and</li>
+<li><a class="reference external" href="http://cermat.org/events/MathUI/13/proceedings/DynamicAlgebra-Implementation-MathUI2013.pdf">Implementation of Dynamic Algebra in Epsilonwriter</a>
+from Jean-François Nicaud and Christophe Viudez.</li>
+</ul>
+<p>MathML.js ISN&#8217;T:</p>
+<ul class="simple">
+<li>a plataform for display of mathematics in all browsers (try <a class="reference external" href="http://www.mathjax.org/">MathJax</a>),</li>
+<li>a equation editor (try <a class="reference external" href="https://www.mathway.com/">Mathway</a>),</li>
+<li>a jquery-like Javascript library for MathML (try <a class="reference external" href="https://github.com/sdiehl/jquery-mathml">jquery-mathml</a>);</li>
+<li>a math Javascript library (try <a class="reference external" href="http://mathjs.org/">Math.js</a>);</li>
+<li>a symbolic math Javascript library (try <a class="reference external" href="https://github.com/jamesmclellan/Symbolic-Math-Library-for-Javascript">Symbolic-Math-Library-for-Javascript</a>).</li>
+</ul>
+<p>User&#8217;s Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user/intro.html">Quick introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/intro.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/intro.html#use">Use</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user/setup.html">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/setup.html#selection-color">Selection color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/setup.html#equation-overwrite">Equation overwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/setup.html#only-display-equation">Only display equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/setup.html#maximum-of-decimals">Maximum of decimals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user/arithmetic-operations.html">Arithmetic Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/arithmetic-operations.html#addition">Addition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/arithmetic-operations.html#subtraction">Subtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/arithmetic-operations.html#multiplication">Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/arithmetic-operations.html#division">Division</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user/derivatives.html">Derivatives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/derivatives.html#prime">Prime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/derivatives.html#del-symbol">Del symbol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user/faq.html">FAQ</a></li>
+</ul>
+</div>
+<p>Developer&#8217;s Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev/intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/intro.html#primary-tokens">Primary Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/intro.html#secondary-tokens">Secondary Tokens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev/mi.html">Actions with mi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/mi.html#mouse-over-and-out">Mouse over and out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/mi.html#click">Click</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev/mn.html">Actions with mn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/mn.html#mouse-over-and-out">Mouse over and out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/mn.html#click">Click</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev/mo.html">Actions with mo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/mo.html#mouse-over-and-out">Mouse over and out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/mo.html#click">Click</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev/mrow.html">Actions with mrow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/mrow.html#mouse-over-and-out">Mouse over and out</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev/others-tokens.html">Actions with others tokens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/others-tokens.html#mfrac">mfrac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/others-tokens.html#msqrt">msqrt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/others-tokens.html#mroot">mroot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/others-tokens.html#msup">msup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev/undo.html">Undo Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/bugs.html">Know Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/todo.html">TODO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/todo.html#drag-and-drop">Drag and drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/todo.html#multiple-indentation-levels-equations">Multiple indentation levels equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/todo.html#linear-algebra">Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/todo.html#k-6-math">K-6 Math</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/code-style.html">Coding Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/code-style.html#file-names">File names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/code-style.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/code-style.html#line-length">Line Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/code-style.html#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/code-style.html#function-declarations">Function Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/code-style.html#statements">Statements</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>MathML tutorial:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mathml/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathml/attributes.html">MathML Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mathml/attributes.html#color">color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/attributes.html#id">id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/attributes.html#xref">xref</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/attributes.html#class">class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/attributes.html#style">style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/attributes.html#href">href</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mathml/root.html">Top-Level Element</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mathml/root.html#attributes">Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mathml/token.html">Token Elements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mathml/token.html#mi">mi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/token.html#mn">mn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/token.html#mo">mo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/token.html#mtext">mtext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/token.html#ms">ms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mathml/token.html#mspace">mspace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mathml/layout.html">General Layout Schemata</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to MathML.js&#8217;s documentation!</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="user/intro.html"
+                        title="next chapter">Quick introduction</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="user/intro.html" title="Quick introduction"
+             >next</a> |</li>
+        <li><a href="#">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Raniere Silva.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

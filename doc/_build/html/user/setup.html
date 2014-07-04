@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Setup &mdash; MathML.js alpha documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MathML.js alpha documentation" href="../index.html" />
+    <link rel="next" title="Arithmetic Operations" href="arithmetic-operations.html" />
+    <link rel="prev" title="Quick introduction" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="arithmetic-operations.html" title="Arithmetic Operations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Quick introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<p>The behavior of MathML.js are drive by some global variable. To change the
+default behavior of MathML.js just give the desired value to the proper variable
+in a script after the inclusion of MathML.js as show bellow:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;script type=&#39;text/javascript&#39; src=&quot;jquery-2.0.3.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&#39;text/javascript&#39; src=&quot;mathml.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  var SOMEVAR1 = value1;
+  var SOMEVAR2 = value2;
+  ...
+  var SOMEVARN = valueN;
+&lt;/script&gt;
+</pre></div>
+</div>
+<div class="section" id="selection-color">
+<h2>Selection color<a class="headerlink" href="#selection-color" title="Permalink to this headline">¶</a></h2>
+<p>To help the user the element select will change its color to blue. If you want
+another color use the <tt class="docutils literal"><span class="pre">MATHMLJS.COLOR</span></tt> variable to store the name of the
+color you want.</p>
+<div class="admonition-demo admonition">
+<p class="first admonition-title">Demo</p>
+<p class="last"><a class="reference external" href="../_static/demo-setup-color.html">A demo of the basic arithmetic operation in actions can be found here</a>.</p>
+</div>
+</div>
+<div class="section" id="equation-overwrite">
+<h2>Equation overwrite<a class="headerlink" href="#equation-overwrite" title="Permalink to this headline">¶</a></h2>
+<p>When some manipulation are done the old expression can be saved or not. If you
+don&#8217;t want to keep the old expression attribute a <tt class="docutils literal"><span class="pre">true</span></tt> value to
+<tt class="docutils literal"><span class="pre">MATHMLJS.OVERWRITE</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you want to manipulate inline equations (see next option) you should
+enable this option.</p>
+</div>
+<div class="admonition-demo admonition">
+<p class="first admonition-title">Demo</p>
+<p class="last"><a class="reference external" href="../_static/demo-setup-overwrite.html">A demo manipulations inplace can be found here</a>.</p>
+</div>
+</div>
+<div class="section" id="only-display-equation">
+<h2>Only display equation<a class="headerlink" href="#only-display-equation" title="Permalink to this headline">¶</a></h2>
+<p>When you want to enable the MathML.js for all math elements you can
+attribute a <tt class="docutils literal"><span class="pre">false</span></tt> value to <tt class="docutils literal"><span class="pre">MATHMLJS.ONLYDISPLAY</span></tt>.</p>
+<div class="admonition-demo admonition">
+<p class="first admonition-title">Demo</p>
+<p class="last"><a class="reference external" href="../_static/demo-setup-onlydisplay.html">A demo where all math elements work can be found here</a>.</p>
+</div>
+</div>
+<div class="section" id="maximum-of-decimals">
+<h2>Maximum of decimals<a class="headerlink" href="#maximum-of-decimals" title="Permalink to this headline">¶</a></h2>
+<p>When doing some arithmetic operation the float number are limited to two
+decimals. If you need more attribute the number of decimals you want to
+<tt class="docutils literal"><span class="pre">MATHMLJS.DECIMALS</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">JavaScript numbers are always stored as double precision floating point
+numbers (64 bits). The maximum number of decimals is 17.</p>
+</div>
+<div class="admonition-demo admonition">
+<p class="first admonition-title">Demo</p>
+<p class="last"><a class="reference external" href="../_static/demo-setup-decimals.html">A demo using four float decimals can be found here</a>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Setup</a><ul>
+<li><a class="reference internal" href="#selection-color">Selection color</a></li>
+<li><a class="reference internal" href="#equation-overwrite">Equation overwrite</a></li>
+<li><a class="reference internal" href="#only-display-equation">Only display equation</a></li>
+<li><a class="reference internal" href="#maximum-of-decimals">Maximum of decimals</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Quick introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arithmetic-operations.html"
+                        title="next chapter">Arithmetic Operations</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/user/setup.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="arithmetic-operations.html" title="Arithmetic Operations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Quick introduction"
+             >previous</a> |</li>
+        <li><a href="../index.html">MathML.js alpha documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Raniere Silva.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

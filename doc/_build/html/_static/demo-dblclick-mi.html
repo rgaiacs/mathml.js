@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Demo for right click DOM event in <kbd>mi</kbd> MathML element</title>
+<script type='text/javascript' src="jquery-2.0.3.min.js"></script>
+<script type='text/javascript' src="mathml.js"></script>
+<script>
+MATHMLJS.OVERWRITE = true;
+MATHMLJS.ONLYDISPLAY = false;
+</script>
+</head>
+<body>
+<h1>Demo for click DOM event in <kbd>mi</kbd> MathML element</h1>
+<p>Click in <math> <mi>x</mi> </math> or <math> <mi>y</mi> </math> for input a value to replace it:</p>
+<math display='block'> <mi>x</mi> </math>
+<math display='block'> <mi>x</mi> <mo> + </mo> <mi>x</mi> </math>
+<math display='block'> <mi>x</mi> <mo> + </mo> <mi>y</mi> <mo> + </mo> <mi>x</mi> </math>
+<math display='block'> <mi>x</mi> <mo> + </mo> <mi>y</mi> <mo> + </mo> <mi>x</mi> <mo> + </mo> <mi>x</mi> </math>
+<math display='block'> <mi>x</mi> <mo> + </mo> <mi>y</mi> <mo> + </mo> <mi>x</mi> <mo> + </mo> <mi>y</mi> <mo> + </mo> <mi>x</mi> </math>
+<p>Click in <math> <mi> &#x2148; </mi> </math> will not ask for a value:</p>
+<math display='block'> <mi> &#x2148; </mi> </math>
+<p>Click in <math> <mi> &#x3C0; </mi> </math> for input a value to replace it:</p>
+<math display='block'> <mi> &#x3C0; </mi> </math>
+<p>Click in <math> <mi> &#x2147; </mi> </math> will not ask for a value:</p>
+<math display='block'> <mi> &#x2147; </mi> </math>
+<footer>
+  <address>This document was write by <a
+      href='mailto:ra092767@ime.unicamp.br'>Raniere Silva</a>.<br>
+    <a href='http://www.github.com/r-gaia-cs/mathml.js'>MathML.js</a> is
+    developed and maintainer by <a
+      href='mailto:ra092767@ime.unicamp.br'>Raniere Silva</a>.
+</footer>
+</body>
+</html>
